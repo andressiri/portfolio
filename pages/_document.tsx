@@ -1,7 +1,6 @@
 import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-
 import createEmotionCache from "../utils/createEmotionCache";
 
 export default class MyDocument extends Document {
@@ -9,9 +8,15 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <title>Andrés Siri - Portfolio</title>
+          <meta name="description" content="Andrés Siri - Portfolio" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;800&display=swap"
           />
         </Head>
         <body>
