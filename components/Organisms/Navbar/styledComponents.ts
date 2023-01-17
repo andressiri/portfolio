@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Image from "next/image";
 
 export const NavbarContainer = styled("nav")(({ theme }) => ({

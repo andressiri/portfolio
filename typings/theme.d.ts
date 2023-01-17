@@ -1,4 +1,4 @@
-import { Theme, ThemeOptions } from "@mui/material/styles";
+import { Theme, ThemeOptions } from "@mui/material/styles"; // eslint-disable-line @typescript-eslint/no-unused-vars
 
 interface custom {
   navbar: {

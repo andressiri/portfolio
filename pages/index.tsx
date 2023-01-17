@@ -1,9 +1,4 @@
 import { FC } from "react";
-import { Inter } from "@next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-
-const label = { inputProps: { "aria-label": "Switch demo" } };
 
 const Home: FC = () => {
   return (

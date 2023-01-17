@@ -4,7 +4,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "styles/theme";
 import createEmotionCache from "utils/createEmotionCache";
-import { Layout } from "components";
+import { HeadSetup, Layout } from "components";
 import "../styles/globals.css";
 
 const clientSideEmotionCache = createEmotionCache();
@@ -20,6 +20,7 @@ const App: FC<IAppProps> = ({
 }) => {
   return (
     <CacheProvider value={emotionCache}>
+      <HeadSetup />
       <ThemeProvider theme={theme}>
         <Layout>
           <Component {...pageProps} />
