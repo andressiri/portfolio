@@ -1,9 +1,10 @@
 import { FC } from "react";
 import type { AppProps } from "next/app";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "../utils/theme";
-import createEmotionCache from "../utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "styles/theme";
+import createEmotionCache from "utils/createEmotionCache";
+import { Layout } from "components";
 import "../styles/globals.css";
 
 const clientSideEmotionCache = createEmotionCache();
@@ -20,7 +21,9 @@ const App: FC<IAppProps> = ({
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </CacheProvider>
   );
