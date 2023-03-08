@@ -4,6 +4,7 @@ import { IStyledButton } from "typings/buttons";
 
 const ContactButton: FC<IStyledButton> = ({
   BGType = "primaryBG",
+  sx,
   startIcon,
   endIcon,
   shadow = true,
@@ -13,6 +14,7 @@ const ContactButton: FC<IStyledButton> = ({
 }) => {
   return (
     <ButtonStyled
+      sx={sx}
       startIcon={startIcon}
       endIcon={endIcon}
       BGType={BGType}
