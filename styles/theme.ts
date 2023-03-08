@@ -3,24 +3,24 @@ import { createTheme, ThemeOptions } from "@mui/material/styles";
 export const theme: ThemeOptions = createTheme({
   palette: {
     primary: {
-      main: "rgba(94, 231, 227, 1)",
-      light: "rgba(179, 255, 255, 1)",
-      dark: "rgba(66, 162, 162, 1)",
-      contrastText: "rgba(0, 0, 0, 0.87)",
+      main: "rgba(30, 72, 201, 1)",
+      light: "rgba(147, 201, 255, 1)",
+      dark: "rgba(21, 81, 141, 1)",
+      contrastText: "rgba(255, 255, 255, 1)",
     },
     secondary: {
-      main: "rgba(94, 128, 231, 1)",
-      light: "rgba(179, 217, 255, 1)",
-      dark: "rgba(66, 114, 162, 1)",
-      contrastText: "rgba(255, 255, 255, 1)",
+      main: "rgba(25, 225, 225, 1)",
+      light: "rgba(142, 255, 255, 1)",
+      dark: "rgba(18, 157, 157, 1)",
+      contrastText: "rgba(0, 0, 0, 0.87)",
     },
   },
   typography: {
-    fontFamily: "'Kanit', sans-serif",
+    fontFamily: "'Nunito Sans', sans-serif",
   },
   custom: {
     navbar: {
-      height: "70px",
+      height: "120px",
     },
   },
 });

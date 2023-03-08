@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Kanit", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 html,
@@ -10,10 +10,14 @@ body,
 nav {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: "Kanit", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 a {
-  color: inherit;
+  color: currentColor;
   text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
