@@ -1,13 +1,10 @@
 import React, { FC } from "react";
+import { useTranslation } from "next-i18next";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { StyledButton } from "components/Atoms";
 import { IStyledButton } from "typings/buttons";
-import { useTranslation } from "next-i18next";
 
-const ContactButton: FC<IStyledButton> = ({
-  endIcon = <ArrowForwardIcon />,
-  children,
-}) => {
+const ContactButton: FC<IStyledButton> = ({ ...props }) => {
   const { t } = useTranslation("buttons");
   // const { contactFormRef } = useContext(context)
 
@@ -22,8 +19,12 @@ const ContactButton: FC<IStyledButton> = ({
   };
 
   return (
-    <StyledButton endIcon={endIcon} onClick={handleClick}>
-      {children ? children : (t("contact") as string)}
+    <StyledButton
+      endIcon={props.endIcon || <ArrowForwardIcon />}
+      onClick={handleClick}
+      {...props}
+    >
+      {props.children || (t("contact") as string)}
     </StyledButton>
   );
 };

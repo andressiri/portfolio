@@ -17,7 +17,11 @@ const Home: FC = () => {
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale as string, ["navbar", "home"])),
+      ...(await serverSideTranslations(locale as string, [
+        "navbar",
+        "home",
+        "buttons",
+      ])),
     },
   };
 };

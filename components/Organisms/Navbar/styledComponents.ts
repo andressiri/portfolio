@@ -1,26 +1,22 @@
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
-import Image from "next/image";
+import { Box } from "@mui/material";
 
 export const NavbarContainer = styled("nav")(({ theme }) => ({
   position: "fixed",
   top: "0px",
   left: "0px",
   width: "100%",
-  padding: "0px 30px",
   height: theme.custom.navbar.height,
+  padding: "0px 30px",
   display: "flex",
   alignItems: "center",
-  background: theme.palette.primary.main,
+  justifyContent: "space-between",
+  background: "transparent",
 }));
 
-export const ASLogo = styled(Image)(() => ({
-  width: "35px",
-  height: "35px",
-  marginRight: "10px",
-}));
-
-export const Name = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
-  fontSize: "26px",
+export const RightContainer = styled(Box)(() => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "20px",
 }));
