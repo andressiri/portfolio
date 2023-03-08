@@ -1,10 +1,11 @@
 import { FC } from "react";
 import type { AppProps } from "next/app";
+import { appWithTranslation } from "next-i18next";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "styles/theme";
 import createEmotionCache from "utils/createEmotionCache";
-import { HeadSetup, Layout } from "components";
+import { HeadSetup } from "components";
 import "../styles/globals.css";
 
 const clientSideEmotionCache = createEmotionCache();
@@ -22,12 +23,10 @@ const App: FC<IAppProps> = ({
     <CacheProvider value={emotionCache}>
       <HeadSetup />
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );
 };
 
-export default App;
+export default appWithTranslation(App);
