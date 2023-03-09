@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 import { IStyledButton } from "typings/buttons";
 
@@ -18,7 +18,7 @@ export const ButtonStyled = styled(Button, {
         : BGType === "primaryContrastBG"
         ? theme.palette.primary.main
         : theme.palette.secondary.main,
-    fontSize: "18px",
+    fontSize: theme.custom.buttons.fontSizeMd,
     fontWeight: 700,
     lineHeight: "28.32px",
     letterSpacing: "0.46px",
@@ -29,13 +29,13 @@ export const ButtonStyled = styled(Button, {
         : BGType === "secondaryBG"
         ? theme.palette.secondary.main
         : "transparent",
-    borderRadius: "16px",
+    borderRadius: theme.custom.radius.medium,
     border:
       BGType === "primaryBG" || BGType === "secondaryBG"
         ? "unset"
         : BGType === "primaryContrastBG"
-        ? `2px solid ${theme.palette.primary.main}`
-        : `2px solid ${theme.palette.secondary.main}`,
+        ? `3px solid ${theme.palette.primary.main}`
+        : `3px solid ${theme.palette.secondary.main}`,
     boxShadow: shadow
       ? "rgb(0 0 0 / 12%) 0px 1px 5px 0px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 20%) 0px 3px 1px -2px"
       : "",

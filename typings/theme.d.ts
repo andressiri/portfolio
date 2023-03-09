@@ -1,6 +1,12 @@
 import { Theme, ThemeOptions } from "@mui/material/styles"; // eslint-disable-line @typescript-eslint/no-unused-vars
 
 interface custom {
+  buttons: {
+    fontSizeMd: string;
+  };
+  radius: {
+    medium: string;
+  };
   navbar: {
     height: string;
   };

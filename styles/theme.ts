@@ -19,6 +19,12 @@ export const theme: ThemeOptions = createTheme({
     fontFamily: "'Nunito Sans', sans-serif",
   },
   custom: {
+    buttons: {
+      fontSizeMd: "18px",
+    },
+    radius: {
+      medium: "16px",
+    },
     navbar: {
       height: "120px",
     },
