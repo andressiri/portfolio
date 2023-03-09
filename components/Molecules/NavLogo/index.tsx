@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useTranslation } from "next-i18next";
 import { Container, ASLogoContainer, Name } from "./styledComponents";
-import ASLogo from "assets/ASLogo";
+import ASLogo from "assets/logos/ASLogo";
 
 const NavLogo: FC = () => {
   const { t } = useTranslation("navbar");

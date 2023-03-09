@@ -21,6 +21,7 @@ export const ASLogoContainer = styled(Box)(() => ({
 export const Name = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
   fontSize: "32px",
-  fontWeight: 800,
+  fontWeight: 900,
+  letterSpacing: "-0.45px",
   whiteSpace: "nowrap",
 }));
