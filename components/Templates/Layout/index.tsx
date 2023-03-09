@@ -3,7 +3,7 @@ import { Navbar } from "components";
 import { LayoutContainer } from "./styledComponents";
 
 interface IProps {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
 const Layout: FC<IProps> = ({ children }) => {

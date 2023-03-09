@@ -1,9 +1,12 @@
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
-export const LayoutContainer = styled(Box)(({ theme }) => ({
+export const Container = styled(Box)(({ theme }) => ({
+  width: "100%",
+  maxWidth: "1600px",
+  minHeight: "100vh",
+  margin: "0px auto",
   display: "flex",
-  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
 }));

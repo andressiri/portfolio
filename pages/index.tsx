@@ -1,27 +1,30 @@
 import { FC } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Layout } from "components";
-import { useTranslation } from "next-i18next";
+import { BackgroundTexture } from "components/Atoms";
+import { Layout, Hero } from "components/Templates";
+import { Container } from "./styledComponents";
+import funkyLinesSrc from "assets/textures/funky-lines.webp";
 
 const Home: FC = () => {
-  const { t } = useTranslation("home");
   return (
-    <Layout>
-      <main>
-        <h1>{t("title")}</h1>
-      </main>
-    </Layout>
+    <Container>
+      <Layout>
+        <BackgroundTexture imageSrc={funkyLinesSrc.src} />
+        <Hero />
+      </Layout>
+    </Container>
   );
 };
 
 export const getStaticProps = async ({ locale }: { locale: string }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale as string, [
-        "navbar",
-        "home",
-        "buttons",
-      ])),
+      ...(await serverSideTranslations(
+        locale as string,
+        ["navbar", "hero", "buttons"],
+        null,
+        ["en", "es"]
+      )),
     },
   };
 };
