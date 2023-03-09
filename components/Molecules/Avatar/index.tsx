@@ -20,6 +20,7 @@ const Avatar: FC = () => {
             src={AvatarImageSrc}
             alt="Picture of Andrés Siri"
             className="avatarImage"
+            priority
           />
         </ImageContainer>
         <InnerCircle>
