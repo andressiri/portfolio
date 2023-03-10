@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Navbar } from "components";
+import { WhatsAppFloating } from "components/Molecules";
+import { Navbar } from "components/Organisms";
 import { LayoutContainer } from "./styledComponents";
 
 interface IProps {
@@ -11,6 +12,7 @@ const Layout: FC<IProps> = ({ children }) => {
     <LayoutContainer>
       <Navbar />
       {children}
+      <WhatsAppFloating />
     </LayoutContainer>
   );
 };

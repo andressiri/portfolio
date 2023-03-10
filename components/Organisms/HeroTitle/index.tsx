@@ -25,7 +25,9 @@ const HeroTitle: FC = () => {
         <ActionsContainer>
           <ContactButton BGType="primaryContrastBG" />
           <WhatsAppAnchor>
-            <StyledButton endIcon={<WhatsAppIcon />}>WhatsApp</StyledButton>
+            <StyledButton endIcon={<WhatsAppIcon />} tabIndex={-1}>
+              WhatsApp
+            </StyledButton>
           </WhatsAppAnchor>
         </ActionsContainer>
       </InnerContainer>
