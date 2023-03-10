@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import AnimatedDownloadIcon from "../AnimatedDownloadIcon";
 import { StyledButton } from "components/Atoms";
 import { IStyledButton } from "typings/buttons";
 
@@ -9,9 +9,17 @@ interface Props extends IStyledButton {
 }
 
 const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [downloading, setDownloading] = useState<boolean>(false);
+  const [changeArrow, setChangeArrow] = useState<boolean>(false);
   const { t } = useTranslation("buttons");
 
-  const handleClick = () => {
+  const handleDownloadClick = () => {
+    setDownloading(true);
+    setTimeout(() => {
+      setDownloading(false);
+    }, 3500);
+
     // this will download CV
     //
     // if (ATMCV) {
@@ -23,13 +31,29 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
   };
 
   return (
-    <StyledButton
-      endIcon={props.endIcon || <CloudDownloadIcon />}
-      onClick={handleClick}
-      {...props}
+    <div
+      onMouseEnter={() => setChangeArrow(true)}
+      onMouseLeave={() => {
+        if (document.activeElement !== buttonRef.current) setChangeArrow(false);
+      }}
     >
-      {props.children || (t(ATMCV ? "downloadATMCV" : "downloadCV") as string)}
-    </StyledButton>
+      <StyledButton
+        passRef={buttonRef}
+        endIcon={
+          <AnimatedDownloadIcon
+            downloading={downloading}
+            changeArrow={changeArrow}
+          />
+        }
+        onClick={handleDownloadClick}
+        onFocus={() => setChangeArrow(true)}
+        onBlur={() => setChangeArrow(false)}
+        {...props}
+      >
+        {props.children ||
+          (t(ATMCV ? "downloadATMCV" : "downloadCV") as string)}
+      </StyledButton>
+    </div>
   );
 };
 
