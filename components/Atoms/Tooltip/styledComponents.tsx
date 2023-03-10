@@ -29,7 +29,7 @@ export const Container = styled(Box, {
       : `calc(50% - ${height ? height : defaultHeight} / 2)`,
     left: left
       ? left
-      : tooltipPosition === "left" || !tooltipPosition
+      : tooltipPosition === "left"
       ? `calc(0% - ${tail - 1}px - ${width ? width : defaultWidth})`
       : tooltipPosition === "right"
       ? `calc(100% + ${tail - 1}px)`

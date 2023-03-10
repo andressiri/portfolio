@@ -11,3 +11,7 @@ export const Container = styled(Box)(({ theme }) => ({
     height: "70px",
   },
 }));
+
+export const StyledAnchor = styled("a")(() => ({
+  position: "relative",
+}));
