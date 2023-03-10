@@ -5,6 +5,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "styles/theme";
 import createEmotionCache from "utils/createEmotionCache";
+import { GeneralContextProvider } from "contexts";
 import { HeadSetup } from "components";
 import "../styles/globals.css";
 
@@ -20,12 +21,14 @@ const App: FC<IAppProps> = ({
   pageProps,
 }) => {
   return (
-    <CacheProvider value={emotionCache}>
-      <HeadSetup />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <GeneralContextProvider>
+      <CacheProvider value={emotionCache}>
+        <HeadSetup />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </GeneralContextProvider>
   );
 };
 
