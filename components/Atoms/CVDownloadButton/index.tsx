@@ -12,22 +12,31 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [downloading, setDownloading] = useState<boolean>(false);
   const [changeArrow, setChangeArrow] = useState<boolean>(false);
-  const { t } = useTranslation("buttons");
+  const { t, i18n } = useTranslation("buttons");
 
-  const handleDownloadClick = () => {
+  const handleDownloadClick = async () => {
     setDownloading(true);
     setTimeout(() => {
       setDownloading(false);
     }, 3500);
 
-    // this will download CV
-    //
-    // if (ATMCV) {
-    //   download ATM CV
-    //   return
-    // }
-    //
-    // download cv
+    const CVResponse = await fetch(
+      `${ATMCV ? "ATM-" : ""}CV-${
+        i18n.language.includes("es") ? "Español" : "English"
+      }.pdf`
+    );
+    const blob = await CVResponse.blob();
+    const CVBlob = await new Blob([blob]);
+    const CVFile = await window.URL.createObjectURL(CVBlob);
+
+    const cvLink = document.createElement("a");
+    cvLink.href = CVFile;
+    cvLink.download = `Andrés Siri - Developer CV ${
+      ATMCV ? "- ATM " : ""
+    }- (${new Date().toISOString().slice(0, 10)}) - ${
+      i18n.language.includes("es") ? "Español" : "English"
+    }.pdf`;
+    cvLink.click();
   };
 
   return (
