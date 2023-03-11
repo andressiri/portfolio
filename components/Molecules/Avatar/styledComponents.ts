@@ -36,7 +36,7 @@ export const InnerCircleContainer = styled(Box)(() => ({
   overflow: "hidden",
 }));
 
-export const ImageContainer = styled(Box)(({ theme }) => ({
+export const ImageContainer = styled(Box)(() => ({
   zIndex: 11,
   position: "absolute",
   bottom: `${borderWidth}px`,

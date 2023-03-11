@@ -2,7 +2,7 @@ import { FC } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { BackgroundTexture } from "components/Atoms";
 import { Layout, Hero } from "components/Templates";
-import { Container } from "./styledComponents";
+import { Container } from "components/Templates/MainPage/styledComponents";
 import funkyLinesSrc from "assets/textures/funky-lines.webp";
 
 const Home: FC = () => {
