@@ -1,12 +1,16 @@
 import { FC } from "react";
-import { NavbarContainer, ASLogo, Name } from "./styledComponents";
-import ASLogoSrc from "public/favicon.ico";
+import { NavDrawerController } from "components/Atoms";
+import { NavLogo, NavLinks } from "components/Molecules";
+import { NavbarContainer, RightContainer } from "./styledComponents";
 
 const Navbar: FC = () => {
   return (
     <NavbarContainer>
-      <ASLogo src={ASLogoSrc} alt="AS logo" />
-      <Name>Andrés Siri</Name>
+      <NavLogo />
+      <RightContainer>
+        <NavLinks />
+        <NavDrawerController />
+      </RightContainer>
     </NavbarContainer>
   );
 };
