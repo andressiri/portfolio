@@ -33,7 +33,7 @@ export const GeneralContextProvider: FC<Props> = ({ children }) => {
   const [viewportHeight, setViewportHeight] = useState<number>(
     typeof window !== "undefined" ? getWindowDimensions().height : 0
   );
-  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
+  const [themeMode, setThemeMode] = useState<ThemeMode>("dark");
   const [themePalette, setThemePalette] = useState<ThemePalette>("cyanAndBlue");
 
   if (typeof window !== "undefined") {

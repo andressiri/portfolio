@@ -33,8 +33,7 @@ export const Title = styled(Typography)(({ theme }) => ({
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
   margin: "0px 0px 40px 0px",
-  color: theme.palette.secondary.main,
-  textShadow: `1px 2px 4px ${theme.palette.secondary.contrastText}`,
+  color: theme.palette.secondary.contrastText,
   fontSize: "48px",
   fontWeight: 800,
   lineHeight: "48px",
