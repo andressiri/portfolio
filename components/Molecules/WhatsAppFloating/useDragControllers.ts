@@ -60,35 +60,39 @@ const useDragControllers = () => {
     []
   );
 
-  const touchMove = useCallback((event: MouseEvent | TouchEvent) => {
-    const actualPosition = getPosition(event);
+  const touchMove = useCallback(
+    (event: MouseEvent | TouchEvent) => {
+      const actualPosition = getPosition(event);
 
-    if (
-      !isDragging.current &&
-      Math.abs(startPosition.current.x - actualPosition.x) < 15 &&
-      Math.abs(startPosition.current.y - actualPosition.y) < 15
-    )
-      return;
+      if (
+        !isDragging.current &&
+        Math.abs(startPosition.current.x - actualPosition.x) < 15 &&
+        Math.abs(startPosition.current.y - actualPosition.y) < 15
+      )
+        return;
 
-    if (!isDragging.current) isDragging.current = true;
+      if (!isDragging.current) isDragging.current = true;
 
-    const topToSet =
-      actualPosition.y - 30 > 10 && actualPosition.y - 30 < viewportHeight - 80
-        ? actualPosition.y - 30
-        : actualPosition.y - 30 <= 10
-        ? 10
-        : viewportHeight - 80;
+      const topToSet =
+        actualPosition.y - 30 > 10 &&
+        actualPosition.y - 30 < viewportHeight - 80
+          ? actualPosition.y - 30
+          : actualPosition.y - 30 <= 10
+          ? 10
+          : viewportHeight - 80;
 
-    const leftToSet =
-      actualPosition.x - 30 > 10 && actualPosition.x - 30 < viewportWidth - 80
-        ? actualPosition.x - 30
-        : actualPosition.x - 30 <= 10
-        ? 10
-        : viewportWidth - 80;
+      const leftToSet =
+        actualPosition.x - 30 > 10 && actualPosition.x - 30 < viewportWidth - 80
+          ? actualPosition.x - 30
+          : actualPosition.x - 30 <= 10
+          ? 10
+          : viewportWidth - 80;
 
-    setTop(topToSet);
-    setLeft(leftToSet);
-  }, []);
+      setTop(topToSet);
+      setLeft(leftToSet);
+    },
+    [viewportWidth, viewportHeight, getPosition]
+  );
 
   const touchEnd = useCallback(() => {
     setTimeout(() => (isDragging.current = false), 100);
@@ -97,7 +101,7 @@ const useDragControllers = () => {
     window.removeEventListener("touchmove", touchMove);
     window.removeEventListener("mouseup", touchEnd);
     window.removeEventListener("touchend", touchEnd);
-  }, []);
+  }, [touchMove]);
 
   const touchStart = useCallback(
     (
@@ -114,7 +118,7 @@ const useDragControllers = () => {
       window.addEventListener("mouseup", touchEnd);
       window.addEventListener("touchend", touchEnd);
     },
-    []
+    [getPosition, touchEnd, touchMove]
   );
 
   const dragControllers = {
