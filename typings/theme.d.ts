@@ -23,3 +23,7 @@ declare module "@mui/material/styles" {
 
   export function createTheme(options?: ThemeOptions): Theme;
 }
+
+export type ThemeMode = "dark" | "neon" | "light";
+
+export type ThemePalette = "cyanAndBlue";

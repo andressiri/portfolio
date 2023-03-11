@@ -1,9 +1,14 @@
 import { createContext, FC, useState } from "react";
 import getWindowDimensions from "utils/helpers/getWindowDimensions";
+import { ThemeMode, ThemePalette } from "typings/theme";
 
 interface IContext {
   viewportWidth: number;
   viewportHeight: number;
+  themeMode: ThemeMode;
+  setThemeMode: React.Dispatch<React.SetStateAction<ThemeMode>>;
+  themePalette: ThemePalette;
+  setThemePalette: React.Dispatch<React.SetStateAction<ThemePalette>>;
 }
 
 export const GeneralContext = createContext<IContext>({
@@ -11,6 +16,10 @@ export const GeneralContext = createContext<IContext>({
     typeof window !== "undefined" ? getWindowDimensions().width : 0,
   viewportHeight:
     typeof window !== "undefined" ? getWindowDimensions().height : 0,
+  themeMode: "light",
+  setThemeMode: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  themePalette: "cyanAndBlue",
+  setThemePalette: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 });
 
 interface Props {
@@ -24,6 +33,8 @@ export const GeneralContextProvider: FC<Props> = ({ children }) => {
   const [viewportHeight, setViewportHeight] = useState<number>(
     typeof window !== "undefined" ? getWindowDimensions().height : 0
   );
+  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
+  const [themePalette, setThemePalette] = useState<ThemePalette>("cyanAndBlue");
 
   if (typeof window !== "undefined") {
     window.addEventListener("resize", () => {
@@ -38,6 +49,10 @@ export const GeneralContextProvider: FC<Props> = ({ children }) => {
       value={{
         viewportWidth,
         viewportHeight,
+        themeMode,
+        setThemeMode,
+        themePalette,
+        setThemePalette,
       }}
     >
       {children}
