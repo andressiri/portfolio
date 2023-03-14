@@ -5,7 +5,13 @@ export interface IStyledButton {
     | "primaryBG"
     | "secondaryBG"
     | "primaryContrastBG"
-    | "secondaryContrastBG";
+    | "secondaryContrastBG"
+    | "primaryOutlined"
+    | "secondaryOutlined"
+    | "primaryContrastOutlined"
+    | "secondaryContrastOutlined";
+  transparent?: boolean;
+  hover?: "primary" | "secondary" | "outlined";
   passRef?: RefObject<HTMLButtonElement>;
   sx?: SxProps;
   startIcon?: JSX.Element;
