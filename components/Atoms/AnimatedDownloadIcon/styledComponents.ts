@@ -5,7 +5,7 @@ export const ArrowPath = styled("path", {
 })<{ downloading: boolean }>(({ theme, downloading }) => ({
   "@keyframes downloadingIconAnimation": {
     "0%": {
-      opacity: "0.87",
+      opacity: "1",
       transform: "scale(0.75) translate(4px, 8px)",
     },
     "100%": {
@@ -14,7 +14,7 @@ export const ArrowPath = styled("path", {
     },
   },
   fill: theme.palette.primary.contrastText,
-  opacity: "0.87",
+  opacity: "1",
   transform: "scale(0.75) translate(4px, 8px)",
   animation: downloading ? "downloadingIconAnimation 0.9s linear infinite" : "",
 }));

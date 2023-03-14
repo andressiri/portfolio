@@ -12,7 +12,6 @@ const AnimatedDownloadIcon: FC<Props> = ({ downloading }) => {
       height="30"
       viewBox="0 0 24 24"
       data-testid="CloudDownloadIcon"
-      style={{ overflow: "hidden" }}
     >
       <path
         fill="currentcolor"
