@@ -3,16 +3,16 @@ import { ArrowPath } from "./styledComponents";
 
 interface Props {
   downloading: boolean;
-  changeArrow: boolean;
 }
 
-const AnimatedDownloadIcon: FC<Props> = ({ downloading, changeArrow }) => {
+const AnimatedDownloadIcon: FC<Props> = ({ downloading }) => {
   return (
     <svg
       width="30"
       height="30"
       viewBox="0 0 24 24"
       data-testid="CloudDownloadIcon"
+      style={{ overflow: "hidden" }}
     >
       <path
         fill="currentcolor"
@@ -21,7 +21,6 @@ const AnimatedDownloadIcon: FC<Props> = ({ downloading, changeArrow }) => {
       <ArrowPath
         d="M19 9h-4V3H9v6H5l7 7 7-7zM5"
         downloading={downloading}
-        changeArrow={changeArrow}
       ></ArrowPath>
     </svg>
   );

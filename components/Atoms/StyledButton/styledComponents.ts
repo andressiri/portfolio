@@ -152,7 +152,7 @@ const getTypeOfButton = (
           ? secondary.main
           : secondary.contrastText,
       hoverBackground: transparent
-        ? transparent
+        ? "transparent"
         : hover === "primary"
         ? primary.contrastText
         : hover === "secondary"
@@ -177,7 +177,7 @@ const getTypeOfButton = (
           ? primary.main
           : primary.contrastText,
       hoverBackground: transparent
-        ? transparent
+        ? "transparent"
         : hover === "secondary"
         ? secondary.contrastText
         : hover === "primary"

@@ -48,12 +48,7 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
     >
       <StyledButton
         passRef={buttonRef}
-        endIcon={
-          <AnimatedDownloadIcon
-            downloading={downloading}
-            changeArrow={changeArrow}
-          />
-        }
+        endIcon={<AnimatedDownloadIcon downloading={downloading} />}
         onClick={handleDownloadClick}
         onFocus={() => setChangeArrow(true)}
         onBlur={() => setChangeArrow(false)}
