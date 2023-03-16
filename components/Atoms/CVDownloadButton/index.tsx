@@ -1,14 +1,16 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useContext, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
 import AnimatedDownloadIcon from "../AnimatedDownloadIcon";
 import { StyledButton } from "components/Atoms";
 import { IStyledButton } from "typings/buttons";
+import { GeneralContext } from "contexts";
 
 interface Props extends IStyledButton {
-  ATMCV?: boolean;
+  ATSCV?: boolean;
 }
 
-const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
+const CVDownloadButton: FC<Props> = ({ ATSCV = false, ...props }) => {
+  const { themeMode, themePalette } = useContext(GeneralContext);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [downloading, setDownloading] = useState<boolean>(false);
   const [changeArrow, setChangeArrow] = useState<boolean>(false);
@@ -21,8 +23,12 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
     }, 3500);
 
     const CVResponse = await fetch(
-      `${ATMCV ? "ATM-" : ""}CV-${
+      `${ATSCV ? "ATS-" : ""}CV-${
         i18n.language.includes("es") ? "Español" : "English"
+      }-${
+        themeMode === "light" && themePalette === "cyanAndBlue"
+          ? "Blue"
+          : "Cyan"
       }.pdf`
     );
     const blob = await CVResponse.blob();
@@ -32,7 +38,7 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
     const cvLink = document.createElement("a");
     cvLink.href = CVFile;
     cvLink.download = `Andrés Siri - Developer CV ${
-      ATMCV ? "- ATM " : ""
+      ATSCV ? "- ATS " : ""
     }- (${new Date().toISOString().slice(0, 10)}) - ${
       i18n.language.includes("es") ? "Español" : "English"
     }.pdf`;
@@ -55,7 +61,7 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
         {...props}
       >
         {props.children ||
-          (t(ATMCV ? "downloadATMCV" : "downloadCV") as string)}
+          (t(ATSCV ? "downloadATSCV" : "downloadCV") as string)}
       </StyledButton>
     </div>
   );

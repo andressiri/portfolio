@@ -14,7 +14,7 @@ const CVButtons: FC = () => {
         BGType={"secondaryContrastOutlined"}
         transparent={true}
         hover={"primary"}
-        ATMCV={true}
+        ATSCV={true}
       />
     </Container>
   );
