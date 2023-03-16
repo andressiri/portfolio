@@ -6,4 +6,11 @@ export interface TooltipProps {
   height?: string;
   beforeTop?: string;
   beforeLeft?: string;
+  color?:
+    | "primary"
+    | "secondary"
+    | "primaryContrast"
+    | "secondaryContrast"
+    | "contrastsPrimary"
+    | "contrastsSecondary";
 }

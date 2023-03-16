@@ -7,7 +7,17 @@ const defaultHeight = "25px";
 const tail = 7;
 
 export const Container = styled(Box, {
-  shouldForwardProp: (prop) => !["tooltipPosition"].includes(prop as string),
+  shouldForwardProp: (prop) =>
+    ![
+      "tooltipPosition",
+      "top",
+      "left",
+      "width",
+      "height",
+      "beforeTop",
+      "beforeLeft",
+      "color",
+    ].includes(prop as string),
 })<TooltipProps>(
   ({
     theme,
@@ -18,63 +28,86 @@ export const Container = styled(Box, {
     height,
     beforeTop,
     beforeLeft,
-  }) => ({
-    position: "absolute",
-    top: top
-      ? top
-      : tooltipPosition === "top" || !tooltipPosition
-      ? `calc(0% - ${tail - 1}px - ${height ? height : defaultHeight})`
-      : tooltipPosition === "bottom"
-      ? `calc(100% + ${tail - 1}px)`
-      : `calc(50% - ${height ? height : defaultHeight} / 2)`,
-    left: left
-      ? left
-      : tooltipPosition === "left"
-      ? `calc(0% - ${tail - 1}px - ${width ? width : defaultWidth})`
-      : tooltipPosition === "right"
-      ? `calc(100% + ${tail - 1}px)`
-      : `calc(50% - ${width ? width : defaultWidth} / 2)`,
-    width: width ? width : defaultWidth,
-    height: height ? height : defaultHeight,
-    paddingTop: "1px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: theme.palette.primary.contrastText,
-    fontSize: "12px",
-    fontWeight: 400,
-    lineHeight: "20px",
-    textAlign: "center",
-    background: theme.palette.primary.main,
-    borderRadius: "4px",
-    "&::before": {
-      content: "''",
+    color,
+  }) => {
+    const { primary, secondary } = theme.palette;
+
+    const textColor =
+      color === "secondary" || color === "contrastsPrimary"
+        ? secondary.contrastText
+        : color === "primaryContrast"
+        ? primary.main
+        : color === "secondaryContrast"
+        ? secondary.main
+        : primary.contrastText;
+
+    const backgroundColor =
+      color === "secondary"
+        ? secondary.main
+        : color === "primaryContrast" || color === "contrastsPrimary"
+        ? primary.contrastText
+        : color === "secondaryContrast" || color === "contrastsSecondary"
+        ? secondary.contrastText
+        : primary.main;
+
+    return {
       position: "absolute",
-      top: beforeTop
-        ? beforeTop
+      top: top
+        ? top
         : tooltipPosition === "top" || !tooltipPosition
-        ? "calc(100% - 1px)"
+        ? `calc(0% - ${tail - 1}px - ${height ? height : defaultHeight})`
         : tooltipPosition === "bottom"
-        ? `-${tail * 2 - 1}px`
-        : `calc(50% - ${tail}px)`,
-      left: beforeLeft
-        ? beforeLeft
+        ? `calc(100% + ${tail - 1}px)`
+        : `calc(50% - ${height ? height : defaultHeight} / 2)`,
+      left: left
+        ? left
         : tooltipPosition === "left"
-        ? "calc(100% - 1px)"
+        ? `calc(0% - ${tail - 1}px - ${width ? width : defaultWidth})`
         : tooltipPosition === "right"
-        ? `-${tail * 2 - 1}px`
-        : `calc(50% - ${tail}px)`,
-      width: "0px",
-      height: "0px",
-      border: `${tail}px solid transparent`,
-      borderColor:
-        tooltipPosition === "top" || !tooltipPosition
-          ? `${theme.palette.primary.main} transparent transparent transparent`
+        ? `calc(100% + ${tail - 1}px)`
+        : `calc(50% - ${width ? width : defaultWidth} / 2)`,
+      width: width ? width : defaultWidth,
+      height: height ? height : defaultHeight,
+      paddingTop: "2px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: textColor,
+      fontSize: "12px",
+      fontWeight: 400,
+      lineHeight: "20px",
+      textAlign: "center",
+      background: backgroundColor,
+      borderRadius: "4px",
+      "&::before": {
+        content: "''",
+        position: "absolute",
+        top: beforeTop
+          ? beforeTop
+          : tooltipPosition === "top" || !tooltipPosition
+          ? "calc(100% - 1px)"
           : tooltipPosition === "bottom"
-          ? `transparent transparent ${theme.palette.primary.main} transparent`
+          ? `-${tail * 2 - 1}px`
+          : `calc(50% - ${tail}px)`,
+        left: beforeLeft
+          ? beforeLeft
           : tooltipPosition === "left"
-          ? `transparent transparent transparent ${theme.palette.primary.main}`
-          : `transparent ${theme.palette.primary.main} transparent transparent`,
-    },
-  })
+          ? "calc(100% - 1px)"
+          : tooltipPosition === "right"
+          ? `-${tail * 2 - 1}px`
+          : `calc(50% - ${tail}px)`,
+        width: "0px",
+        height: "0px",
+        border: `${tail}px solid transparent`,
+        borderColor:
+          tooltipPosition === "top" || !tooltipPosition
+            ? `${backgroundColor} transparent transparent transparent`
+            : tooltipPosition === "bottom"
+            ? `transparent transparent ${backgroundColor} transparent`
+            : tooltipPosition === "left"
+            ? `transparent transparent transparent ${backgroundColor}`
+            : `transparent ${backgroundColor} transparent transparent`,
+      },
+    };
+  }
 );
