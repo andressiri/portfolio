@@ -13,7 +13,6 @@ const CVDownloadButton: FC<Props> = ({ ATSCV = false, ...props }) => {
   const { themeMode, themePalette } = useContext(GeneralContext);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [downloading, setDownloading] = useState<boolean>(false);
-  const [changeArrow, setChangeArrow] = useState<boolean>(false);
   const { t, i18n } = useTranslation("buttons");
 
   const handleDownloadClick = async () => {
@@ -46,24 +45,14 @@ const CVDownloadButton: FC<Props> = ({ ATSCV = false, ...props }) => {
   };
 
   return (
-    <div
-      onMouseEnter={() => setChangeArrow(true)}
-      onMouseLeave={() => {
-        if (document.activeElement !== buttonRef.current) setChangeArrow(false);
-      }}
+    <StyledButton
+      passRef={buttonRef}
+      endIcon={<AnimatedDownloadIcon downloading={downloading} />}
+      onClick={handleDownloadClick}
+      {...props}
     >
-      <StyledButton
-        passRef={buttonRef}
-        endIcon={<AnimatedDownloadIcon downloading={downloading} />}
-        onClick={handleDownloadClick}
-        onFocus={() => setChangeArrow(true)}
-        onBlur={() => setChangeArrow(false)}
-        {...props}
-      >
-        {props.children ||
-          (t(ATSCV ? "downloadATSCV" : "downloadCV") as string)}
-      </StyledButton>
-    </div>
+      {props.children || (t(ATSCV ? "downloadATSCV" : "downloadCV") as string)}
+    </StyledButton>
   );
 };
 

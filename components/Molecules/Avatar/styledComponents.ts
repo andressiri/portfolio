@@ -20,7 +20,7 @@ export const OuterCircleContainer = styled(Box)(({ theme }) => ({
   "&:hover": {
     transform: "scale(1.01)",
     "& img": {
-      transform: `scale(1.06) translateY(-${borderWidth * 3}px)`,
+      transform: `scale(1.08) translateY(-${borderWidth * 3}px)`,
     },
   },
 }));
@@ -51,9 +51,9 @@ export const ImageContainer = styled(Box)(() => ({
 export const StyledImage = styled(Image)(() => ({
   zIndex: 10,
   position: "absolute",
-  bottom: `-${width / 6}px`,
-  left: "-25%",
-  width: "150%",
+  bottom: `-${width / 3}px`,
+  left: "-15%",
+  width: "145%",
   height: `${width * 1.5}px`,
   objectFit: "contain",
 }));
@@ -64,7 +64,6 @@ export const InnerCircle = styled(Box)(({ theme }) => ({
   left: `${borderWidth}px`,
   width: `${width - borderWidth * 4}px`,
   height: `${width - borderWidth * 4}px`,
-  background: theme.palette.primary.main,
   borderRadius: "50%",
   border: `${borderWidth}px solid ${theme.palette.primary.main}`,
   overflow: "hidden",
