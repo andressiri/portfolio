@@ -7,7 +7,7 @@ export const Container = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "13px",
-  color: theme.palette.primary.main,
+  color: theme.palette.secondary.contrastText,
   "& svg": {
     width: "40px",
     height: "40px",
@@ -19,7 +19,7 @@ export const ASLogoContainer = styled(Box)(() => ({
 }));
 
 export const Name = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.secondary.contrastText,
   fontSize: "32px",
   fontWeight: 900,
   letterSpacing: "-0.45px",

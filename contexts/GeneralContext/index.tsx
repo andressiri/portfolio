@@ -16,7 +16,7 @@ export const GeneralContext = createContext<IContext>({
     typeof window !== "undefined" ? getWindowDimensions().width : 0,
   viewportHeight:
     typeof window !== "undefined" ? getWindowDimensions().height : 0,
-  themeMode: "light",
+  themeMode: "dark",
   setThemeMode: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   themePalette: "cyanAndBlue",
   setThemePalette: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function

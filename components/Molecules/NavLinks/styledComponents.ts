@@ -10,7 +10,7 @@ export const ContainerList = styled("ul")(() => ({
 
 export const NavItemButton = styled(Button)(({ theme }) => ({
   position: "relative",
-  color: theme.palette.primary.main,
+  color: theme.palette.secondary.contrastText,
   fontSize: "20px",
   fontWeight: 600,
   lineHeight: "20px",

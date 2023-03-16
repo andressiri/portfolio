@@ -20,13 +20,20 @@ const HeroSocialMedia: FC = () => {
         onMouseLeave={() => setLinkedInTooltip(false)}
       >
         {linkedInTooltip ? (
-          <Tooltip top={"-20px"} width={"90px"}>
+          <Tooltip
+            top={"-28px"}
+            left={"-19px"}
+            width={"90px"}
+            color={"contrastsSecondary"}
+          >
             {t("linkedIn") as string}
           </Tooltip>
         ) : (
           <></>
         )}
-        <LinkedInIcon sx={{ transform: "translateY(3px)" }}></LinkedInIcon>
+        <LinkedInIcon
+          sx={{ transform: "scale(1.15) translate(4.5px, 0.5px)" }}
+        ></LinkedInIcon>
       </StyledAnchor>
       <StyledAnchor
         href={GITHUB_URL}
@@ -36,7 +43,7 @@ const HeroSocialMedia: FC = () => {
         onMouseLeave={() => setGitHubTooltip(false)}
       >
         {gitHubTooltip ? (
-          <Tooltip top={"-28px"} width={"90px"}>
+          <Tooltip top={"-29px"} width={"90px"} color="contrastsSecondary">
             {t("gitHub") as string}
           </Tooltip>
         ) : (

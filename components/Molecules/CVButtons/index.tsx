@@ -5,8 +5,17 @@ import { Container } from "./styledComponents";
 const CVButtons: FC = () => {
   return (
     <Container>
-      <CVDownloadButton BGType={"primaryContrastBG"} />
-      <CVDownloadButton BGType={"primaryContrastBG"} ATMCV={true} />
+      <CVDownloadButton
+        BGType={"secondaryContrastOutlined"}
+        transparent={true}
+        hover={"primary"}
+      />
+      <CVDownloadButton
+        BGType={"secondaryContrastOutlined"}
+        transparent={true}
+        hover={"primary"}
+        ATSCV={true}
+      />
     </Container>
   );
 };

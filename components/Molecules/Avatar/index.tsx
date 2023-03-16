@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { GeneralContext } from "contexts";
 import { BackgroundTexture } from "components/Atoms";
 import {
   OuterCircleContainer,
@@ -8,16 +9,22 @@ import {
   InnerCircle,
   InnerCircleBackgroundColor,
 } from "./styledComponents";
-import AvatarImageSrc from "assets/remera_celeste-removebg-preview.png";
+import avatarImages from "assets/avatar";
 import textureSrc from "assets/textures/background-signal-noise-texture.png";
 
 const Avatar: FC = () => {
+  const { themeMode, themePalette } = useContext(GeneralContext);
+
   return (
     <OuterCircleContainer>
       <InnerCircleContainer>
         <ImageContainer>
           <StyledImage
-            src={AvatarImageSrc}
+            src={
+              avatarImages[
+                `${themePalette}Avatar${themeMode}` as keyof typeof avatarImages
+              ]
+            }
             alt="Picture of Andrés Siri"
             className="avatarImage"
             priority

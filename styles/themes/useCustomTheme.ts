@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GeneralContext } from "contexts";
 import { createTheme, ThemeOptions } from "@mui/material/styles";
 import paletteColors from "./paletteColors";
@@ -8,34 +8,32 @@ const useCustomTheme = () => {
   const paletteColor =
     paletteColors[themePalette as keyof typeof paletteColors];
 
-  const theme: ThemeOptions = createTheme({
-    palette: {
-      primary:
-        themeMode === "dark" || themeMode === "neon"
-          ? paletteColor.primary
-          : paletteColor.secondary,
-      secondary:
-        themeMode === "dark" || themeMode === "neon"
-          ? paletteColor.secondary
-          : paletteColor.primary,
-    },
-    typography: {
-      fontFamily: "'Nunito Sans', sans-serif",
-    },
-    custom: {
-      buttons: {
-        fontSizeMd: "18px",
+  return () => {
+    const theme: ThemeOptions = createTheme({
+      palette: {
+        primary:
+          themeMode === "light" ? paletteColor.secondary : paletteColor.primary,
+        secondary:
+          themeMode === "light" ? paletteColor.primary : paletteColor.secondary,
       },
-      radius: {
-        medium: "16px",
+      typography: {
+        fontFamily: "'Nunito Sans', sans-serif",
       },
-      navbar: {
-        height: "120px",
+      custom: {
+        buttons: {
+          fontSizeMd: "18px",
+        },
+        radius: {
+          medium: "16px",
+        },
+        navbar: {
+          height: "120px",
+        },
       },
-    },
-  });
+    });
 
-  return theme;
+    return theme;
+  };
 };
 
 export default useCustomTheme;

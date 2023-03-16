@@ -2,13 +2,13 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
 export const Container = styled(Box)(({ theme }) => ({
-  margin: "-8px 0px 28px -8px",
+  margin: "2px 0px 38px -8px",
   display: "flex",
-  gap: "15px",
-  color: theme.palette.primary.main,
+  gap: "18px",
+  color: theme.palette.secondary.contrastText,
   "& svg": {
-    width: "70px",
-    height: "70px",
+    width: "40px",
+    height: "40px",
   },
 }));
 

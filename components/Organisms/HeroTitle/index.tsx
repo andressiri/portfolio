@@ -23,9 +23,17 @@ const HeroTitle: FC = () => {
         <Phrase variant="h3">{t("phrase")}</Phrase>
         <HeroSocialMedia />
         <ActionsContainer>
-          <ContactButton BGType="primaryContrastBG" />
+          <ContactButton
+            BGType="primaryOutlined"
+            transparent={true}
+            hover="outlined"
+          />
           <WhatsAppAnchor>
-            <StyledButton endIcon={<WhatsAppIcon />} tabIndex={-1}>
+            <StyledButton
+              endIcon={<WhatsAppIcon />}
+              tabIndex={-1}
+              hover="outlined"
+            >
               WhatsApp
             </StyledButton>
           </WhatsAppAnchor>

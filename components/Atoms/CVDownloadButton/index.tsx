@@ -1,17 +1,18 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useContext, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
 import AnimatedDownloadIcon from "../AnimatedDownloadIcon";
 import { StyledButton } from "components/Atoms";
 import { IStyledButton } from "typings/buttons";
+import { GeneralContext } from "contexts";
 
 interface Props extends IStyledButton {
-  ATMCV?: boolean;
+  ATSCV?: boolean;
 }
 
-const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
+const CVDownloadButton: FC<Props> = ({ ATSCV = false, ...props }) => {
+  const { themeMode, themePalette } = useContext(GeneralContext);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [downloading, setDownloading] = useState<boolean>(false);
-  const [changeArrow, setChangeArrow] = useState<boolean>(false);
   const { t, i18n } = useTranslation("buttons");
 
   const handleDownloadClick = async () => {
@@ -21,8 +22,12 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
     }, 3500);
 
     const CVResponse = await fetch(
-      `${ATMCV ? "ATM-" : ""}CV-${
+      `${ATSCV ? "ATS-" : ""}CV-${
         i18n.language.includes("es") ? "Español" : "English"
+      }-${
+        themeMode === "light" && themePalette === "cyanAndBlue"
+          ? "Blue"
+          : "Cyan"
       }.pdf`
     );
     const blob = await CVResponse.blob();
@@ -32,7 +37,7 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
     const cvLink = document.createElement("a");
     cvLink.href = CVFile;
     cvLink.download = `Andrés Siri - Developer CV ${
-      ATMCV ? "- ATM " : ""
+      ATSCV ? "- ATS " : ""
     }- (${new Date().toISOString().slice(0, 10)}) - ${
       i18n.language.includes("es") ? "Español" : "English"
     }.pdf`;
@@ -40,29 +45,14 @@ const CVDownloadButton: FC<Props> = ({ ATMCV = false, ...props }) => {
   };
 
   return (
-    <div
-      onMouseEnter={() => setChangeArrow(true)}
-      onMouseLeave={() => {
-        if (document.activeElement !== buttonRef.current) setChangeArrow(false);
-      }}
+    <StyledButton
+      passRef={buttonRef}
+      endIcon={<AnimatedDownloadIcon downloading={downloading} />}
+      onClick={handleDownloadClick}
+      {...props}
     >
-      <StyledButton
-        passRef={buttonRef}
-        endIcon={
-          <AnimatedDownloadIcon
-            downloading={downloading}
-            changeArrow={changeArrow}
-          />
-        }
-        onClick={handleDownloadClick}
-        onFocus={() => setChangeArrow(true)}
-        onBlur={() => setChangeArrow(false)}
-        {...props}
-      >
-        {props.children ||
-          (t(ATMCV ? "downloadATMCV" : "downloadCV") as string)}
-      </StyledButton>
-    </div>
+      {props.children || (t(ATSCV ? "downloadATSCV" : "downloadCV") as string)}
+    </StyledButton>
   );
 };
 
