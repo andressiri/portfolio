@@ -5,7 +5,7 @@ export const Container = styled(Box)(() => ({
   width: "50%",
   height: "100%",
   margin: "auto",
-  paddingTop: "36px",
+  paddingTop: "46px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",

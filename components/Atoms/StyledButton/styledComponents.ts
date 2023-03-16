@@ -92,7 +92,7 @@ const getTypeOfButton = (
       hoverColor:
         hover === "outlined"
           ? secondary.contrastText
-          : hover === "primary"
+          : hover === "primary" && !transparent
           ? primary.main
           : hover === "secondary"
           ? secondary.main
@@ -120,7 +120,7 @@ const getTypeOfButton = (
       hoverColor:
         hover === "outlined"
           ? primary.contrastText
-          : hover === "secondary"
+          : hover === "secondary" && !transparent
           ? secondary.main
           : hover === "primary"
           ? primary.main
