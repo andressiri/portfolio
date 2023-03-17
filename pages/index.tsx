@@ -2,7 +2,7 @@ import { FC, useContext, useEffect, useState } from "react";
 import { GeneralContext } from "contexts";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ThemeProvider } from "@mui/material";
-import useCustomTheme from "styles/themes/useCustomTheme";
+import getCustomTheme from "styles/themes/getCustomTheme";
 import { BackgroundTexture } from "components/Atoms";
 import { Layout, Hero } from "components/Templates";
 import { Container } from "components/Templates/MainPage/styledComponents";
@@ -10,11 +10,12 @@ import funkyLinesSrc from "assets/textures/funky-lines.webp";
 
 const Home: FC = () => {
   const { themeMode, themePalette } = useContext(GeneralContext);
-  const customTheme = useCustomTheme();
-  const [theme, setTheme] = useState(customTheme());
+  const [theme, setTheme] = useState(
+    getCustomTheme({ themeMode, themePalette })
+  );
 
   useEffect(() => {
-    setTheme(customTheme());
+    setTheme(getCustomTheme({ themeMode, themePalette }));
   }, [themeMode, themePalette]);
 
   return (
