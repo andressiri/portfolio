@@ -18,7 +18,7 @@
 
   <summary>English</summary>
   
-    ## [<img src="/assets/icons/warning.svg" alt="Warning sign" width="30"/>](#) Site in construction [<img src="/assets/icons/in-construction.svg" alt="In construction sign" width="30"/>](#)
+  ## [<img src="/assets/icons/warning.svg" alt="Warning sign" width="30"/>](#) Site in construction [<img src="/assets/icons/in-construction.svg" alt="In construction sign" width="30"/>](#)
   
   ## Go to site
   
