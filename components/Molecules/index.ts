@@ -5,4 +5,5 @@ export { default as LanguageSelector } from "./LanguageSelector";
 export { default as ModeSelector } from "./ModeSelector";
 export { default as NavLinks } from "./NavLinks";
 export { default as NavLogo } from "./NavLogo";
+export { default as Options } from "./Options";
 export { default as WhatsAppFloating } from "./WhatsAppFloating";
