@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { WhatsAppFloating } from "components/Molecules";
-import { Navbar } from "components/Organisms";
+import { Navbar, NavigationDrawer } from "components/Organisms";
 import { LayoutContainer } from "./styledComponents";
 
 interface IProps {
@@ -8,9 +8,18 @@ interface IProps {
 }
 
 const Layout: FC<IProps> = ({ children }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleDrawerOpen = () => setIsDrawerOpen(true);
+
   return (
     <LayoutContainer>
-      <Navbar />
+      <Navbar handleDrawerOpen={handleDrawerOpen} />
+      <NavigationDrawer
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        onOpen={() => setIsDrawerOpen(true)}
+      />
       {children}
       <WhatsAppFloating />
     </LayoutContainer>
