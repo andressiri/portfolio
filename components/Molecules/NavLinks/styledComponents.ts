@@ -1,12 +1,28 @@
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 
-export const ContainerList = styled("ul")(() => ({
+export const ContainerList = styled("ul", {
+  shouldForwardProp: (prop) => !["isDrawer"].includes(prop as string),
+})<{ isDrawer?: boolean }>(({ isDrawer }) => ({
+  padding: isDrawer ? "30px 0px 0px 0px" : "0px 5px",
   display: "flex",
+  flexDirection: isDrawer ? "column" : "row",
   alignItems: "center",
   justifyContent: "center",
-  gap: "40px",
+  gap: isDrawer ? "40px" : "20px",
 }));
+
+export const StyledItem = styled("li", {
+  shouldForwardProp: (prop) =>
+    !["isDrawer", "isDrawerOpen", "appearingTime"].includes(prop as string),
+})<{ isDrawer?: boolean; isDrawerOpen?: boolean; appearingTime: number }>(
+  ({ isDrawer, isDrawerOpen, appearingTime }) => ({
+    transform:
+      isDrawer && !isDrawerOpen ? "translateX(400%)" : "translateX(0%)",
+    opacity: isDrawer && !isDrawerOpen ? "0.000001" : "1",
+    transition: isDrawer ? `${appearingTime}ms all` : "unset",
+  })
+);
 
 export const NavItemButton = styled(Button)(({ theme }) => ({
   position: "relative",
@@ -17,6 +33,7 @@ export const NavItemButton = styled(Button)(({ theme }) => ({
   letterSpacing: "0.46px",
   "& svg": {
     fontSize: "30px !important",
+    margin: "0px -2px 5px 0px",
   },
   "&::before": {
     content: "''",
@@ -34,7 +51,7 @@ export const NavItemButton = styled(Button)(({ theme }) => ({
     content: "''",
     position: "absolute",
     top: "75%",
-    left: "calc(5% + 35px)",
+    left: "calc(5% + 31px)",
     width: "0%",
     height: "2px",
     borderRadius: "6px",
@@ -48,7 +65,7 @@ export const NavItemButton = styled(Button)(({ theme }) => ({
     },
     "&::after": {
       transition: "0.4s all ease-in-out",
-      width: "calc(90% - 35px)",
+      width: "calc(90% - 31px)",
     },
   },
   "&:active, &:focus": {
