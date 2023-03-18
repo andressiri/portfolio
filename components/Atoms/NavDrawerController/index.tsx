@@ -1,12 +1,16 @@
 import { FC } from "react";
-import SettingsIcon from "@mui/icons-material/Settings";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Container, StyledIconButton } from "./styledComponents";
 
-const NavDrawerController: FC = () => {
+interface Props {
+  handleDrawerOpen: () => void;
+}
+
+const NavDrawerController: FC<Props> = ({ handleDrawerOpen }) => {
   return (
     <Container>
-      <StyledIconButton>
-        <SettingsIcon />
+      <StyledIconButton onClick={handleDrawerOpen}>
+        <MenuIcon />
       </StyledIconButton>
     </Container>
   );
