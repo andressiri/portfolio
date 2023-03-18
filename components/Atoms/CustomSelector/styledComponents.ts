@@ -13,13 +13,13 @@ export const CustomSelectContainer = styled(Box, {
   userSelect: "none",
   overflow: "hidden",
   "&:hover, &:focus, &:active": {
-    boxShadow: `0px 0px 3px 0.5px ${theme.palette.secondary.contrastText}`,
+    boxShadow: `0px 0px 3px 0px ${theme.palette.secondary.contrastText}`,
   },
 }));
 
 export const SelectedContainer = styled(Box)(() => ({
-  height: "30px",
-  maxHeight: "30px",
+  height: "24px",
+  maxHeight: "24px",
   display: "flex",
   "&:focus": {
     opacity: "0.2",
@@ -27,26 +27,28 @@ export const SelectedContainer = styled(Box)(() => ({
 }));
 
 export const SelectedImage = styled(Image)(() => ({
-  width: "40px",
-  height: "30px",
+  width: "32px",
+  height: "24px",
   objectFit: "contain",
+  overflow: "hidden",
 }));
 
 export const SelectedIcon = styled(Button)(({ theme }) => ({
-  minWidth: "40px",
-  width: "40px",
-  maxWidth: "40px",
-  height: "30px",
+  minWidth: "32px",
+  width: "32px",
+  maxWidth: "32px",
+  height: "24px",
   padding: "0px",
   objectFit: "contain",
   color: theme.palette.primary.contrastText,
   background: theme.palette.secondary.contrastText,
   borderRadius: "0px",
+  pointerEvents: "none",
   "& span": {
     margin: "0px",
   },
   "& svg": {
-    fontSize: "28px !important",
+    fontSize: "22px !important",
   },
   "&:hover": {
     background: theme.palette.secondary.contrastText,
@@ -57,8 +59,8 @@ export const SelectedOptionParagraph = styled("p", {
   shouldForwardProp: (prop) => !["options"].includes(prop as string),
 })<{ options?: string[] }>(({ theme, options }) => ({
   width: "calc(100% - 40px)",
-  margin: options ? "0px 2px 0px 6px" : "0px 2px 0px 2px",
-  padding: "2px 0px 0px 0px",
+  margin: options ? "0px 1px 0px 3px" : "0px 1px 0px 1px",
+  padding: "1px 0px 0px 0px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -80,7 +82,7 @@ export const CustomOptionContainer = styled(Box, {
   height: "28px",
   padding:
     (options && icons) || (options && images)
-      ? "4px 0px 4px 12px"
+      ? "4px 0px 4px 0px"
       : "1px 0px 0px 0px",
   display: "flex",
   alignItems: "center",
@@ -99,18 +101,18 @@ export const CustomOptionContainer = styled(Box, {
 }));
 
 export const OptionImage = styled(SelectedImage)(() => ({
-  width: "28px",
-  height: "21px",
+  width: "24px",
+  height: "18px",
 }));
 
 export const OptionIcon = styled(SelectedIcon)(() => ({
-  width: "28px",
-  height: "21px",
+  width: "24px",
+  height: "18px",
   color: "inherit",
   background: "inherit",
   transition: "0s all",
   "& svg": {
-    fontSize: "20px !important",
+    fontSize: "18px !important",
   },
   "&:hover": {
     color: "inherit",
@@ -119,7 +121,7 @@ export const OptionIcon = styled(SelectedIcon)(() => ({
 }));
 
 export const OptionText = styled("p")(() => ({
-  width: "40px",
+  width: "32px",
   margin: "0px",
   display: "flex",
   alignItems: "center",
