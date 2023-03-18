@@ -69,7 +69,7 @@ export const OptionsContainer = styled(Box, {
 })<{ isDrawerOpen?: boolean; appearingTime: number }>(
   ({ theme, isDrawerOpen, appearingTime }) => ({
     width: "100%",
-    margin: "13.5px 0px",
+    margin: "15px 0px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

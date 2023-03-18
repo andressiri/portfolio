@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 export const ContainerList = styled("ul", {
   shouldForwardProp: (prop) => !["isDrawer"].includes(prop as string),
 })<{ isDrawer?: boolean }>(({ isDrawer }) => ({
-  padding: isDrawer ? "30px 0px 0px 0px" : "0px 5px",
+  padding: isDrawer ? "45px 0px 0px 0px" : "0px 5px",
   display: "flex",
   flexDirection: isDrawer ? "column" : "row",
   alignItems: "center",
@@ -24,8 +24,11 @@ export const StyledItem = styled("li", {
   })
 );
 
-export const NavItemButton = styled(Button)(({ theme }) => ({
+export const NavItemButton = styled(Button, {
+  shouldForwardProp: (prop) => !["isDrawer"].includes(prop as string),
+})<{ isDrawer?: boolean }>(({ theme, isDrawer }) => ({
   position: "relative",
+  marginTop: isDrawer ? "-10px" : "3px",
   color: theme.palette.secondary.contrastText,
   fontSize: "20px",
   fontWeight: 600,
@@ -33,7 +36,7 @@ export const NavItemButton = styled(Button)(({ theme }) => ({
   letterSpacing: "0.46px",
   "& svg": {
     fontSize: "30px !important",
-    margin: "0px -2px 5px 0px",
+    margin: "0px -2px 4px 0px",
   },
   "&::before": {
     content: "''",

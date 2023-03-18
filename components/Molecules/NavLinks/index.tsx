@@ -20,7 +20,11 @@ const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
         isDrawerOpen={isDrawerOpen}
         appearingTime={620}
       >
-        <NavItemButton disableRipple startIcon={<AttributionIcon />}>
+        <NavItemButton
+          disableRipple
+          startIcon={<AttributionIcon />}
+          isDrawer={isDrawer}
+        >
           {t("skills")}
         </NavItemButton>
       </StyledItem>
@@ -29,7 +33,11 @@ const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
         isDrawerOpen={isDrawerOpen}
         appearingTime={680}
       >
-        <NavItemButton disableRipple startIcon={<BuildCircleIcon />}>
+        <NavItemButton
+          disableRipple
+          startIcon={<BuildCircleIcon />}
+          isDrawer={isDrawer}
+        >
           {t("projects")}
         </NavItemButton>
       </StyledItem>

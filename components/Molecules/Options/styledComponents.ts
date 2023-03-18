@@ -6,7 +6,8 @@ export const Container = styled(Box, {
 })<{ isDrawer?: boolean }>(({ isDrawer }) => ({
   position: "relative",
   width: isDrawer ? "158px" : "133px",
-  height: "32px",
+  height: "28px",
+  marginTop: isDrawer ? "0px" : "3px",
   display: "flex",
   overflow: "visible",
 }));

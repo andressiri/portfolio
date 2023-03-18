@@ -7,7 +7,7 @@ export const CustomSelectContainer = styled(Box, {
 })<{ width?: string }>(({ theme, width }) => ({
   width: width ? width : "fit-content",
   minWidth: "50px",
-  border: `3px solid ${theme.palette.secondary.contrastText}`,
+  border: `2px solid ${theme.palette.secondary.contrastText}`,
   borderRadius: "5px",
   cursor: "pointer",
   userSelect: "none",
