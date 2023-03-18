@@ -2,11 +2,15 @@ import { FC } from "react";
 import { LanguageSelector, ModeSelector } from "components/Molecules";
 import { Container } from "./styledComponents";
 
-const Options: FC = () => {
+interface Props {
+  isDrawer?: boolean;
+}
+
+const Options: FC<Props> = ({ isDrawer }) => {
   return (
-    <Container>
+    <Container isDrawer={isDrawer}>
       <ModeSelector />
-      <LanguageSelector />
+      <LanguageSelector isDrawer={isDrawer} />
     </Container>
   );
 };

@@ -5,7 +5,11 @@ import { CustomSelector } from "components/Atoms";
 import languagesFlags from "assets/languageSelector";
 import { Container } from "./styledComponents";
 
-const LanguageSelector: FC = () => {
+interface Props {
+  isDrawer?: boolean;
+}
+
+const LanguageSelector: FC<Props> = ({ isDrawer }) => {
   const { i18n } = useTranslation();
   const { push } = useRouter();
   const [initialSelect, setInitialSelect] = useState<number>(1);
@@ -28,7 +32,7 @@ const LanguageSelector: FC = () => {
   );
 
   return (
-    <Container>
+    <Container isDrawer={isDrawer}>
       <CustomSelector
         images={languagesFlags}
         optionSelectAction={optionSelectAction}
