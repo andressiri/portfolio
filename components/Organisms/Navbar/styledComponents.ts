@@ -9,11 +9,12 @@ export const NavbarContainer = styled("nav")(({ theme }) => ({
   width: "100%",
   maxWidth: "1600px",
   height: theme.custom.navbar.height,
-  padding: "0px 30px",
+  padding: "0px 20px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   background: "transparent",
+  overflow: "visible",
   "@media (min-width: 1600px)": {
     left: "calc((100vw - 1600px) / 2)",
   },
@@ -24,4 +25,7 @@ export const RightContainer = styled(Box)(() => ({
   alignItems: "center",
   justifyContent: "center",
   gap: "20px",
+  "@media (max-width: 1149px)": {
+    display: "none",
+  },
 }));

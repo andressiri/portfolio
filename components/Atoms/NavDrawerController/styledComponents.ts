@@ -5,6 +5,9 @@ export const Container = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  "@media (min-width: 1150px)": {
+    display: "none",
+  },
 }));
 
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
@@ -12,13 +15,13 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   width: "60px",
   height: "60px",
   transform: "rotate(0deg)",
+  transition: "0.4s all",
   "& svg": {
     width: "35px",
     height: "35px",
     color: "currentColor",
   },
   "&:hover, &:focus, &:active": {
-    transition: "0.3s all",
-    transform: "rotate(-360deg)",
+    transform: "scale(1.1)",
   },
 }));

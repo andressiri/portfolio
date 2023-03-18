@@ -1,16 +1,21 @@
 import { FC } from "react";
 import { NavDrawerController } from "components/Atoms";
-import { NavLogo, NavLinks } from "components/Molecules";
+import { NavLogo, NavLinks, Options } from "components/Molecules";
 import { NavbarContainer, RightContainer } from "./styledComponents";
 
-const Navbar: FC = () => {
+interface Props {
+  handleDrawerOpen: () => void;
+}
+
+const Navbar: FC<Props> = ({ handleDrawerOpen }) => {
   return (
     <NavbarContainer>
       <NavLogo />
       <RightContainer>
         <NavLinks />
-        <NavDrawerController />
+        <Options />
       </RightContainer>
+      <NavDrawerController handleDrawerOpen={handleDrawerOpen} />
     </NavbarContainer>
   );
 };

@@ -3,33 +3,60 @@ import { useTranslation } from "next-i18next";
 import AttributionIcon from "@mui/icons-material/Attribution";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import { ContactButton } from "components/Atoms";
-import { ContainerList, NavItemButton } from "./styledComponents";
+import { ContainerList, StyledItem, NavItemButton } from "./styledComponents";
 
-const NavLinks: FC = () => {
+interface Props {
+  isDrawer?: boolean;
+  isDrawerOpen?: boolean;
+}
+
+const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
   const { t } = useTranslation("navbar");
 
   return (
-    <ContainerList>
-      <li>
-        <NavItemButton disableRipple startIcon={<AttributionIcon />}>
+    <ContainerList isDrawer={isDrawer}>
+      <StyledItem
+        isDrawer={isDrawer}
+        isDrawerOpen={isDrawerOpen}
+        appearingTime={620}
+      >
+        <NavItemButton
+          disableRipple
+          startIcon={<AttributionIcon />}
+          isDrawer={isDrawer}
+        >
           {t("skills")}
         </NavItemButton>
-      </li>
-      <li>
-        <NavItemButton disableRipple startIcon={<BuildCircleIcon />}>
+      </StyledItem>
+      <StyledItem
+        isDrawer={isDrawer}
+        isDrawerOpen={isDrawerOpen}
+        appearingTime={680}
+      >
+        <NavItemButton
+          disableRipple
+          startIcon={<BuildCircleIcon />}
+          isDrawer={isDrawer}
+        >
           {t("projects")}
         </NavItemButton>
-      </li>
-      <ContactButton
-        sx={{
-          "&:hover, &:focus, &:active": {
-            "& svg": {
-              transition: "0.3s all",
-              transform: "rotate(-360deg)",
+      </StyledItem>
+      <StyledItem
+        isDrawer={isDrawer}
+        isDrawerOpen={isDrawerOpen}
+        appearingTime={740}
+      >
+        <ContactButton
+          sx={{
+            "&:hover, &:focus, &:active": {
+              "& svg": {
+                transition: "0.3s all",
+                transform: "rotate(-360deg)",
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
+      </StyledItem>
     </ContainerList>
   );
 };

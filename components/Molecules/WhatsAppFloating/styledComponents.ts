@@ -6,7 +6,7 @@ export const Container = styled(Box, {
     !["topPosition", "leftPosition"].includes(prop as string),
 })<{ topPosition: number | null; leftPosition: number | null }>(
   ({ topPosition, leftPosition }) => ({
-    zIndex: 999,
+    zIndex: 99999,
     position: "fixed",
     top: topPosition ? `${topPosition}px` : "unset",
     left: leftPosition ? `${leftPosition}px` : "unset",

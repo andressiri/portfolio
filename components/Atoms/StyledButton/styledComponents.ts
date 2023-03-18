@@ -210,11 +210,11 @@ export const ButtonStyled = styled(Button, {
     width: "200px",
     height: "56px",
     margin: "0px",
-    padding: "8px 0px",
+    padding: "9px 0px 8px 0px",
     color: typeOfButton.color,
     fontSize: theme.custom.buttons.fontSizeMd,
     fontWeight: 700,
-    lineHeight: "28.32px",
+    lineHeight: "24px",
     letterSpacing: "0.46px",
     textTransform: "none",
     background: typeOfButton.background,
@@ -224,7 +224,7 @@ export const ButtonStyled = styled(Button, {
       ? "rgb(0 0 0 / 12%) 0px 1px 5px 0px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 20%) 0px 3px 1px -2px"
       : "",
     "& svg": {
-      fontSize: "26px !important",
+      fontSize: "28px !important",
       color: "currentColor",
     },
     "&:hover, &:focus, &:active": {
