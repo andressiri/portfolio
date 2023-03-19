@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useTranslation } from "next-i18next";
 import { Tooltip, WhatsAppAnchor } from "components/Atoms";
-import { Container, StyledIconButton } from "./styledComponents";
+import { Container, StyledIconContainer } from "./styledComponents";
 import useDragControllers from "./useDragControllers";
 
 const WhatsAppFloating: FC = () => {
@@ -37,9 +37,9 @@ const WhatsAppFloating: FC = () => {
           if (isDragging.current) e.preventDefault();
         }}
       >
-        <StyledIconButton>
+        <StyledIconContainer>
           <WhatsAppIcon />
-        </StyledIconButton>
+        </StyledIconContainer>
         {displayTooltip ? (
           <Tooltip tooltipPosition={tooltipPosition}>
             {t("whatsAppContact") as string}
