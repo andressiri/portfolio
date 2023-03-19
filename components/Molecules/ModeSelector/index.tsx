@@ -8,10 +8,12 @@ import { ThemeMode } from "typings/theme";
 
 const ModeSelector: FC = () => {
   const { setThemeMode } = useContext(GeneralContext);
+
   const modes = useMemo(() => {
     const modesArray: ThemeMode[] = ["dark", "light"];
     return modesArray;
   }, []);
+
   const icons = useMemo(() => {
     const modeIconsArray = [
       <NightsStayIcon key="DarkModeIcon" />,
@@ -29,7 +31,11 @@ const ModeSelector: FC = () => {
 
   return (
     <Container>
-      <CustomSelector icons={icons} optionSelectAction={optionSelectAction} />
+      <CustomSelector
+        optionsKey="Mode selector"
+        icons={icons}
+        optionSelectAction={optionSelectAction}
+      />
     </Container>
   );
 };
