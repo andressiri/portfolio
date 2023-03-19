@@ -1,1 +1,1 @@
-export * from "./getWindowDimensions";
+export { default as getWindowDimensions } from "./getWindowDimensions";

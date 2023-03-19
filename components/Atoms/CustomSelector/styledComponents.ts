@@ -106,7 +106,7 @@ export const OptionIcon = styled(SelectedIcon)(() => ({
   height: "18px",
   color: "inherit",
   background: "inherit",
-  transition: "0s all",
+  transition: "0ms all",
   "& svg": {
     fontSize: "18px !important",
   },

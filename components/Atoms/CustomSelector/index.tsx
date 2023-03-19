@@ -25,6 +25,7 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
   images,
   optionSelectAction,
   initialSelect,
+  globalOptionSelected,
   width,
 }) => {
   const arrayToMap = useMemo(
@@ -51,6 +52,7 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
     images,
     optionSelectAction,
     initialSelect,
+    globalOptionSelected,
   });
 
   return (

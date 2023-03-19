@@ -48,7 +48,7 @@ export const NavItemButton = styled(Button, {
     height: "100%",
     background: "transparent",
     borderRadius: "16px",
-    transition: "0.25s all ease-in",
+    transition: "250ms all ease-in",
   },
   "&::after": {
     content: "''",
@@ -63,11 +63,11 @@ export const NavItemButton = styled(Button, {
   "&:hover, &:focus": {
     background: "transparent",
     "& svg": {
-      transition: "0.4s all",
+      transition: "400ms all",
       transform: "rotate(-360deg)",
     },
     "&::after": {
-      transition: "0.4s all ease-in-out",
+      transition: "400ms all ease-in-out",
       width: "calc(90% - 31px)",
     },
   },

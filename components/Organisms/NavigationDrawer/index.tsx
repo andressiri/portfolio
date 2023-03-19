@@ -28,7 +28,7 @@ const NavigationDrawer: FC<SwipeableDrawerProps> = (props) => {
       </LogoContainer>
       <StyledDivider isDrawerOpen={props.open} appearingTime={530} />
       <OptionsContainer isDrawerOpen={props.open} appearingTime={560}>
-        <Options isDrawer={true} />
+        <Options isDrawer={true} isDrawerOpen={true} />
       </OptionsContainer>
       <StyledDivider isDrawerOpen={props.open} appearingTime={590} />
       <NavLinks isDrawer={true} isDrawerOpen={props.open} />
