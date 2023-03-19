@@ -1,22 +1,24 @@
 import React, { FC } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { NextSectionButton } from "./styledComponents";
+import { GoToSectionButton } from "./styledComponents";
 import { goToElement } from "utils/helpers";
 
 interface Props {
   sectionElement: HTMLDivElement | null;
+  direction?: "previous" | "next";
 }
 
-const GoToNextSectionButton: FC<Props> = ({ sectionElement }) => {
+const SectionNavigateButton: FC<Props> = ({ sectionElement, direction }) => {
   return (
-    <NextSectionButton
+    <GoToSectionButton
       onClick={() => {
         goToElement(sectionElement as HTMLElement);
       }}
+      direction={direction}
     >
       <KeyboardArrowDownIcon />
-    </NextSectionButton>
+    </GoToSectionButton>
   );
 };
 
-export default GoToNextSectionButton;
+export default SectionNavigateButton;
