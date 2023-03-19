@@ -1,4 +1,5 @@
 export interface GeneralProps {
+  optionsKey: string;
   options?: string[];
   icons?: JSX.Element[];
   images?: string[];

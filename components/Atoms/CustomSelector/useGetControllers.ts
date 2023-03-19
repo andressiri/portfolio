@@ -1,13 +1,15 @@
 import { useCallback, useRef, useState } from "react";
 import { GeneralProps } from "typings/customSelector";
 
+type Props = Omit<GeneralProps, "optionsKey">;
+
 const useGetControllers = ({
   options,
   icons,
   images,
   optionSelectAction,
   initialSelect,
-}: GeneralProps) => {
+}: Props) => {
   const [selectedOptionText, setSelectedOptionText] = useState<string>(
     !options ? "" : options[0]
   );

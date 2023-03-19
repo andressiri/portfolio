@@ -18,7 +18,6 @@ const LanguageSelector: FC<Props> = ({ isDrawer }) => {
   }, []);
 
   useEffect(() => {
-    console.log(i18n.language);
     if (i18n.language.includes("es")) {
       setInitialSelect(1);
     }
@@ -34,6 +33,7 @@ const LanguageSelector: FC<Props> = ({ isDrawer }) => {
   return (
     <Container isDrawer={isDrawer}>
       <CustomSelector
+        optionsKey="Language selector"
         images={languagesFlags}
         optionSelectAction={optionSelectAction}
         initialSelect={initialSelect}

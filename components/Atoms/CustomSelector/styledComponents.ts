@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import Image from "next/image";
 
 export const CustomSelectContainer = styled(Box, {
@@ -33,25 +33,21 @@ export const SelectedImage = styled(Image)(() => ({
   overflow: "hidden",
 }));
 
-export const SelectedIcon = styled(Button)(({ theme }) => ({
+export const SelectedIcon = styled(Box)(({ theme }) => ({
   minWidth: "32px",
   width: "32px",
   maxWidth: "32px",
   height: "24px",
   padding: "0px",
-  objectFit: "contain",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   color: theme.palette.primary.contrastText,
   background: theme.palette.secondary.contrastText,
   borderRadius: "0px",
-  pointerEvents: "none",
-  "& span": {
-    margin: "0px",
-  },
+  objectFit: "contain",
   "& svg": {
     fontSize: "22px !important",
-  },
-  "&:hover": {
-    background: theme.palette.secondary.contrastText,
   },
 }));
 
@@ -69,7 +65,7 @@ export const SelectedOptionParagraph = styled("p", {
   fontWeight: 600,
 }));
 
-export const CustomOptionContainer = styled(Box, {
+export const CustomOptionContainer = styled("li", {
   shouldForwardProp: (prop) =>
     !["options", "icons", "images", "isSelected"].includes(prop as string),
 })<{

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   CustomSelectContainer,
@@ -19,6 +19,7 @@ import {
 } from "typings/customSelector";
 
 const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
+  optionsKey,
   options,
   icons,
   images,
@@ -26,6 +27,11 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
   initialSelect,
   width,
 }) => {
+  const arrayToMap = useMemo(
+    () => (options ? options : icons ? icons : images ? images : []),
+    [icons, images, options]
+  );
+
   const {
     selectRef,
     selectedOptionText,
@@ -51,7 +57,6 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
     <CustomSelectContainer width={width}>
       <SelectedContainer
         ref={selectRef}
-        role="select"
         tabIndex={0}
         onClick={selectOnClick}
         onFocus={selectOnFocus}
@@ -59,9 +64,13 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
         onKeyDown={(e) => selectOnKeyDown(e)}
       >
         {images ? (
-          <SelectedImage src={imageSrc} alt="Selected option image" />
+          <SelectedImage
+            src={imageSrc}
+            alt="Selected option image"
+            aria-hidden={true}
+          />
         ) : icons ? (
-          <SelectedIcon endIcon={iconSrc} tabIndex={-1} />
+          <SelectedIcon>{iconSrc}</SelectedIcon>
         ) : (
           <></>
         )}
@@ -71,65 +80,34 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
         </SelectedOptionParagraph>
       </SelectedContainer>
       {selectFocus && (
-        <>
-          {options
-            ? options.map((option: string, id: number) => {
-                return (
-                  <CustomOptionContainer
-                    role="option"
-                    key={`${id}${option}`}
-                    onMouseEnter={() => handleSetHoverOption(id)}
-                    onMouseLeave={handleRecoverFromHover}
-                    options={options}
-                    icons={icons}
-                    images={images}
-                    isSelected={optionToChange === id}
-                  >
-                    {images ? (
-                      <OptionImage src={images[id]} alt={`${option} image`} />
-                    ) : icons ? (
-                      <OptionIcon endIcon={icons[id]} tabIndex={-1} />
-                    ) : (
-                      <></>
-                    )}
-                    <OptionText>{option}</OptionText>
-                  </CustomOptionContainer>
-                );
-              })
-            : images
-            ? images.map((image: string, id: number) => {
-                return (
-                  <CustomOptionContainer
-                    role="option"
-                    key={`${id}${image}`}
-                    onMouseEnter={() => handleSetHoverOption(id)}
-                    onMouseLeave={handleRecoverFromHover}
-                    options={options}
-                    icons={icons}
-                    images={images}
-                    isSelected={optionToChange === id}
-                  >
-                    <OptionImage src={images[id]} alt={`${image} image`} />
-                  </CustomOptionContainer>
-                );
-              })
-            : icons?.map((icon: JSX.Element, id: number) => {
-                return (
-                  <CustomOptionContainer
-                    role="option"
-                    key={`${id}${icon}`}
-                    onMouseEnter={() => handleSetHoverOption(id)}
-                    onMouseLeave={handleRecoverFromHover}
-                    options={options}
-                    icons={icons}
-                    images={images}
-                    isSelected={optionToChange === id}
-                  >
-                    <OptionIcon endIcon={icons[id]} />
-                  </CustomOptionContainer>
-                );
-              })}
-        </>
+        <ul>
+          {arrayToMap.map((_item: string | JSX.Element, id: number) => {
+            return (
+              <CustomOptionContainer
+                key={`${optionsKey}${id}`}
+                onMouseEnter={() => handleSetHoverOption(id)}
+                onMouseLeave={handleRecoverFromHover}
+                options={options}
+                icons={icons}
+                images={images}
+                isSelected={optionToChange === id}
+              >
+                {images ? (
+                  <OptionImage
+                    src={images[id]}
+                    alt={`${optionsKey} image ${id}`}
+                    aria-hidden={true}
+                  />
+                ) : icons ? (
+                  <OptionIcon>{icons[id]}</OptionIcon>
+                ) : (
+                  <></>
+                )}
+                {options ? <OptionText>{options[id]}</OptionText> : <></>}
+              </CustomOptionContainer>
+            );
+          })}
+        </ul>
       )}
     </CustomSelectContainer>
   );
