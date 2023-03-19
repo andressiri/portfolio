@@ -9,7 +9,7 @@ const lightCyanBluePalette = {
     main: "rgba(30, 72, 201, 1)",
     light: "rgba(147, 201, 255, 1)",
     dark: "rgba(21, 81, 141, 1)",
-    contrastText: "rgba(255, 255, 255, 1)",
+    contrastText: "rgba(255, 255, 255, 0.87)",
   },
 };
 

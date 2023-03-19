@@ -10,17 +10,19 @@ export const OuterCircleContainer = styled(Box)(({ theme }) => ({
   width: `${width}px`,
   height: `${width}px`,
   background: "transparent",
-  border: `${borderWidth}px solid ${theme.palette.primary.main}`,
+  border: `${borderWidth}px solid ${theme.palette.primary.dark}`,
   borderRadius: "50%",
   overflow: "visible",
-  transition: "1s all",
+  transform: "scale(1)",
+  transition: "0.8s all",
   "& img": {
     transition: "0.8s all",
+    transform: "scale(1) translateY(0px)",
   },
   "&:hover": {
     transform: "scale(1.01)",
     "& img": {
-      transform: `scale(1.08) translateY(-${borderWidth * 3}px)`,
+      transform: `scale(1.2) translateY(-${borderWidth * 5}px)`,
     },
   },
 }));
@@ -30,7 +32,7 @@ export const InnerCircleContainer = styled(Box)(() => ({
   bottom: "0px",
   left: "0px",
   width: `${width}px`,
-  height: `${width * 1.5}px`,
+  height: `${width * 1.1}px`,
   display: "flex",
   alignItems: "flex-end",
   overflow: "hidden",
@@ -39,11 +41,10 @@ export const InnerCircleContainer = styled(Box)(() => ({
 export const ImageContainer = styled(Box)(() => ({
   zIndex: 11,
   position: "absolute",
-  bottom: `${borderWidth}px`,
+  bottom: `${borderWidth - 1}px`,
   left: `${borderWidth}px`,
   width: `${width - borderWidth * 4}px`,
-  height: `${width * 1.5}px`,
-  border: `${borderWidth}px solid transparent`,
+  height: `${width * 1.1}px`,
   borderRadius: "0px 0px 1500px 1500px",
   overflow: "hidden",
 }));
@@ -51,21 +52,20 @@ export const ImageContainer = styled(Box)(() => ({
 export const StyledImage = styled(Image)(() => ({
   zIndex: 10,
   position: "absolute",
-  bottom: `-${width / 3}px`,
-  left: "-15%",
-  width: "145%",
-  height: `${width * 1.5}px`,
+  bottom: `-${width / 5}px`,
+  left: "0%",
+  width: "110%",
+  height: `${width * 1.1}px`,
   objectFit: "contain",
 }));
 
-export const InnerCircle = styled(Box)(({ theme }) => ({
+export const InnerCircle = styled(Box)(() => ({
   position: "relative",
   bottom: `${borderWidth}px`,
   left: `${borderWidth}px`,
   width: `${width - borderWidth * 4}px`,
   height: `${width - borderWidth * 4}px`,
   borderRadius: "50%",
-  border: `${borderWidth}px solid ${theme.palette.primary.main}`,
   overflow: "hidden",
 }));
 
@@ -75,5 +75,5 @@ export const InnerCircleBackgroundColor = styled(Box)(({ theme }) => ({
   inset: "0px",
   width: "100%",
   height: "100%",
-  background: theme.palette.primary.main.replace("1)", "0.8)"),
+  background: theme.palette.primary.dark.replace("1)", "0.8)"),
 }));

@@ -24,9 +24,9 @@ const HeroTitle: FC = () => {
         <HeroSocialMedia />
         <ActionsContainer>
           <ContactButton
-            BGType="primaryOutlined"
+            BGType="secondaryContrastOutlined"
             transparent={true}
-            hover="outlined"
+            hover="primary"
           />
           <WhatsAppAnchor>
             <StyledButton
