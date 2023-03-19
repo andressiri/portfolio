@@ -6,15 +6,15 @@ export const ArrowPath = styled("path", {
   "@keyframes downloadingIconAnimation": {
     "0%": {
       opacity: "1",
-      transform: "scale(0.75) translate(4px, 8px)",
+      transform: "scale(0.24) translate(25px, 32px)",
     },
     "100%": {
       opacity: "0.7",
-      transform: "scale(0.75) translate(4px, 30px)",
+      transform: "scale(0.24) translate(25px, 100px)",
     },
   },
   fill: theme.palette.primary.contrastText,
   opacity: "1",
-  transform: "scale(0.75) translate(4px, 8px)",
+  transform: "scale(0.24) translate(25px, 32px)",
   animation: downloading ? "downloadingIconAnimation 0.9s linear infinite" : "",
 }));
