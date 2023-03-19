@@ -39,6 +39,13 @@ const useDragControllers = () => {
     setTooltipPosition("right");
   }, [top, left, viewportWidth]);
 
+  useEffect(() => {
+    if (top === null || left === null) return;
+
+    if (viewportWidth - left < 80) setLeft(viewportWidth - 80);
+    if (viewportHeight - top < 80) setTop(viewportHeight - 80);
+  }, [viewportWidth, viewportHeight, left, top]);
+
   const getPosition = useCallback(
     (
       event:
