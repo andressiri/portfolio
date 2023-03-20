@@ -17,6 +17,7 @@ export const GoToSectionButton = styled(IconButton, {
       "50%": { transform: "translateY(4px)" },
       "100%": { transform: "translateY(0px)" },
     },
+    zIndex: 3,
     position: "absolute",
     top: isPrevious ? "30px" : "unset",
     bottom: isPrevious ? "unset" : "30px",

@@ -6,15 +6,21 @@ import { goToElement } from "utils/helpers";
 interface Props {
   sectionElement: HTMLDivElement | null;
   direction?: "previous" | "next";
+  ariaLabel: string;
 }
 
-const SectionNavigateButton: FC<Props> = ({ sectionElement, direction }) => {
+const SectionNavigateButton: FC<Props> = ({
+  sectionElement,
+  direction,
+  ariaLabel,
+}) => {
   return (
     <GoToSectionButton
       onClick={() => {
         goToElement(sectionElement as HTMLElement);
       }}
       direction={direction}
+      aria-label={ariaLabel}
     >
       <KeyboardArrowDownIcon />
     </GoToSectionButton>
