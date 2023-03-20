@@ -10,7 +10,7 @@ interface Props {
 const Options: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
   return (
     <Container isDrawer={isDrawer}>
-      <ModeSelector />
+      <ModeSelector isDrawer={isDrawer} isDrawerOpen={isDrawerOpen} />
       <LanguageSelector isDrawer={isDrawer} isDrawerOpen={isDrawerOpen} />
     </Container>
   );
