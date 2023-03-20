@@ -6,4 +6,5 @@ export { default as ModeSelector } from "./ModeSelector";
 export { default as NavLinks } from "./NavLinks";
 export { default as NavLogo } from "./NavLogo";
 export { default as Options } from "./Options";
+export { default as SkillsFragment } from "./SkillsFragment";
 export { default as WhatsAppFloating } from "./WhatsAppFloating";
