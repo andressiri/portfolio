@@ -16,10 +16,12 @@ export const Container = styled(Box)(({ theme }) => ({
 
 export const Title = styled(Typography)(({ theme }) => ({
   margin: "0px auto 20px auto",
-  color: theme.palette.primary.main,
+  color: theme.palette.secondary.contrastText,
   textAlign: "center",
   fontSize: "32px",
-  fontWeight: 900,
+  fontWeight: 400,
+  lineHeight: "32px",
+  letterSpacing: "0.65px",
 }));
 
 export const SkillsContainer = styled(Box)(() => ({
