@@ -7,4 +7,6 @@ export const TextureContainer = styled("div", {
   position: "absolute",
   inset: "0px",
   background: `url(${imageSrc}) repeat`,
+  minHeight: "100%",
+  minWidth: "100%",
 }));

@@ -8,6 +8,7 @@ export const Container = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   gap: "13px",
   color: theme.palette.secondary.contrastText,
+  cursor: "pointer",
   "& svg": {
     width: "40px",
     height: "40px",

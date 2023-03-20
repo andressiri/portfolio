@@ -6,8 +6,14 @@ import { CustomSelector } from "components/Atoms";
 import { Container } from "./styledComponents";
 import { ThemeMode } from "typings/theme";
 
-const ModeSelector: FC = () => {
-  const { setThemeMode } = useContext(GeneralContext);
+interface Props {
+  isDrawer?: boolean;
+  isDrawerOpen?: boolean;
+}
+
+const ModeSelector: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
+  const { themeModeSelected, setThemeModeSelected, setThemeMode } =
+    useContext(GeneralContext);
 
   const modes = useMemo(() => {
     const modesArray: ThemeMode[] = ["dark", "light"];
@@ -25,16 +31,18 @@ const ModeSelector: FC = () => {
   const optionSelectAction = useCallback(
     (optionToChange: number) => {
       setThemeMode(modes[optionToChange]);
+      setThemeModeSelected(optionToChange);
     },
-    [modes, setThemeMode]
+    [modes, setThemeMode, setThemeModeSelected]
   );
 
   return (
-    <Container>
+    <Container isDrawer={isDrawer} isDrawerOpen={isDrawerOpen}>
       <CustomSelector
         optionsKey="Mode selector"
         icons={icons}
         optionSelectAction={optionSelectAction}
+        globalOptionSelected={themeModeSelected}
       />
     </Container>
   );

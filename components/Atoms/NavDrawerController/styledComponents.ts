@@ -15,7 +15,7 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   width: "60px",
   height: "60px",
   transform: "rotate(0deg)",
-  transition: "0.4s all",
+  transition: "400ms transform",
   "& svg": {
     width: "35px",
     height: "35px",

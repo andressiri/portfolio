@@ -1,8 +1,16 @@
 {
+  "skills": "Skills",
   "contact": "Contact",
   "downloadCV": "Download CV",
   "downloadATSCV": "Download ATS",
   "gitHub": "Go to GitHub",
   "linkedIn": "Go to LinkedIn",
-  "whatsAppContact": "WhatsApp contact"
+  "whatsAppContact": "WhatsApp contact",
+  "goToHero": "Go to hero section",
+  "goToSkills": "Go to skills section",
+  "goToProjects": "Go to projects section",
+  "goToContact": "Go to contact section",
+  "frontendTechnologies": "Frontend technologies",
+  "backendTechnologies": "Backend technologies",
+  "workingTools": "Working tools"
 }

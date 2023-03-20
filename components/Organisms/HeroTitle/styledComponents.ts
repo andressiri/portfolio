@@ -24,7 +24,7 @@ export const InnerContainer = styled(Box)(() => ({
 
 export const Title = styled(Typography)(({ theme }) => ({
   margin: "0px 0px 10px 0px",
-  color: theme.palette.primary.main,
+  color: theme.palette.primary.dark,
   fontSize: "74px",
   lineHeight: "74px",
   letterSpacing: "-0.9px",

@@ -10,6 +10,7 @@ export interface GeneralProps {
     imageSrc?: string
   ) => void;
   initialSelect?: number;
+  globalOptionSelected?: number;
   width?: string;
 }
 
