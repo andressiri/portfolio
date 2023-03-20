@@ -20,10 +20,10 @@ const JiraLogo = () => {
         y1="218.63"
         y2="172.39"
       >
-        <stop offset=".18" stop-color={theme.palette.primary.dark} />
+        <stop offset=".18" stopColor={theme.palette.primary.dark} />
         <stop
           offset="1"
-          stop-color={theme.palette.primary.main.replace("1)", "0.8)")}
+          stopColor={theme.palette.primary.main.replace("1)", "0.8)")}
         />
       </linearGradient>
       <linearGradient

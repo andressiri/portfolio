@@ -10,7 +10,7 @@ const MongooseLogo = () => {
         id="Selection"
         fill="currentColor"
         stroke="currentColor"
-        stroke-width="1"
+        strokeWidth="1"
         d="M 682.00,27.00
            C 677.54,26.42 660.22,17.97 655.01,15.53
              652.79,14.49 647.48,12.64 648.72,9.22
