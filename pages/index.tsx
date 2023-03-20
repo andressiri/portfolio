@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ThemeProvider } from "@mui/material";
 import getCustomTheme from "styles/themes/getCustomTheme";
 import { BackgroundTexture } from "components/Atoms";
-import { Layout, Hero } from "components/Templates";
+import { Hero, Layout, Skills } from "components/Templates";
 import { Container } from "components/Templates/MainPage/styledComponents";
 import funkyLinesSrc from "assets/textures/funky-lines.webp";
 
@@ -24,6 +24,7 @@ const Home: FC = () => {
         <Layout>
           <BackgroundTexture imageSrc={funkyLinesSrc.src} />
           <Hero />
+          <Skills />
         </Layout>
       </Container>
     </ThemeProvider>
