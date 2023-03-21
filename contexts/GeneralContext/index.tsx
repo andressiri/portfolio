@@ -56,7 +56,7 @@ export const GeneralContextProvider: FC<Props> = ({ children }) => {
     typeof window !== "undefined" ? getWindowDimensions().height : 0
   );
   const [languageSelected, setLanguageSelected] = useState<number>(
-    i18n.language.includes("es") ? 1 : 0
+    i18n.language && i18n.language.includes("es") ? 1 : 0
   );
   const [themeModeSelected, setThemeModeSelected] = useState<number>(0);
   const [themeMode, setThemeMode] = useState<ThemeMode>("dark");
