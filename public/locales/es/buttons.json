@@ -9,8 +9,5 @@
   "goToHero": "Ir a la sección héroe",
   "goToSkills": "Ir a la sección habilidades",
   "goToProjects": "Ir a la sección proyectos",
-  "goToContact": "Ir a la sección contacto",
-  "frontendTechnologies": "Tecnologías de frontend",
-  "backendTechnologies": "Tecnologías de backend",
-  "workingTools": "Herramientas de trabajo"
+  "goToContact": "Ir a la sección contacto"
 }

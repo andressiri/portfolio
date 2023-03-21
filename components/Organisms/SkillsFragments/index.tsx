@@ -7,7 +7,7 @@ import useGetSkillsArrays from "./useGetSkillsArrays";
 const SkillsFragments: FC = () => {
   const { frontEndArray, backEndArray, workingToolsArray } =
     useGetSkillsArrays();
-  const { t } = useTranslation("buttons");
+  const { t } = useTranslation("skills");
 
   return (
     <Container>
