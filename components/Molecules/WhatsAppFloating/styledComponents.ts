@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const Container = styled(Box, {
   shouldForwardProp: (prop) =>
@@ -16,7 +16,7 @@ export const Container = styled(Box, {
   })
 );
 
-export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+export const StyledIconContainer = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.main,
   width: "60px",
   height: "60px",
@@ -24,8 +24,9 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   borderRadius: "50%",
   background: theme.palette.primary.contrastText,
   "& svg": {
-    width: "74px",
-    height: "74px",
+    width: "72px",
+    height: "72px",
+    transform: "translate(-6px, -6px)",
   },
   "&:hover": {
     background: theme.palette.primary.contrastText,

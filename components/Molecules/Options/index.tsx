@@ -4,13 +4,14 @@ import { Container } from "./styledComponents";
 
 interface Props {
   isDrawer?: boolean;
+  isDrawerOpen?: boolean;
 }
 
-const Options: FC<Props> = ({ isDrawer }) => {
+const Options: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
   return (
     <Container isDrawer={isDrawer}>
-      <ModeSelector />
-      <LanguageSelector isDrawer={isDrawer} />
+      <ModeSelector isDrawer={isDrawer} isDrawerOpen={isDrawerOpen} />
+      <LanguageSelector isDrawer={isDrawer} isDrawerOpen={isDrawerOpen} />
     </Container>
   );
 };

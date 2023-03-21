@@ -1,8 +1,10 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { GeneralContext } from "contexts";
 import { useTranslation } from "next-i18next";
 import AttributionIcon from "@mui/icons-material/Attribution";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import { ContactButton } from "components/Atoms";
+import { goToElement } from "utils/helpers";
 import { ContainerList, StyledItem, NavItemButton } from "./styledComponents";
 
 interface Props {
@@ -11,6 +13,7 @@ interface Props {
 }
 
 const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
+  const { skillsRef } = useContext(GeneralContext);
   const { t } = useTranslation("navbar");
 
   return (
@@ -24,6 +27,7 @@ const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
           disableRipple
           startIcon={<AttributionIcon />}
           isDrawer={isDrawer}
+          onClick={() => goToElement(skillsRef.current as HTMLElement)}
         >
           {t("skills")}
         </NavItemButton>
@@ -37,6 +41,7 @@ const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
           disableRipple
           startIcon={<BuildCircleIcon />}
           isDrawer={isDrawer}
+          onClick={() => goToElement(skillsRef.current as HTMLElement)}
         >
           {t("projects")}
         </NavItemButton>
@@ -50,11 +55,12 @@ const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
           sx={{
             "&:hover, &:focus, &:active": {
               "& svg": {
-                transition: "0.3s all",
+                transition: "300ms transform !important",
                 transform: "rotate(-360deg)",
               },
             },
           }}
+          onClick={() => goToElement(skillsRef.current as HTMLElement)}
         />
       </StyledItem>
     </ContainerList>

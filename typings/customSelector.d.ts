@@ -1,4 +1,5 @@
 export interface GeneralProps {
+  optionsKey: string;
   options?: string[];
   icons?: JSX.Element[];
   images?: string[];
@@ -9,6 +10,7 @@ export interface GeneralProps {
     imageSrc?: string
   ) => void;
   initialSelect?: number;
+  globalOptionSelected?: number;
   width?: string;
 }
 

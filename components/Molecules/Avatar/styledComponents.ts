@@ -14,9 +14,9 @@ export const OuterCircleContainer = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   overflow: "visible",
   transform: "scale(1)",
-  transition: "0.8s all",
+  transition: "800ms transform",
   "& img": {
-    transition: "0.8s all",
+    transition: "800ms transform",
     transform: "scale(1) translateY(0px)",
   },
   "&:hover": {

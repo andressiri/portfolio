@@ -18,6 +18,7 @@ const HeroSocialMedia: FC = () => {
         rel="noopener noreferrer"
         onMouseEnter={() => setLinkedInTooltip(true)}
         onMouseLeave={() => setLinkedInTooltip(false)}
+        aria-label={t("linkedIn") as string}
       >
         {linkedInTooltip ? (
           <Tooltip
@@ -41,6 +42,7 @@ const HeroSocialMedia: FC = () => {
         rel="noopener noreferrer"
         onMouseEnter={() => setGitHubTooltip(true)}
         onMouseLeave={() => setGitHubTooltip(false)}
+        aria-label={t("gitHub") as string}
       >
         {gitHubTooltip ? (
           <Tooltip top={"-29px"} width={"90px"} color="contrastsSecondary">

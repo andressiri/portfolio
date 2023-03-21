@@ -21,6 +21,18 @@ const getCustomTheme = ({ themeMode, themePalette }: Props) => {
     typography: {
       fontFamily: "'Nunito Sans', sans-serif",
     },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            transition: "0ms all",
+            "&:hover": {
+              transition: "250ms all",
+            },
+          },
+        },
+      },
+    },
     custom: {
       buttons: {
         fontSizeMd: "18px",

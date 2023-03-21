@@ -1,5 +1,7 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { GeneralProps } from "typings/customSelector";
+
+type Props = Omit<GeneralProps, "optionsKey">;
 
 const useGetControllers = ({
   options,
@@ -7,18 +9,20 @@ const useGetControllers = ({
   images,
   optionSelectAction,
   initialSelect,
-}: GeneralProps) => {
+  globalOptionSelected,
+}: Props) => {
+  const optionSelected = useRef<number>(initialSelect ? initialSelect - 1 : 0);
   const [selectedOptionText, setSelectedOptionText] = useState<string>(
-    !options ? "" : options[0]
+    !options ? "" : initialSelect ? options[initialSelect - 1] : options[0]
   );
   const [iconSrc, setIconSrc] = useState<JSX.Element | null>(
-    !icons ? null : initialSelect ? icons[initialSelect] : icons[0]
+    !icons ? null : initialSelect ? icons[initialSelect - 1] : icons[0]
   );
   const [imageSrc, setImageSrc] = useState<string>(
-    !images ? "" : initialSelect ? images[initialSelect] : images[0]
+    !images ? "" : initialSelect ? images[initialSelect - 1] : images[0]
   );
   const [optionToChange, setOptionToChange] = useState<number>(
-    initialSelect ? initialSelect : 0
+    initialSelect ? initialSelect - 1 : 0
   );
   const [selectFocus, setSelectFocus] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -27,7 +31,7 @@ const useGetControllers = ({
   const iconBackup = useRef<JSX.Element | null>(null);
   const imageBackup = useRef<string>("");
   const optionToChangeBackup = useRef<number>(
-    initialSelect ? initialSelect : 0
+    initialSelect ? initialSelect - 1 : 0
   );
   const shouldUpdate = useRef<boolean>(false);
 
@@ -51,8 +55,10 @@ const useGetControllers = ({
   }, []);
 
   const handleOptionSelection = useCallback(() => {
-    if (shouldUpdate.current && optionSelectAction)
+    if (shouldUpdate.current && optionSelectAction) {
+      optionSelected.current = optionToChange;
       optionSelectAction(optionToChange, selectedOptionText, iconSrc, imageSrc);
+    }
     shouldUpdate.current = false;
   }, [
     selectedOptionText,
@@ -61,6 +67,16 @@ const useGetControllers = ({
     optionToChange,
     optionSelectAction,
   ]);
+
+  useEffect(() => {
+    if (!globalOptionSelected && globalOptionSelected !== 0) return;
+
+    if (globalOptionSelected !== optionSelected.current) {
+      if (options) setSelectedOptionText(options[globalOptionSelected]);
+      if (icons) setIconSrc(icons[globalOptionSelected]);
+      if (images) setImageSrc(images[globalOptionSelected]);
+    }
+  }, [globalOptionSelected, options, icons, images]);
 
   const selectOnClick = useCallback(() => {
     if (focused.current) selectRef.current?.blur();

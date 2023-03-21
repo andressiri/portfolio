@@ -1,14 +1,28 @@
-import { createContext, FC, useState } from "react";
-import getWindowDimensions from "utils/helpers/getWindowDimensions";
+import React, {
+  createContext,
+  FC,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useTranslation } from "next-i18next";
+import { getWindowDimensions } from "utils/helpers";
 import { ThemeMode, ThemePalette } from "typings/theme";
 
 interface IContext {
   viewportWidth: number;
   viewportHeight: number;
+  languageSelected: number;
+  setLanguageSelected: React.Dispatch<React.SetStateAction<number>>;
+  themeModeSelected: number;
+  setThemeModeSelected: React.Dispatch<React.SetStateAction<number>>;
   themeMode: ThemeMode;
   setThemeMode: React.Dispatch<React.SetStateAction<ThemeMode>>;
   themePalette: ThemePalette;
   setThemePalette: React.Dispatch<React.SetStateAction<ThemePalette>>;
+  heroRef: React.RefObject<HTMLDivElement>;
+  skillsRef: React.RefObject<HTMLDivElement>;
 }
 
 export const GeneralContext = createContext<IContext>({
@@ -16,10 +30,16 @@ export const GeneralContext = createContext<IContext>({
     typeof window !== "undefined" ? getWindowDimensions().width : 0,
   viewportHeight:
     typeof window !== "undefined" ? getWindowDimensions().height : 0,
+  languageSelected: 0,
+  setLanguageSelected: (lang) => lang,
+  themeModeSelected: 0,
+  setThemeModeSelected: (mode) => mode,
   themeMode: "dark",
-  setThemeMode: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  setThemeMode: (mode) => mode,
   themePalette: "cyanAndBlue",
-  setThemePalette: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  setThemePalette: (palette) => palette,
+  heroRef: React.createRef<HTMLDivElement>(),
+  skillsRef: React.createRef<HTMLDivElement>(),
 });
 
 interface Props {
@@ -27,32 +47,52 @@ interface Props {
 }
 
 export const GeneralContextProvider: FC<Props> = ({ children }) => {
+  const { i18n } = useTranslation();
+
   const [viewportWidth, setViewportWidth] = useState<number>(
     typeof window !== "undefined" ? getWindowDimensions().width : 0
   );
   const [viewportHeight, setViewportHeight] = useState<number>(
     typeof window !== "undefined" ? getWindowDimensions().height : 0
   );
+  const [languageSelected, setLanguageSelected] = useState<number>(
+    i18n.language && i18n.language.includes("es") ? 1 : 0
+  );
+  const [themeModeSelected, setThemeModeSelected] = useState<number>(0);
   const [themeMode, setThemeMode] = useState<ThemeMode>("dark");
   const [themePalette, setThemePalette] = useState<ThemePalette>("cyanAndBlue");
+  const heroRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("resize", () => {
-      const windowDimensions = getWindowDimensions();
-      setViewportWidth(windowDimensions.width);
-      setViewportHeight(windowDimensions.height);
-    });
-  }
+  const addResizeEvent = useCallback(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", () => {
+        const windowDimensions = getWindowDimensions();
+        setViewportWidth(windowDimensions.width);
+        setViewportHeight(windowDimensions.height);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    addResizeEvent();
+  }, [addResizeEvent]);
 
   return (
     <GeneralContext.Provider
       value={{
         viewportWidth,
         viewportHeight,
+        languageSelected,
+        setLanguageSelected,
+        themeModeSelected,
+        setThemeModeSelected,
         themeMode,
         setThemeMode,
         themePalette,
         setThemePalette,
+        heroRef,
+        skillsRef,
       }}
     >
       {children}

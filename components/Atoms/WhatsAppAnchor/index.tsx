@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useTranslation } from "next-i18next";
 import { WHATSAPP_URL } from "config/constants";
 
 interface Props {
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const WhatsAppAnchor: FC<Props> = ({ children, onClick }) => {
+  const { t } = useTranslation("buttons");
+
   return (
     <a
       href={WHATSAPP_URL}
@@ -14,6 +17,7 @@ const WhatsAppAnchor: FC<Props> = ({ children, onClick }) => {
       rel="noopener noreferrer"
       draggable="false"
       onClick={onClick}
+      aria-label={t("whatsAppContact") as string}
     >
       {children}
     </a>
