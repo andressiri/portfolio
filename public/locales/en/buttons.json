@@ -1,5 +1,7 @@
 {
+  "hero": "Hero",
   "skills": "Skills",
+  "projects": "Projects",
   "contact": "Contact",
   "downloadCV": "Download CV",
   "downloadATSCV": "Download ATS",

@@ -13,7 +13,7 @@ interface Props {
 }
 
 const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
-  const { skillsRef } = useContext(GeneralContext);
+  const { skillsRef, projectsRef, contactRef } = useContext(GeneralContext);
   const { t } = useTranslation("navbar");
 
   return (
@@ -41,7 +41,7 @@ const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
           disableRipple
           startIcon={<BuildCircleIcon />}
           isDrawer={isDrawer}
-          onClick={() => goToElement(skillsRef.current as HTMLElement)}
+          onClick={() => goToElement(projectsRef.current as HTMLElement)}
         >
           {t("projects")}
         </NavItemButton>
@@ -52,15 +52,7 @@ const NavLinks: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
         appearingTime={740}
       >
         <ContactButton
-          sx={{
-            "&:hover, &:focus, &:active": {
-              "& svg": {
-                transition: "300ms transform !important",
-                transform: "rotate(-360deg)",
-              },
-            },
-          }}
-          onClick={() => goToElement(skillsRef.current as HTMLElement)}
+          onClick={() => goToElement(contactRef.current as HTMLElement)}
         />
       </StyledItem>
     </ContainerList>
