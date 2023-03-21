@@ -23,6 +23,8 @@ interface IContext {
   setThemePalette: React.Dispatch<React.SetStateAction<ThemePalette>>;
   heroRef: React.RefObject<HTMLDivElement>;
   skillsRef: React.RefObject<HTMLDivElement>;
+  projectsRef: React.RefObject<HTMLDivElement>;
+  contactRef: React.RefObject<HTMLDivElement>;
 }
 
 export const GeneralContext = createContext<IContext>({
@@ -40,6 +42,8 @@ export const GeneralContext = createContext<IContext>({
   setThemePalette: (palette) => palette,
   heroRef: React.createRef<HTMLDivElement>(),
   skillsRef: React.createRef<HTMLDivElement>(),
+  projectsRef: React.createRef<HTMLDivElement>(),
+  contactRef: React.createRef<HTMLDivElement>(),
 });
 
 interface Props {
@@ -63,6 +67,8 @@ export const GeneralContextProvider: FC<Props> = ({ children }) => {
   const [themePalette, setThemePalette] = useState<ThemePalette>("cyanAndBlue");
   const heroRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   const addResizeEvent = useCallback(() => {
     if (typeof window !== "undefined") {
@@ -93,6 +99,8 @@ export const GeneralContextProvider: FC<Props> = ({ children }) => {
         setThemePalette,
         heroRef,
         skillsRef,
+        projectsRef,
+        contactRef,
       }}
     >
       {children}

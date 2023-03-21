@@ -1,34 +1,39 @@
 import { FC, useContext } from "react";
 import { GeneralContext } from "contexts";
 import { useTranslation } from "next-i18next";
-import { SectionNavigateButton } from "components/Atoms";
-import { SkillsFragments } from "components/Organisms";
-import { Container, Title } from "./styledComponents";
+import { SkillsFragment } from "components/Molecules";
+import { SectionContainer } from "components/Organisms";
+import { InnerContainer, titleSpecifics } from "./styledComponents";
+import useGetSkillsArrays from "./useGetSkillsArrays";
+import { ISkillsFragment } from "typings/skills";
 
 const Skills: FC = () => {
-  const { heroRef, skillsRef } = useContext(GeneralContext);
-  const { t, i18n } = useTranslation("buttons");
+  const { heroRef, skillsRef, projectsRef } = useContext(GeneralContext);
+  const skillsArrays: ISkillsFragment[] = useGetSkillsArrays();
+  const { t } = useTranslation("buttons");
 
   return (
-    <Container component="section" ref={skillsRef}>
-      <SectionNavigateButton
-        sectionElement={heroRef.current}
-        direction={"previous"}
-        ariaLabel={t("goToHero")}
-      />
-      <Title
-        variant="h2"
-        aria-label={t("skills") as string}
-        isSpanish={i18n.language.includes("es")}
-      >
-        {t("skills")}
-      </Title>
-      <SkillsFragments />
-      <SectionNavigateButton
-        sectionElement={heroRef.current}
-        ariaLabel={t("goToProjects")}
-      />
-    </Container>
+    <SectionContainer
+      reference={skillsRef}
+      previous={{ ref: heroRef.current as HTMLDivElement, aria: t("goToHero") }}
+      title={{ text: t("skills"), specifics: titleSpecifics }}
+      next={{
+        ref: projectsRef.current as HTMLDivElement,
+        aria: t("goToProjects"),
+      }}
+    >
+      <InnerContainer>
+        {skillsArrays.map((obj: ISkillsFragment, id: number) => {
+          return (
+            <SkillsFragment
+              title={obj.title}
+              array={obj.array}
+              key={`${obj.title}${id}`}
+            />
+          );
+        })}
+      </InnerContainer>
+    </SectionContainer>
   );
 };
 

@@ -6,19 +6,14 @@ import {
   SkillContainer,
   SkillText,
 } from "./styledComponents";
-import { ISkill } from "typings/skills";
+import { ISkill, ISkillsFragment } from "typings/skills";
 
-interface Props {
-  title: string;
-  skillsArray: ISkill[];
-}
-
-const SkillsFragment: FC<Props> = ({ title, skillsArray }) => {
+const SkillsFragment: FC<ISkillsFragment> = ({ title, array }) => {
   return (
     <Container>
       <Title variant="h3">{title}</Title>
       <SkillsContainer>
-        {skillsArray.map((obj, id) => {
+        {array.map((obj: ISkill, id: number) => {
           return (
             <SkillContainer key={`${title} ${obj.text} ${id}`}>
               <obj.logo />
