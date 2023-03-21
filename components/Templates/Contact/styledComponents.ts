@@ -9,12 +9,12 @@ export const InnerContainer = styled(Container)(() => ({
 }));
 
 export const titleSpecifics: ITitleSpecifics = {
-  enTop: "-6.25vw",
-  esTop: "-3.125vw",
-  enLeft: "-4.375vw",
-  esLeft: "-2.5vw",
-  enFontSize: "37.5vw",
-  esFontSize: "19.375vw",
-  enLetterSpacing: "1.25vw",
-  esLetterSpacing: "-0.75vw",
+  enTop: "-4.6875vw",
+  esTop: "-3.75vw",
+  enLeft: "-3.125vw",
+  esLeft: "-3.125vw",
+  enFontSize: "26vw",
+  esFontSize: "22.5vw",
+  enLetterSpacing: "0.9375vw",
+  esLetterSpacing: "0.9375vw",
 };

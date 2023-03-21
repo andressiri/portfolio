@@ -1,14 +1,7 @@
 import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import { Container } from "components/Organisms/SectionContainer/styledComponents";
 
-export const Container = styled(Box)(() => ({
-  position: "relative",
-  width: "100%",
+export const InnerContainer = styled(Container)(() => ({
   maxWidth: "1600px",
-  height: "100vh",
-  minHeight: "750px",
-  margin: "0px auto",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  flexDirection: "row",
 }));

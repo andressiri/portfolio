@@ -4,7 +4,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ThemeProvider } from "@mui/material";
 import getCustomTheme from "styles/themes/getCustomTheme";
 import { BackgroundTexture } from "components/Atoms";
-import { Hero, Layout, Skills } from "components/Templates";
+import { Contact, Hero, Layout, Projects, Skills } from "components/Templates";
 import { Container } from "components/Templates/MainPage/styledComponents";
 import funkyLinesSrc from "assets/textures/funky-lines.webp";
 
@@ -25,6 +25,8 @@ const Home: FC = () => {
           <BackgroundTexture imageSrc={funkyLinesSrc.src} />
           <Hero />
           <Skills />
+          <Projects />
+          <Contact />
         </Layout>
       </Container>
     </ThemeProvider>
@@ -36,7 +38,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
     props: {
       ...(await serverSideTranslations(
         locale as string,
-        ["navbar", "hero", "buttons", "skills"],
+        ["navbar", "hero", "buttons", "skills", "projects", "contact"],
         null,
         ["en", "es"]
       )),

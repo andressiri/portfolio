@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next";
 import {
   HTML5Logo,
   CSS3Logo,
@@ -29,8 +30,11 @@ import {
   PowershellLogo,
   GitBashLogo,
 } from "assets/skillsLogos";
-import { ISkill } from "typings/skills";
+import { ISkill, ISkillsFragment } from "typings/skills";
+
 const useGetSkillsArrays = () => {
+  const { t } = useTranslation("skills");
+
   const frontEndArray: ISkill[] = [
     { text: "HTML 5", logo: HTML5Logo },
     { text: "CSS 3", logo: CSS3Logo },
@@ -70,11 +74,13 @@ const useGetSkillsArrays = () => {
     { text: "Git Bash", logo: GitBashLogo },
   ];
 
-  return {
-    frontEndArray,
-    backEndArray,
-    workingToolsArray,
-  };
+  const skillsArrays: ISkillsFragment[] = [
+    { title: t("frontendTechnologies") as string, array: frontEndArray },
+    { title: t("backendTechnologies") as string, array: backEndArray },
+    { title: t("workingTools") as string, array: workingToolsArray },
+  ];
+
+  return skillsArrays;
 };
 
 export default useGetSkillsArrays;
