@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { GeneralContext } from "contexts";
 import { useTranslation } from "next-i18next";
-import { SectionContainer } from "components/Organisms";
+import { ProjectsCarousel, SectionContainer } from "components/Organisms";
 import { InnerContainer, titleSpecifics } from "./styledComponents";
 
 const Projects: FC = () => {
@@ -21,7 +21,9 @@ const Projects: FC = () => {
         aria: t("goToContact"),
       }}
     >
-      <InnerContainer></InnerContainer>
+      <InnerContainer>
+        <ProjectsCarousel />
+      </InnerContainer>
     </SectionContainer>
   );
 };
