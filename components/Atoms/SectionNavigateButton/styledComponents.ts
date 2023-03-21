@@ -9,7 +9,7 @@ export const GoToSectionButton = styled(IconButton, {
   return {
     "@keyframes animatePreviousSectionButton": {
       "0%": { transform: "rotate(180deg) translateY(0px)" },
-      "50%": { transform: "rotate(180deg) translateY(-4px)" },
+      "50%": { transform: "rotate(180deg) translateY(4px)" },
       "100%": { transform: "rotate(180deg) translateY(0px)" },
     },
     "@keyframes animateNextSectionButton": {
@@ -19,11 +19,11 @@ export const GoToSectionButton = styled(IconButton, {
     },
     zIndex: 3,
     position: "absolute",
-    top: isPrevious ? "30px" : "unset",
-    bottom: isPrevious ? "unset" : "30px",
-    left: "calc(50% - 20px)",
-    width: "40px",
-    height: "40px",
+    top: isPrevious ? "0px" : "unset",
+    bottom: isPrevious ? "unset" : "0px",
+    left: "calc(50% - 35px)",
+    width: "70px",
+    height: "70px",
     color: theme.palette.secondary.contrastText,
     background: "transparent",
     transform: isPrevious
@@ -31,7 +31,7 @@ export const GoToSectionButton = styled(IconButton, {
       : "translateY(0px)",
     animation: `${
       isPrevious ? "animatePreviousSectionButton" : "animateNextSectionButton"
-    } 3000ms infinite linear`,
+    } 3000ms infinite ease-in-out`,
     "& svg": {
       fontSize: "70px !important",
     },
