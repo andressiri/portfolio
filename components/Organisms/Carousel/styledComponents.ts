@@ -1,31 +1,38 @@
 import { styled } from "@mui/material/styles";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, CSSObject } from "@mui/material";
 
-export const Container = styled(Box)(() => ({
-  zIndex: 1,
-  width: "100%",
-  maxWidth: "100%",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  userSelect: "none",
-  "& img": {
-    pointerEvents: "none",
-  },
-}));
+export const Container = styled(Box, {
+  shouldForwardProp: (prop) =>
+    !["sidesSpace", "navButtons"].includes(prop as string),
+})<{ sidesSpace: number; navButtons: boolean }>(
+  ({ sidesSpace, navButtons }) => ({
+    zIndex: 1,
+    width: "100%",
+    maxWidth: `calc(100vw - ${sidesSpace}px${navButtons ? "+ 140px" : ""})`,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    userSelect: "none",
+    "& img": {
+      pointerEvents: "none",
+    },
+  })
+);
 
 export const ButtonsAndBandContainer = styled(Box, {
   shouldForwardProp: (prop) =>
-    !["cardWidth", "sidesSpace"].includes(prop as string),
-})<{ cardWidth: number; sidesSpace: number }>(({ cardWidth, sidesSpace }) => ({
-  position: "relative",
-  width: `${cardWidth}px`,
-  maxWidth: `calc(100% - ${sidesSpace}px)`,
-  borderRadius: "32px",
-  boxShadow:
-    "0px 5px 10px 5px rgb(0 0 0 / 12%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 2px 4px -1px rgb(0 0 0 / 20%)",
-}));
+    !["cardWidth", "sidesSpace", "navButtons"].includes(prop as string),
+})<{ cardWidth: number; sidesSpace: number; navButtons: boolean }>(
+  ({ cardWidth, sidesSpace, navButtons }) => ({
+    position: "relative",
+    width: `${cardWidth}px`,
+    maxWidth: `calc(100% - ${sidesSpace}px${navButtons ? " + 140px" : ""})`,
+    borderRadius: "32px",
+    boxShadow:
+      "0px 5px 10px 5px rgb(0 0 0 / 12%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 2px 4px -1px rgb(0 0 0 / 20%)",
+  })
+);
 
 export const BackwardsButton = styled(IconButton, {
   shouldForwardProp: (prop) =>
@@ -80,35 +87,42 @@ export const ForwardButton = styled(BackwardsButton, {
 
 export const BandContainer = styled(Box, {
   shouldForwardProp: (prop) =>
-    !["cardWidth", "cardHeight", "background"].includes(prop as string),
-})<{ cardWidth: number; cardHeight: number; background?: string }>(
-  ({ theme, cardWidth, cardHeight, background }) => ({
-    position: "relative",
-    width: `${cardWidth}px`,
-    maxWidth: "100%",
-    height: `${cardHeight}px`,
-    display: "flex",
-    background: background ? background : theme.palette.primary.contrastText,
-    borderRadius: "32px",
-    overflow: "hidden",
-  })
-);
+    !["cardWidth", "cardHeight", "background", "sidesSpace"].includes(
+      prop as string
+    ),
+})<{
+  cardWidth: number;
+  cardHeight: number;
+  background?: string;
+  sidesSpace: number;
+}>(({ theme, cardWidth, cardHeight, background, sidesSpace }) => ({
+  position: "relative",
+  width: `${cardWidth}px`,
+  maxWidth: `calc(100vw - ${sidesSpace}px)`,
+  height: `${cardHeight}px`,
+  display: "flex",
+  background: background ? background : theme.palette.primary.contrastText,
+  borderRadius: "32px",
+  overflow: "hidden",
+}));
 
 export const ConveyorBand = styled(Box, {
   shouldForwardProp: (prop) =>
     !["translateBand", "dragTranslate", "bandTransition"].includes(
       prop as string
     ),
-})<{ translateBand: number; dragTranslate: number; bandTransition: string }>(
-  ({ translateBand, dragTranslate, bandTransition }) => ({
-    position: "absolute",
-    top: "0px",
-    left: "0px",
-    display: "flex",
-    transform: `translateX(-${translateBand + dragTranslate}px)`,
-    transition: bandTransition,
-  })
-);
+})<{
+  translateBand: number;
+  dragTranslate: number;
+  bandTransition: string;
+}>(({ translateBand, dragTranslate, bandTransition }) => ({
+  position: "absolute",
+  top: "0px",
+  left: "0px",
+  display: "flex",
+  transform: `translateX(-${translateBand + dragTranslate}px)`,
+  transition: bandTransition,
+}));
 
 export const ChildContainer = styled(Box, {
   shouldForwardProp: (prop) =>
@@ -122,6 +136,29 @@ export const ChildContainer = styled(Box, {
     overflow: "hidden",
   })
 );
+
+export const CustomBulletsContainer = styled(Box, {
+  shouldForwardProp: (prop) => !["customStyles"].includes(prop as string),
+})<{ customStyles: CSSObject }>(({ customStyles }) => ({
+  ...customStyles,
+}));
+
+export const CustomBulletContainer = styled(Box, {
+  shouldForwardProp: (prop) =>
+    !["customStyles", "transitionTime", "selected", "bullets"].includes(
+      prop as string
+    ),
+})<{
+  customStyles: CSSObject;
+  transitionTime: number;
+  selected: boolean;
+  bullets: boolean;
+}>(({ customStyles, transitionTime, selected, bullets }) => ({
+  ...customStyles,
+  display: `${bullets ? "block" : "none"}`,
+  opacity: `${selected ? 1 : 0.3}`,
+  transition: `${transitionTime}ms opacity`,
+}));
 
 export const BulletsContainer = styled(Box)(() => ({
   width: "100%",

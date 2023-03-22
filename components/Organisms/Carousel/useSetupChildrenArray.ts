@@ -38,8 +38,6 @@ const useSetupChildrenArray = ({ disableNav, children }: Props) => {
       key: "addFirstReviewCardAtEnd",
     } as JSX.Element);
 
-    console.log("childrenArray inside  effect");
-    console.log(childrenArray.current);
     for (let i = 1; i < childrenArray.current.length - 1; i++) {
       bulletsArray.current.push(i);
     }

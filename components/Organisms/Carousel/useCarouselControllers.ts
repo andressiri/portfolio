@@ -17,6 +17,7 @@ interface Props {
   auto: boolean;
   autoTime: number;
   transitionTime: number; // miliseconds
+  initialSlide: number;
 }
 
 const useCarouselControllers = ({
@@ -28,6 +29,7 @@ const useCarouselControllers = ({
   auto,
   autoTime,
   transitionTime,
+  initialSlide,
 }: Props) => {
   const { viewportWidth } = useContext(GeneralContext);
 
@@ -47,13 +49,17 @@ const useCarouselControllers = ({
   const [translateBand, setTranslateBand] = useState<number>(
     cardsQuantity < 2 ? 0 : responsiveWidth()
   );
-  const carouselPosition = useRef<number>(1);
+  const carouselPosition = useRef<number>(initialSlide ? initialSlide : 1);
   const [bandTransition, setBandTransition] = useState<string>(
     `${transitionTime}ms all`
   );
   const [disableNavButtons, setDisableNavButtons] = useState<boolean>(false);
   const [restartInterval, setRestartInterval] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    setTranslateBand(cardsQuantity < 2 ? 0 : responsiveWidth() * initialSlide);
+  }, [cardsQuantity, initialSlide, responsiveWidth]);
 
   // Reposition for infinite carousel
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -10,11 +10,14 @@ import {
   BandContainer,
   ConveyorBand,
   ChildContainer,
+  CustomBulletsContainer,
+  CustomBulletContainer,
   BulletsContainer,
   Bullet,
 } from "./styledComponents";
 import useSetupChildrenArray from "./useSetupChildrenArray";
 import useCarouselControllers from "./useCarouselControllers";
+import { CSSObject } from "@mui/material";
 
 interface Props {
   cardWidth?: number;
@@ -27,9 +30,15 @@ interface Props {
   leftMargin?: number;
   rightMargin?: number;
   bullets?: boolean;
+  customBullets?: {
+    array: JSX.Element[];
+    container: CSSObject;
+    bulletContainer: CSSObject;
+  };
   auto?: boolean;
   autoTime?: number;
   transitionTime?: number; // miliseconds
+  initialSlide?: number;
   children: JSX.Element | JSX.Element[];
 }
 
@@ -44,13 +53,16 @@ const Carousel: FC<Props> = ({
   leftMargin = 0,
   rightMargin = 0,
   bullets = true,
+  customBullets,
   auto = true,
   autoTime = 10000,
   transitionTime = 500,
+  initialSlide = 1,
   children,
 }) => {
   const { t } = useTranslation("Carousel");
   const disableNav = useRef<boolean>(disableNavigation);
+  const [forceReload, setForceReload] = useState<number>(1); // required to avoid error because of differences between SSR and CSR
 
   const { childrenArray, bulletsArray } = useSetupChildrenArray({
     disableNav,
@@ -79,11 +91,23 @@ const Carousel: FC<Props> = ({
     auto,
     autoTime,
     transitionTime,
+    initialSlide,
   });
 
+  useEffect(() => {
+    setForceReload((prev: number) => prev + 1);
+  }, []);
+
   return (
-    <Container>
-      <ButtonsAndBandContainer cardWidth={cardWidth} sidesSpace={sidesSpace}>
+    <Container
+      sidesSpace={sidesSpace}
+      navButtons={navButtons && !disableNav.current}
+    >
+      <ButtonsAndBandContainer
+        cardWidth={cardWidth}
+        sidesSpace={sidesSpace}
+        navButtons={navButtons && !disableNav.current}
+      >
         <BackwardsButton
           onClick={handleBackwards}
           disabled={disableNavButtons}
@@ -99,9 +123,10 @@ const Carousel: FC<Props> = ({
           cardWidth={cardWidth}
           cardHeight={cardHeight}
           background={background}
+          sidesSpace={sidesSpace}
         >
           <ConveyorBand
-            translateBand={translateBand}
+            translateBand={forceReload > 1 ? translateBand : 0}
             dragTranslate={dragTranslate}
             bandTransition={bandTransition}
           >
@@ -138,20 +163,39 @@ const Carousel: FC<Props> = ({
           <KeyboardArrowRightIcon />
         </ForwardButton>
       </ButtonsAndBandContainer>
-      <BulletsContainer>
-        {bulletsArray.current.map((i: number, id: number) => {
-          return (
-            <Bullet
-              onClick={() => handleBullet(i)}
-              transitionTime={transitionTime}
-              selected={handleSelectedBullet(i)}
-              bullets={bullets && !disableNav.current}
-              color={color}
-              key={`reviewCardBullet${i}${id}`}
-            />
-          );
-        })}
-      </BulletsContainer>
+      {customBullets ? (
+        <CustomBulletsContainer customStyles={customBullets.container}>
+          {customBullets.array.map((bullet: JSX.Element, id: number) => {
+            return (
+              <CustomBulletContainer
+                onClick={() => handleBullet(id + 1)}
+                customStyles={customBullets.bulletContainer}
+                transitionTime={transitionTime}
+                selected={handleSelectedBullet(id + 1)}
+                bullets={bullets && !disableNav.current}
+                key={`carouselCustomBullet${id}`}
+              >
+                {bullet}
+              </CustomBulletContainer>
+            );
+          })}
+        </CustomBulletsContainer>
+      ) : (
+        <BulletsContainer>
+          {bulletsArray.current.map((i: number, id: number) => {
+            return (
+              <Bullet
+                onClick={() => handleBullet(i)}
+                transitionTime={transitionTime}
+                selected={handleSelectedBullet(i)}
+                bullets={bullets && !disableNav.current}
+                color={color}
+                key={`reviewCardBullet${i}${id}`}
+              />
+            );
+          })}
+        </BulletsContainer>
+      )}
     </Container>
   );
 };
