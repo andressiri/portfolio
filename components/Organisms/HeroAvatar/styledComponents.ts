@@ -20,4 +20,10 @@ export const InnerContainer = styled(Box)(() => ({
   flexDirection: "column",
   alignItems: "center",
   gap: "30px",
+  "@media (max-width: 1520px)": {
+    margin: "auto auto auto 70px",
+  },
+  "@media (max-width: 1150px)": {
+    margin: "auto auto auto 40px",
+  },
 }));

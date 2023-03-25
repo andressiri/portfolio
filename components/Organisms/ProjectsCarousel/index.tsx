@@ -6,7 +6,7 @@ import { Carousel } from "components/Organisms";
 const ProjectsCarousel: FC = () => {
   const theme = useTheme();
   return (
-    <div style={{ width: "1600px" }}>
+    <div style={{ width: "1600px", maxWidth: "100%", display: "flex" }}>
       <Carousel
         cardWidth={1460}
         cardHeight={580}
