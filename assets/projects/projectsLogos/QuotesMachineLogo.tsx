@@ -10,7 +10,7 @@ const QuotesMachineLogo = () => {
         id="Selection"
         fill="currentColor"
         stroke="black"
-        stroke-width="1"
+        strokeWidth="1"
         d="M 9.00,157.00
            C 7.77,151.84 9.13,148.04 10.37,143.00
              12.47,134.53 16.67,122.74 20.63,115.00

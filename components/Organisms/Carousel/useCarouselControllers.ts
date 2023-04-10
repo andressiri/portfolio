@@ -7,6 +7,7 @@ import React, {
   useState,
 } from "react";
 import { GeneralContext } from "contexts";
+import { getBrowser } from "utils/helpers";
 
 interface Props {
   cardWidth: number;
@@ -18,6 +19,7 @@ interface Props {
   autoTime: number;
   transitionTime: number; // miliseconds
   initialSlide: number;
+  considerScrollbarWidth: boolean;
 }
 
 const useCarouselControllers = ({
@@ -30,15 +32,21 @@ const useCarouselControllers = ({
   autoTime,
   transitionTime,
   initialSlide,
+  considerScrollbarWidth,
 }: Props) => {
   const { viewportWidth } = useContext(GeneralContext);
 
   // Handle options props and changes
   const sidesSpace = useMemo(() => {
-    return buttonsVisible
-      ? 70 * 2 + leftMargin + rightMargin
-      : leftMargin + rightMargin;
-  }, [leftMargin, rightMargin, buttonsVisible]);
+    const scrollbarWidth =
+      !considerScrollbarWidth || getBrowser() === "Firefox" ? 0 : 17;
+
+    const space = buttonsVisible
+      ? 70 * 2 + leftMargin + rightMargin + scrollbarWidth
+      : leftMargin + rightMargin + scrollbarWidth;
+
+    return space;
+  }, [leftMargin, rightMargin, buttonsVisible, considerScrollbarWidth]);
 
   const responsiveWidth = useCallback(() => {
     if (viewportWidth >= cardWidth + sidesSpace) return cardWidth;

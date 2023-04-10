@@ -10,7 +10,7 @@ const FootstrapLogo = () => {
         id="Selection"
         fill="currentColor"
         stroke="black"
-        stroke-width="1"
+        strokeWidth="1"
         d="M 213.00,5.00
         C 210.68,-1.41 227.36,-0.04 231.00,0.00
           244.13,0.16 257.71,10.04 265.66,20.00

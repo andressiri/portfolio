@@ -8,7 +8,7 @@ export const Container = styled(Box, {
   ({ sidesSpace, navButtons }) => ({
     zIndex: 1,
     width: "100%",
-    maxWidth: `calc(100vw - ${sidesSpace}px${navButtons ? "+ 140px" : ""})`,
+    maxWidth: `calc(100vw - ${sidesSpace}px${navButtons ? " + 140px" : ""})`,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -22,17 +22,15 @@ export const Container = styled(Box, {
 
 export const ButtonsAndBandContainer = styled(Box, {
   shouldForwardProp: (prop) =>
-    !["cardWidth", "sidesSpace", "navButtons"].includes(prop as string),
-})<{ cardWidth: number; sidesSpace: number; navButtons: boolean }>(
-  ({ cardWidth, sidesSpace, navButtons }) => ({
-    position: "relative",
-    width: `${cardWidth}px`,
-    maxWidth: `calc(100% - ${sidesSpace}px${navButtons ? " + 140px" : ""})`,
-    borderRadius: "32px",
-    boxShadow:
-      "0px 5px 10px 5px rgb(0 0 0 / 12%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 2px 4px -1px rgb(0 0 0 / 20%)",
-  })
-);
+    !["cardWidth", "sidesSpace"].includes(prop as string),
+})<{ cardWidth: number; sidesSpace: number }>(({ cardWidth, sidesSpace }) => ({
+  position: "relative",
+  width: `${cardWidth}px`,
+  maxWidth: `calc(100vw - ${sidesSpace}px)`,
+  borderRadius: "32px",
+  boxShadow:
+    "0px 5px 10px 5px rgb(0 0 0 / 12%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 2px 4px -1px rgb(0 0 0 / 20%)",
+}));
 
 export const BackwardsButton = styled(IconButton, {
   shouldForwardProp: (prop) =>
@@ -87,18 +85,15 @@ export const ForwardButton = styled(BackwardsButton, {
 
 export const BandContainer = styled(Box, {
   shouldForwardProp: (prop) =>
-    !["cardWidth", "cardHeight", "background", "sidesSpace"].includes(
-      prop as string
-    ),
+    !["cardWidth", "cardHeight", "background"].includes(prop as string),
 })<{
   cardWidth: number;
   cardHeight: number;
   background?: string;
-  sidesSpace: number;
-}>(({ theme, cardWidth, cardHeight, background, sidesSpace }) => ({
+}>(({ theme, cardWidth, cardHeight, background }) => ({
   position: "relative",
   width: `${cardWidth}px`,
-  maxWidth: `calc(100vw - ${sidesSpace}px)`,
+  maxWidth: "100%",
   height: `${cardHeight}px`,
   display: "flex",
   background: background ? background : theme.palette.primary.contrastText,

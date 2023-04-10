@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { CSSObject } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
@@ -17,7 +18,6 @@ import {
 } from "./styledComponents";
 import useSetupChildrenArray from "./useSetupChildrenArray";
 import useCarouselControllers from "./useCarouselControllers";
-import { CSSObject } from "@mui/material";
 
 interface Props {
   cardWidth?: number;
@@ -39,6 +39,7 @@ interface Props {
   autoTime?: number;
   transitionTime?: number; // miliseconds
   initialSlide?: number;
+  considerScrollbarWidth?: boolean;
   children: JSX.Element | JSX.Element[];
 }
 
@@ -58,6 +59,7 @@ const Carousel: FC<Props> = ({
   autoTime = 10000,
   transitionTime = 500,
   initialSlide = 1,
+  considerScrollbarWidth = true,
   children,
 }) => {
   const { t } = useTranslation("Carousel");
@@ -92,6 +94,7 @@ const Carousel: FC<Props> = ({
     autoTime,
     transitionTime,
     initialSlide,
+    considerScrollbarWidth,
   });
 
   useEffect(() => {
@@ -103,11 +106,7 @@ const Carousel: FC<Props> = ({
       sidesSpace={sidesSpace}
       navButtons={navButtons && !disableNav.current}
     >
-      <ButtonsAndBandContainer
-        cardWidth={cardWidth}
-        sidesSpace={sidesSpace}
-        navButtons={navButtons && !disableNav.current}
-      >
+      <ButtonsAndBandContainer cardWidth={cardWidth} sidesSpace={sidesSpace}>
         <BackwardsButton
           onClick={handleBackwards}
           disabled={disableNavButtons}
@@ -123,7 +122,6 @@ const Carousel: FC<Props> = ({
           cardWidth={cardWidth}
           cardHeight={cardHeight}
           background={background}
-          sidesSpace={sidesSpace}
         >
           <ConveyorBand
             translateBand={forceReload > 1 ? translateBand : 0}
