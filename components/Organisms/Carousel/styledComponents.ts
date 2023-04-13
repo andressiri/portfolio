@@ -22,15 +22,16 @@ export const Container = styled(Box, {
 
 export const ButtonsAndBandContainer = styled(Box, {
   shouldForwardProp: (prop) =>
-    !["cardWidth", "sidesSpace"].includes(prop as string),
-})<{ cardWidth: number; sidesSpace: number }>(({ cardWidth, sidesSpace }) => ({
-  position: "relative",
-  width: `${cardWidth}px`,
-  maxWidth: `calc(100vw - ${sidesSpace}px)`,
-  borderRadius: "32px",
-  boxShadow:
-    "0px 5px 10px 5px rgb(0 0 0 / 12%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 2px 4px -1px rgb(0 0 0 / 20%)",
-}));
+    !["cardWidth", "sidesSpace", "boxShadow"].includes(prop as string),
+})<{ cardWidth: number; sidesSpace: number; boxShadow: string }>(
+  ({ cardWidth, sidesSpace, boxShadow }) => ({
+    position: "relative",
+    width: `${cardWidth}px`,
+    maxWidth: `calc(100vw - ${sidesSpace}px)`,
+    borderRadius: "32px",
+    boxShadow,
+  })
+);
 
 export const BackwardsButton = styled(IconButton, {
   shouldForwardProp: (prop) =>

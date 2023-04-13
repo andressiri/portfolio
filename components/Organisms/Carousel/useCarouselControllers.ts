@@ -38,8 +38,13 @@ const useCarouselControllers = ({
 
   // Handle options props and changes
   const sidesSpace = useMemo(() => {
+    const browser = getBrowser();
     const scrollbarWidth =
-      !considerScrollbarWidth || getBrowser() === "Firefox" ? 0 : 17;
+      !considerScrollbarWidth ||
+      !browser ||
+      ["Firefox", "Mobile", "unknown"].includes(browser)
+        ? 0
+        : 17;
 
     const space = buttonsVisible
       ? 70 * 2 + leftMargin + rightMargin + scrollbarWidth

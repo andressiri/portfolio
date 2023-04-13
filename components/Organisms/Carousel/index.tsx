@@ -24,6 +24,7 @@ interface Props {
   cardHeight?: number;
   color?: string;
   background?: string;
+  boxShadow?: string;
   disableNavigation?: boolean;
   navButtons?: boolean;
   animatedButtons?: boolean;
@@ -48,6 +49,7 @@ const Carousel: FC<Props> = ({
   cardHeight = 300,
   color,
   background,
+  boxShadow = "0px 5px 10px 5px rgb(0 0 0 / 12%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 2px 4px -1px rgb(0 0 0 / 20%)",
   disableNavigation = false,
   navButtons = true,
   animatedButtons = true,
@@ -106,7 +108,11 @@ const Carousel: FC<Props> = ({
       sidesSpace={sidesSpace}
       navButtons={navButtons && !disableNav.current}
     >
-      <ButtonsAndBandContainer cardWidth={cardWidth} sidesSpace={sidesSpace}>
+      <ButtonsAndBandContainer
+        cardWidth={cardWidth}
+        sidesSpace={sidesSpace}
+        boxShadow={boxShadow}
+      >
         <BackwardsButton
           onClick={handleBackwards}
           disabled={disableNavButtons}
