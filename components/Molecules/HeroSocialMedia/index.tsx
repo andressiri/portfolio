@@ -20,9 +20,6 @@ const HeroSocialMedia: FC = () => {
         aria-label={t("linkedIn") as string}
       >
         <IconWithTooltip
-          onClick={() => {
-            return;
-          }}
           icon={
             <LinkedInIcon
               sx={{ transform: "scale(1.15) translate(4.5px, 0.5px)" }}
@@ -46,9 +43,6 @@ const HeroSocialMedia: FC = () => {
         aria-label={t("gitHub") as string}
       >
         <IconWithTooltip
-          onClick={() => {
-            return;
-          }}
           icon={<GitHubIcon />}
           color={theme.palette.secondary.contrastText}
           background="transparent"

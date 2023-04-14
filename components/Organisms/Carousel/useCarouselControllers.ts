@@ -35,23 +35,23 @@ const useCarouselControllers = ({
   considerScrollbarWidth,
 }: Props) => {
   const { viewportWidth } = useContext(GeneralContext);
+  const browser = useRef(getBrowser());
+  const scrollbarWidth = useRef(
+    !considerScrollbarWidth ||
+      !browser ||
+      ["Firefox", "Mobile", "unknown"].includes(browser.current as string)
+      ? 0
+      : 17
+  );
 
   // Handle options props and changes
   const sidesSpace = useMemo(() => {
-    const browser = getBrowser();
-    const scrollbarWidth =
-      !considerScrollbarWidth ||
-      !browser ||
-      ["Firefox", "Mobile", "unknown"].includes(browser)
-        ? 0
-        : 17;
-
     const space = buttonsVisible
-      ? 70 * 2 + leftMargin + rightMargin + scrollbarWidth
-      : leftMargin + rightMargin + scrollbarWidth;
+      ? 70 * 2 + leftMargin + rightMargin + scrollbarWidth.current
+      : leftMargin + rightMargin + scrollbarWidth.current;
 
     return space;
-  }, [leftMargin, rightMargin, buttonsVisible, considerScrollbarWidth]);
+  }, [leftMargin, rightMargin, scrollbarWidth, buttonsVisible]);
 
   const responsiveWidth = useCallback(() => {
     if (viewportWidth >= cardWidth + sidesSpace) return cardWidth;

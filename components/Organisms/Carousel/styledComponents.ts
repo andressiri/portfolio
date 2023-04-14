@@ -128,7 +128,7 @@ export const ChildContainer = styled(Box, {
     width: `${cardWidth}px`,
     maxWidth: `calc(100vw - ${sidesSpace}px)`,
     height: `${cardHeight}px`,
-    maxHeigth: `${cardHeight}px`,
+    maxHeight: `${cardHeight}px`,
     overflow: "hidden",
   })
 );
