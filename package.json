@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --dir ."
+    "lint": "next lint --dir .",
+    "lint:fix": "next lint --fix .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -35,5 +37,15 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "prettier": "^2.5.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --debug"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "tsc -p tsconfig.json --noEmit"
+    ]
   }
 }

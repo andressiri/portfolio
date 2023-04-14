@@ -13,6 +13,8 @@ export const Container = styled(Box, {
     bottom: topPosition ? "unset" : "30px",
     right: leftPosition ? "unset" : "30px",
     borderRadius: "50%",
+    overflow: "visible !important",
+    touchAction: "none",
   })
 );
 
@@ -23,6 +25,7 @@ export const StyledIconContainer = styled(Box)(({ theme }) => ({
   padding: "0px",
   borderRadius: "50%",
   background: theme.palette.primary.contrastText,
+  overflow: "visible !important",
   "& svg": {
     width: "72px",
     height: "72px",

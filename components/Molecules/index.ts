@@ -1,10 +1,14 @@
 export { default as Avatar } from "./Avatar";
 export { default as CVButtons } from "./CVButtons";
+export { default as DesktopScreenDisplay } from "./DesktopScreenDisplay";
 export { default as HeroSocialMedia } from "./HeroSocialMedia";
 export { default as LanguageSelector } from "./LanguageSelector";
+export { default as MobilePhoneDisplay } from "./MobilePhoneDisplay";
 export { default as ModeSelector } from "./ModeSelector";
 export { default as NavLinks } from "./NavLinks";
 export { default as NavLogo } from "./NavLogo";
 export { default as Options } from "./Options";
+export { default as ProjectDescriptionTechnologies } from "./ProjectDescriptionTechnologies";
+export { default as ProjectMediaDisplay } from "./ProjectMediaDisplay";
 export { default as SkillsFragment } from "./SkillsFragment";
 export { default as WhatsAppFloating } from "./WhatsAppFloating";

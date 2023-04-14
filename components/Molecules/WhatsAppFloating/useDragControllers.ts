@@ -101,14 +101,44 @@ const useDragControllers = () => {
     [viewportWidth, viewportHeight, getPosition]
   );
 
+  const lockScrolling = useCallback(() => {
+    const alreadyExists = document.getElementById(
+      "temporary-lock-scrolling-stylesheet"
+    );
+    if (alreadyExists) return;
+
+    const temporaryStylesheet = document.createElement("style");
+    temporaryStylesheet.setAttribute(
+      "id",
+      "temporary-lock-scrolling-stylesheet"
+    );
+    temporaryStylesheet.innerHTML = `
+      * {
+        overflow: hidden;
+        overscroll-behavior: none;
+      }
+    `;
+    document.head.appendChild(temporaryStylesheet);
+  }, []);
+
+  const unlockScrolling = useCallback(() => {
+    const temporaryStylesheet = document.getElementById(
+      "temporary-lock-scrolling-stylesheet"
+    );
+    if (temporaryStylesheet) document.head.removeChild(temporaryStylesheet);
+  }, []);
+
   const touchEnd = useCallback(() => {
     setTimeout(() => (isDragging.current = false), 100);
     setTimeout(() => (isDragging.current = false), 350);
+
+    unlockScrolling();
+
     window.removeEventListener("mousemove", touchMove);
     window.removeEventListener("touchmove", touchMove);
     window.removeEventListener("mouseup", touchEnd);
     window.removeEventListener("touchend", touchEnd);
-  }, [touchMove]);
+  }, [touchMove, unlockScrolling]);
 
   const touchStart = useCallback(
     (
@@ -124,14 +154,18 @@ const useDragControllers = () => {
       window.addEventListener("touchmove", touchMove);
       window.addEventListener("mouseup", touchEnd);
       window.addEventListener("touchend", touchEnd);
+
+      lockScrolling();
     },
-    [getPosition, touchEnd, touchMove]
+    [getPosition, touchEnd, touchMove, lockScrolling]
   );
 
   const dragControllers = {
     top,
     left,
     touchStart,
+    lockScrolling,
+    unlockScrolling,
     tooltipPosition,
     isDragging,
   };

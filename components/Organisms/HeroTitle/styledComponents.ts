@@ -20,6 +20,12 @@ export const InnerContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   gap: "0px",
+  "@media (max-width: 1500px)": {
+    margin: "auto 40px auto auto",
+  },
+  "@media (max-width: 1150px)": {
+    margin: "auto 20px auto auto",
+  },
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
@@ -29,6 +35,7 @@ export const Title = styled(Typography)(({ theme }) => ({
   lineHeight: "74px",
   letterSpacing: "-0.9px",
   fontWeight: 900,
+  whiteSpace: "nowrap",
 }));
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
@@ -38,6 +45,7 @@ export const Subtitle = styled(Typography)(({ theme }) => ({
   fontWeight: 800,
   lineHeight: "48px",
   letterSpacing: "-0.675px",
+  whiteSpace: "nowrap",
 }));
 
 export const Phrase = styled(Typography)(({ theme }) => ({

@@ -26,7 +26,6 @@ const Avatar: FC = () => {
               ]
             }
             alt="Picture of Andrés Siri"
-            className="avatarImage"
             priority
           />
         </ImageContainer>
