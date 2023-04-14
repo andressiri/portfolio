@@ -21,7 +21,7 @@ export const FrameImage = styled(Image, {
   left: "0px",
   width: "500px",
   maxWidth: mobileSrc ? "96%" : "100%",
-  height: "350px",
+  height: "auto",
   maxHeight: "100%",
   objectFit: "contain",
 }));
@@ -34,7 +34,7 @@ export const InnerImage = styled(Image, {
   left: "3%",
   width: "468px",
   maxWidth: mobileSrc ? "91%" : "95%",
-  height: "264px",
+  height: "auto",
   maxHeight: mobileSrc ? "77%" : "75%",
   objectFit: "contain",
 }));

@@ -38,5 +38,6 @@ export const SmallMobileContainer = styled(Box)(() => ({
 
 export const MobileContainer = styled(Box)(() => ({
   height: "80%",
+  maxHeight: "80%",
   margin: "auto 100px auto auto",
 }));

@@ -39,7 +39,7 @@ const ProjectsCarousel: FC = () => {
             },
           },
         }}
-        auto={false}
+        autoTime={15000}
         initialSlide={5}
       >
         {projectsArray.map((cardData, id) => {
