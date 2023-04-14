@@ -22,6 +22,7 @@ const DesktopScreenDisplay: FC<Props> = ({ innerImageSrc, mobileSrc }) => {
         alt="desktop screen image"
         width={468}
         height={264}
+        mobileSrc={mobileSrc}
       />
     </Container>
   );
