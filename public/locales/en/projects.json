@@ -1,1 +1,15 @@
-{}
+{
+  "rominarSubtitle": "Learning project",
+  "quotesMachineSubtitle": "Learning project",
+  "spendsCheckerSubtitle": "10 day challenge",
+  "footstrapSubtitle": "5 days challenge",
+  "treehouseSubtitle": "9 days challenge",
+  "portfolioSubtitle": "Personal portfolio",
+  "rominarDescription": "This application was created taking into consideration Romina's business but mainly with the purpose of applying to an end and enhance the knowledge in the basic technologies of web development: HTML, CSS and JavaScript. It was then carried out the construction of a single page site with basic functionalities to encourage user contact and a good exposure of the client's business information. It was finally optimized with Lighthouse. More information and access to the site at project's repository README.",
+  "quotesMachineDescription": "Development of an application using MERN Stack, focused on learning this group of technologies. An application that started as a simple challenge for FreeCodeCamp, which I took up with intentions of working on a more complex application and having experience in scalability, adding things outside the challenge to exercise the acquired knowledge and create new ones in the process. More information and access to the site at project's repository README.",
+  "spendsCheckerDescription": "Project developed for the Full Stack JS challenge of Alkemy's acceleration. I took as a personal challenge to do it in the shortest time possible with a deadline of ten days and apply the recently acquired knowledge in PostgreSQL, Sequelize, Redux Toolkit and Material UI, reinforcing the practice of React. More information and access to the site in the README of the repository.",
+  "footstrapDescription": "This is a project developed for the StoryDots challenge, where I wanted to put into practice what I had already learned and challenge myself to be the most effective I could be. As a result, in less than half the time of the last project I developed on my own, similar to this one, I was able to get a noticeably better result, which made me feel quite satisfied with the improvement in my skills. More information and access to the site in the README of the repository.",
+  "treehouseDescription": "It is a project developed to solve the challenge of a selection process, where I could put into practice my knowledge in TypeScript and NextJS, reinforcing my previous knowledge in other technologies and improving by using them together. In a very short time I was able to develop a fairly complete and functional application, which although it has things that I will improve, more than meets the requirements of the challenge and is still robust and scalable. For more information and access to the site go to the README of the repository.",
+  "portfolioDescription": "This is a project developed to show my knowledge, where the most important information about me as a web developer is accessible. At the same time it was made as a project to put into practice and to show my skills more oriented to FrontEnd development with TypeScript, NextJS, React and MaterialUI, using complex components made personally. For more information and access to the site go to the README of the repository.",
+  "gitHubButton": "GitHub Repository"
+}

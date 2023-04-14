@@ -1,11 +1,14 @@
 import { styled } from "@mui/material/styles";
-import { Container } from "components/Organisms/SectionContainer/styledComponents";
+import { Box } from "@mui/material";
 import { ITitleSpecifics } from "typings/sections";
 
-export const InnerContainer = styled(Container)(() => ({
+export const InnerContainer = styled(Box)(() => ({
+  width: "100%",
   maxWidth: "1600px",
-  justifyContent: "space-evenly",
-  gap: "30px",
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 export const titleSpecifics: ITitleSpecifics = {

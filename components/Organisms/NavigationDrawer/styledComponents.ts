@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Box, Divider, IconButton, SwipeableDrawer } from "@mui/material";
 
 export const StyledSwipeableDrawer = styled(SwipeableDrawer)(({ theme }) => ({

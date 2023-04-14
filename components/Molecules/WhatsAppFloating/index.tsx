@@ -8,7 +8,7 @@ import useDragControllers from "./useDragControllers";
 const WhatsAppFloating: FC = () => {
   const [displayTooltip, setDisplayTooltip] = useState(false);
   const dragControllers = useDragControllers();
-  const { top, left, touchStart, isDragging, tooltipPosition } =
+  const { top, left, touchStart, lockScrolling, isDragging, tooltipPosition } =
     dragControllers;
   const { t } = useTranslation("buttons");
 
@@ -20,7 +20,7 @@ const WhatsAppFloating: FC = () => {
       }}
       onMouseLeave={() => setDisplayTooltip(false)}
       onTouchStart={(e) => {
-        e.preventDefault();
+        lockScrolling();
         setDisplayTooltip(false);
         touchStart(e);
       }}
