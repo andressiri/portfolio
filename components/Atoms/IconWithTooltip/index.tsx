@@ -8,6 +8,8 @@ interface Props {
   icon: JSX.Element;
   color?: string;
   background?: string;
+  cursor?: string;
+  tabIndex?: number;
   tooltipText: string;
   tooltipProps?: TooltipProps;
 }
@@ -17,6 +19,8 @@ const IconWithTooltip: FC<Props> = ({
   icon,
   color,
   background,
+  cursor = "pointer",
+  tabIndex = 0,
   tooltipText,
   tooltipProps,
 }) => {
@@ -32,6 +36,8 @@ const IconWithTooltip: FC<Props> = ({
         onClick={onClick}
         colour={color}
         background={background}
+        cursor={cursor}
+        tabIndex={tabIndex}
       >
         {icon}
       </StyledIconButton>
