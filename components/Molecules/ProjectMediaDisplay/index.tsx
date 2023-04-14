@@ -4,6 +4,7 @@ import {
   Container,
   DesktopContainer,
   SmallMobileContainer,
+  MobileContainer,
 } from "./styledComponents";
 
 interface Props {
@@ -34,7 +35,9 @@ const ProjectMediaDisplay: FC<Props> = ({ desktopSrc, mobileSrc }) => {
   if (mobileSrc)
     return (
       <Container>
-        <MobilePhoneDisplay innerImageSrc={mobileSrc} />
+        <MobileContainer>
+          <MobilePhoneDisplay innerImageSrc={mobileSrc} />
+        </MobileContainer>
       </Container>
     );
 

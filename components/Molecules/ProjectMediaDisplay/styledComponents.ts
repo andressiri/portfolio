@@ -4,9 +4,11 @@ import { Box } from "@mui/material";
 export const Container = styled(Box)(() => ({
   width: "50%",
   maxWidth: "50%",
+  height: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  overflow: "hidden",
 }));
 
 export const DesktopContainer = styled(Box, {
@@ -14,9 +16,10 @@ export const DesktopContainer = styled(Box, {
 })<{ mobileSrc?: StaticImageData | string }>(({ mobileSrc }) => ({
   position: "relative",
   width: mobileSrc ? "520px" : "500px",
-  maxWidth: "100%",
+  maxWidth: "calc(100% - 50px)",
   height: "350px",
-  maxHeight: `calc((100vw - ${mobileSrc ? "520px" : "500px"}) * 0.7)`,
+  maxHeight: `calc((100vw - ${mobileSrc ? "520px" : "500px"}) * 0.5)`,
+  margin: "auto 50px auto auto",
 }));
 
 export const SmallMobileContainer = styled(Box)(() => ({
@@ -31,4 +34,9 @@ export const SmallMobileContainer = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+}));
+
+export const MobileContainer = styled(Box)(() => ({
+  height: "80%",
+  margin: "auto 100px auto auto",
 }));

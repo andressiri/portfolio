@@ -26,13 +26,15 @@ export const FrameImage = styled(Image, {
   objectFit: "contain",
 }));
 
-export const InnerImage = styled(Image)(() => ({
+export const InnerImage = styled(Image, {
+  shouldForwardProp: (prop) => !["mobileSrc"].includes(prop as string),
+})<{ mobileSrc?: StaticImageData | string }>(({ mobileSrc }) => ({
   position: "absolute",
-  top: "5.3%",
-  left: "3.28%",
+  top: mobileSrc ? "5%" : "5.2%",
+  left: "3%",
   width: "468px",
-  maxWidth: "94%",
+  maxWidth: mobileSrc ? "91%" : "95%",
   height: "264px",
-  maxHeight: "75%",
+  maxHeight: mobileSrc ? "77%" : "75%",
   objectFit: "contain",
 }));
