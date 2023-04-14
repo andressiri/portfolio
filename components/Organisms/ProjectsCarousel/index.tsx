@@ -1,16 +1,22 @@
 import { FC } from "react";
 import { useTheme } from "@mui/material";
 import { projectsLogosArray } from "assets/projects";
-import { Carousel } from "components/Organisms";
+import { Carousel, ProjectsCarouselCard } from "components/Organisms";
+import { Container } from "./styledComponents";
+import useGetProjectsArray from "./useGetProjectsArray";
 
 const ProjectsCarousel: FC = () => {
   const theme = useTheme();
+  const { projectsArray } = useGetProjectsArray();
+
   return (
-    <div style={{ width: "1600px", maxWidth: "100%", display: "flex" }}>
+    <Container>
       <Carousel
         cardWidth={1460}
-        cardHeight={580}
+        cardHeight={600}
         color={theme.palette.secondary.contrastText}
+        background="transparent"
+        boxShadow="none"
         customBullets={{
           array: projectsLogosArray,
           container: {
@@ -34,20 +40,18 @@ const ProjectsCarousel: FC = () => {
           },
         }}
         auto={false}
-        initialSlide={4}
+        initialSlide={5}
       >
-        <div style={{ width: "100%", height: "100%", background: "red" }}></div>
-        <div
-          style={{ width: "100%", height: "100%", background: "orange" }}
-        ></div>
-        <div
-          style={{ width: "100%", height: "100%", background: "green" }}
-        ></div>
-        <div
-          style={{ width: "100%", height: "100%", background: "blue" }}
-        ></div>
+        {projectsArray.map((cardData, id) => {
+          return (
+            <ProjectsCarouselCard
+              cardData={cardData}
+              key={`${cardData.title}${id}`}
+            />
+          );
+        })}
       </Carousel>
-    </div>
+    </Container>
   );
 };
 
