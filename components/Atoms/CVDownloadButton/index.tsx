@@ -1,7 +1,6 @@
 import React, { FC, useContext, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
-import AnimatedDownloadIcon from "../AnimatedDownloadIcon";
-import { StyledButton } from "components/Atoms";
+import { AnimatedDownloadIcon, StyledButton } from "components/Atoms";
 import { IStyledButton } from "typings/buttons";
 import { GeneralContext } from "contexts";
 

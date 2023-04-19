@@ -1,7 +1,8 @@
 import { FC, useContext } from "react";
+import { ContactContextProvider } from "contexts";
 import { GeneralContext } from "contexts";
 import { useTranslation } from "next-i18next";
-import { SectionContainer } from "components/Organisms";
+import { ContactForm, SectionContainer } from "components/Organisms";
 import { InnerContainer, titleSpecifics } from "./styledComponents";
 
 const Contact: FC = () => {
@@ -9,16 +10,20 @@ const Contact: FC = () => {
   const { t } = useTranslation("buttons");
 
   return (
-    <SectionContainer
-      reference={contactRef}
-      previous={{
-        ref: projectsRef.current as HTMLDivElement,
-        aria: t("goToProjects"),
-      }}
-      title={{ text: t("contact"), specifics: titleSpecifics }}
-    >
-      <InnerContainer></InnerContainer>
-    </SectionContainer>
+    <ContactContextProvider>
+      <SectionContainer
+        reference={contactRef}
+        previous={{
+          ref: projectsRef.current as HTMLDivElement,
+          aria: t("goToProjects"),
+        }}
+        title={{ text: t("contact"), specifics: titleSpecifics }}
+      >
+        <InnerContainer>
+          <ContactForm />
+        </InnerContainer>
+      </SectionContainer>
+    </ContactContextProvider>
   );
 };
 

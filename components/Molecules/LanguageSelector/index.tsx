@@ -5,13 +5,13 @@ import { useRouter } from "next/router";
 import { CustomSelector } from "components/Atoms";
 import languagesFlags from "assets/languageSelector";
 import { Container } from "./styledComponents";
+import { ContainerProps } from "typings/customSelector";
 
-interface Props {
-  isDrawer?: boolean;
-  isDrawerOpen?: boolean;
-}
-
-const LanguageSelector: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
+const LanguageSelector: FC<ContainerProps> = ({
+  isDrawer,
+  isDrawerOpen,
+  upwardsUnfold,
+}) => {
   const { languageSelected, setLanguageSelected } = useContext(GeneralContext);
   const { i18n } = useTranslation();
   const { push } = useRouter();
@@ -29,13 +29,18 @@ const LanguageSelector: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
   );
 
   return (
-    <Container isDrawer={isDrawer} isDrawerOpen={isDrawerOpen}>
+    <Container
+      isDrawer={isDrawer}
+      isDrawerOpen={isDrawerOpen}
+      upwardsUnfold={upwardsUnfold}
+    >
       <CustomSelector
         optionsKey="Language selector"
         images={languagesFlags}
         optionSelectAction={optionSelectAction}
         initialSelect={initialSelect.current}
         globalOptionSelected={languageSelected}
+        upwardsUnfold={upwardsUnfold}
       />
     </Container>
   );

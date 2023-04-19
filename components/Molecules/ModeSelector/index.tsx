@@ -5,13 +5,13 @@ import NightsStayIcon from "@mui/icons-material/NightsStay";
 import { CustomSelector } from "components/Atoms";
 import { Container } from "./styledComponents";
 import { ThemeMode } from "typings/theme";
+import { ContainerProps } from "typings/customSelector";
 
-interface Props {
-  isDrawer?: boolean;
-  isDrawerOpen?: boolean;
-}
-
-const ModeSelector: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
+const ModeSelector: FC<ContainerProps> = ({
+  isDrawer,
+  isDrawerOpen,
+  upwardsUnfold,
+}) => {
   const { themeModeSelected, setThemeModeSelected, setThemeMode } =
     useContext(GeneralContext);
 
@@ -37,12 +37,17 @@ const ModeSelector: FC<Props> = ({ isDrawer, isDrawerOpen }) => {
   );
 
   return (
-    <Container isDrawer={isDrawer} isDrawerOpen={isDrawerOpen}>
+    <Container
+      isDrawer={isDrawer}
+      isDrawerOpen={isDrawerOpen}
+      upwardsUnfold={upwardsUnfold}
+    >
       <CustomSelector
         optionsKey="Mode selector"
         icons={icons}
         optionSelectAction={optionSelectAction}
         globalOptionSelected={themeModeSelected}
+        upwardsUnfold={upwardsUnfold}
       />
     </Container>
   );

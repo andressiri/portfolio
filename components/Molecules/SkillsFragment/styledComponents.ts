@@ -36,7 +36,7 @@ export const SkillsContainer = styled(Box)(() => ({
 
 export const SkillContainer = styled(Box)(({ theme }) => ({
   zIndex: 1,
-  height: "56px",
+  height: theme.custom.buttons.height,
   display: "flex",
   alignItems: "center",
   padding: "10px 20px",

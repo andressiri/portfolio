@@ -12,6 +12,7 @@ export interface GeneralProps {
   initialSelect?: number;
   globalOptionSelected?: number;
   width?: string;
+  upwardsUnfold?: boolean;
 }
 
 export interface OptionsRequired extends GeneralProps {
@@ -24,4 +25,10 @@ export interface IconsRequired extends GeneralProps {
 
 export interface ImagesRequired extends GeneralProps {
   images: string[];
+}
+
+export interface ContainerProps {
+  isDrawer?: boolean;
+  isDrawerOpen?: boolean;
+  upwardsUnfold?: boolean;
 }

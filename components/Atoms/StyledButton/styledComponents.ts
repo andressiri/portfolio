@@ -198,17 +198,18 @@ const getTypeOfButton = (
 
 export const ButtonStyled = styled(Button, {
   shouldForwardProp: (prop) =>
-    !["BGType", "transparent", "shadow"].includes(prop as string),
+    !["isDisabled", "BGType", "transparent", "shadow"].includes(prop as string),
 })<{
+  isDisabled?: boolean;
   BGType: IStyledButton["BGType"];
   transparent: boolean;
   hover: IStyledButton["hover"];
   shadow: boolean;
-}>(({ theme, BGType, transparent, hover, shadow }) => {
+}>(({ theme, isDisabled, BGType, transparent, hover, shadow }) => {
   const typeOfButton = getTypeOfButton(theme, BGType, transparent, hover);
   return {
     width: "200px",
-    height: "56px",
+    height: theme.custom.buttons.height,
     margin: "0px",
     padding: "9px 0px 8px 0px",
     color: typeOfButton.color,
@@ -217,9 +218,13 @@ export const ButtonStyled = styled(Button, {
     lineHeight: "24px",
     letterSpacing: "0.46px",
     textTransform: "none",
-    background: typeOfButton.background,
+    background: isDisabled
+      ? theme.custom.buttons.disabledColor
+      : typeOfButton.background,
     borderRadius: theme.custom.radius.medium,
-    border: typeOfButton.border,
+    border: isDisabled
+      ? `2px solid ${theme.custom.buttons.disabledColor}`
+      : typeOfButton.border,
     boxShadow: shadow
       ? "rgb(0 0 0 / 12%) 0px 1px 5px 0px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 20%) 0px 3px 1px -2px"
       : "",

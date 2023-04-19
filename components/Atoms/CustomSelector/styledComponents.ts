@@ -3,19 +3,24 @@ import { Box } from "@mui/material";
 import Image from "next/image";
 
 export const CustomSelectContainer = styled(Box, {
-  shouldForwardProp: (prop) => !["width"].includes(prop as string),
-})<{ width?: string }>(({ theme, width }) => ({
-  width: width ? width : "fit-content",
-  minWidth: "50px",
-  border: `2px solid ${theme.palette.secondary.contrastText}`,
-  borderRadius: "5px",
-  cursor: "pointer",
-  userSelect: "none",
-  overflow: "hidden",
-  "&:hover, &:focus, &:active": {
-    boxShadow: `0px 0px 3px 0px ${theme.palette.secondary.contrastText}`,
-  },
-}));
+  shouldForwardProp: (prop) =>
+    !["width", "upwardsUnfold"].includes(prop as string),
+})<{ width?: string; upwardsUnfold?: boolean }>(
+  ({ theme, width, upwardsUnfold }) => ({
+    width: width ? width : "fit-content",
+    minWidth: "50px",
+    display: "flex",
+    flexDirection: upwardsUnfold ? "column-reverse" : "column",
+    border: `2px solid ${theme.palette.secondary.contrastText}`,
+    borderRadius: "5px",
+    cursor: "pointer",
+    userSelect: "none",
+    overflow: "hidden",
+    "&:hover, &:focus, &:active": {
+      boxShadow: `0px 0px 3px 0px ${theme.palette.secondary.contrastText}`,
+    },
+  })
+);
 
 export const SelectedContainer = styled(Box)(() => ({
   height: "24px",
