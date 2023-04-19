@@ -6,6 +6,9 @@ export const InnerContainer = styled(Box)(() => ({
   width: "100%",
   maxWidth: "1600px",
   height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 export const titleSpecifics: ITitleSpecifics = {
