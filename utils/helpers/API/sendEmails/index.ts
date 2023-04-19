@@ -26,6 +26,8 @@ const sendEmails = async (body: IBody, res: NextApiResponse) => {
     : "Andrés Siri - Thanks for contacting me";
 
   const thanksEmailSuccess = await sendEmail(
+    res,
+    language,
     email,
     thanksSubject,
     thanksEmailTemplate
@@ -44,6 +46,8 @@ const sendEmails = async (body: IBody, res: NextApiResponse) => {
   }
 
   const contactEmailSuccess = await sendEmail(
+    res,
+    language,
     process.env.NEXT_PUBLIC_PERSONAL_MAIL as string,
     contactSubject,
     contactEmailTemplate
