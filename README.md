@@ -6,7 +6,7 @@
   
   ## [<img src="/assets/icons/warning.svg" alt="Señal de alerta" width="30"/>](#) Sitio en construcción [<img src="/assets/icons/in-construction.svg" alt="Señal de construcción" width="30"/>](#)
   
-  ## Ir al sitio
+  ## Ir al sitio 
   
   Este sitio fue publicado utilizando el plan gratuito de [Vercel](https://vercel.com): [Ir al sitio](https://andressiri.vercel.app/es)
   
