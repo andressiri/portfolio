@@ -2,13 +2,14 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import { ITitleSpecifics } from "typings/sections";
 
-export const InnerContainer = styled(Box)(() => ({
+export const InnerContainer = styled(Box)(({ theme }) => ({
   width: "100%",
   maxWidth: "1600px",
   height: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  paddingBottom: `calc(${theme.custom.footer.height} - ${theme.custom.navButtons.height}px)`,
 }));
 
 export const titleSpecifics: ITitleSpecifics = {

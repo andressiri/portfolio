@@ -15,6 +15,9 @@ interface custom {
   navButtons: {
     height: number;
   };
+  footer: {
+    height: string;
+  };
 }
 
 declare module "@mui/material/styles" {

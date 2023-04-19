@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { WhatsAppFloating } from "components/Molecules";
-import { Navbar, NavigationDrawer } from "components/Organisms";
+import { Footer, Navbar, NavigationDrawer } from "components/Organisms";
 import { LayoutContainer } from "./styledComponents";
 
 interface IProps {
@@ -21,6 +21,7 @@ const Layout: FC<IProps> = ({ children }) => {
         onOpen={() => setIsDrawerOpen(true)}
       />
       {children}
+      <Footer />
       <WhatsAppFloating />
     </LayoutContainer>
   );

@@ -23,8 +23,8 @@ const useGetSocialMedia = (isFooter?: boolean) => {
     {
       text: "gitHub",
       href: GITHUB_URL,
-      icon: <GitHubIcon />,
-      tooltipProps: { width: "90px" },
+      icon: <GitHubIcon sx={{ transform: "translateX(2.5px)" }} />,
+      tooltipProps: { width: "90px", left: "-22.5px" },
     },
     {
       text: "mailto",
