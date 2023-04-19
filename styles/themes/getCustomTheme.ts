@@ -45,6 +45,9 @@ const getCustomTheme = ({ themeMode, themePalette }: Props) => {
       navbar: {
         height: "120px",
       },
+      navButtons: {
+        height: 70,
+      },
     },
   });
 
