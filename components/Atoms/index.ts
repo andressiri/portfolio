@@ -1,3 +1,5 @@
+export { default as AnimatedDownloadIcon } from "./AnimatedDownloadIcon";
+export { default as AnimatedSendingEmailIcon } from "./AnimatedSendingEmailIcon";
 export { default as ContactButton } from "./ContactButton";
 export { default as CustomSelector } from "./CustomSelector";
 export { default as CVDownloadButton } from "./CVDownloadButton";
