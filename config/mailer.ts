@@ -38,12 +38,19 @@ export const sendEmail = async (
     );
   }
 
-  const mailSuccess = await transporter.sendMail({
-    from: process.env.NEXT_PUBLIC_MAILER_MAIL,
-    to: sendTo,
-    subject,
-    html: mailTemplate,
-    replyTo: replyTo || process.env.NEXT_PUBLIC_PERSONAL_MAIL,
+  const mailSuccess = await new Promise(async (resolve, reject) => {
+    const response = await transporter.sendMail({
+      from: process.env.NEXT_PUBLIC_MAILER_MAIL,
+      to: sendTo,
+      subject,
+      html: mailTemplate,
+      replyTo: replyTo || process.env.NEXT_PUBLIC_PERSONAL_MAIL,
+    });
+
+    if (!response.accepted[0] || response.accepted[0] !== `${sendTo}`)
+      reject(false);
+
+    resolve(true);
   });
 
   return mailSuccess;
