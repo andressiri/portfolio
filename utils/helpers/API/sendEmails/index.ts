@@ -33,10 +33,7 @@ const sendEmails = async (body: IBody, res: NextApiResponse) => {
     thanksEmailTemplate
   );
 
-  if (
-    !thanksEmailSuccess.accepted[0] ||
-    thanksEmailSuccess.accepted[0] !== `${email}`
-  ) {
+  if (!thanksEmailSuccess) {
     res.status(500);
     throw new Error(
       isSpanish
@@ -53,11 +50,7 @@ const sendEmails = async (body: IBody, res: NextApiResponse) => {
     contactEmailTemplate
   );
 
-  if (
-    !contactEmailSuccess.accepted[0] ||
-    contactEmailSuccess.accepted[0] !==
-      `${process.env.NEXT_PUBLIC_PERSONAL_MAIL}`
-  ) {
+  if (!contactEmailSuccess) {
     res.status(500);
     throw new Error(
       isSpanish
