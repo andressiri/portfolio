@@ -35,6 +35,8 @@ const getCustomTheme = ({ themeMode, themePalette }: Props) => {
     },
     custom: {
       buttons: {
+        height: "56px",
+        disabledColor: "rgba(130, 130, 130, 1)",
         fontSizeMd: "18px",
       },
       radius: {
