@@ -1,4 +1,5 @@
 export { default as Avatar } from "./Avatar";
+export { default as ContactFormField } from "./ContactFormField";
 export { default as CVButtons } from "./CVButtons";
 export { default as DesktopScreenDisplay } from "./DesktopScreenDisplay";
 export { default as HeroSocialMedia } from "./HeroSocialMedia";
