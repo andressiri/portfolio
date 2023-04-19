@@ -7,6 +7,7 @@ import React, {
   useState,
 } from "react";
 import { GeneralContext } from "contexts";
+import { useTheme } from "@mui/material";
 import { getBrowser } from "utils/helpers";
 
 interface Props {
@@ -35,6 +36,7 @@ const useCarouselControllers = ({
   considerScrollbarWidth,
 }: Props) => {
   const { viewportWidth } = useContext(GeneralContext);
+  const theme = useTheme();
   const browser = useRef(getBrowser());
   const scrollbarWidth = useRef(
     !considerScrollbarWidth ||
@@ -47,11 +49,20 @@ const useCarouselControllers = ({
   // Handle options props and changes
   const sidesSpace = useMemo(() => {
     const space = buttonsVisible
-      ? 70 * 2 + leftMargin + rightMargin + scrollbarWidth.current
+      ? theme.custom.navButtons.height * 2 +
+        leftMargin +
+        rightMargin +
+        scrollbarWidth.current
       : leftMargin + rightMargin + scrollbarWidth.current;
 
     return space;
-  }, [leftMargin, rightMargin, scrollbarWidth, buttonsVisible]);
+  }, [
+    leftMargin,
+    rightMargin,
+    scrollbarWidth,
+    buttonsVisible,
+    theme.custom.navButtons.height,
+  ]);
 
   const responsiveWidth = useCallback(() => {
     if (viewportWidth >= cardWidth + sidesSpace) return cardWidth;

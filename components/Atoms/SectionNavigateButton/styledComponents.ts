@@ -22,8 +22,8 @@ export const GoToSectionButton = styled(IconButton, {
     top: isPrevious ? "0px" : "unset",
     bottom: isPrevious ? "unset" : "0px",
     left: "calc(50% - 35px)",
-    width: "70px",
-    height: "70px",
+    width: `${theme.custom.navButtons.height}px`,
+    height: `${theme.custom.navButtons.height}px`,
     color: theme.palette.secondary.contrastText,
     background: "transparent",
     transform: isPrevious
@@ -33,7 +33,7 @@ export const GoToSectionButton = styled(IconButton, {
       isPrevious ? "animatePreviousSectionButton" : "animateNextSectionButton"
     } 3000ms infinite ease-in-out`,
     "& svg": {
-      fontSize: "70px !important",
+      fontSize: `${theme.custom.navButtons.height}px !important`,
     },
   };
 });

@@ -51,9 +51,9 @@ export const BackwardsButton = styled(IconButton, {
   },
   position: "absolute",
   top: `${cardHeight / 2 - 30}px`,
-  left: "-70px",
-  width: "70px",
-  height: "70px",
+  left: `-${theme.custom.navButtons.height}px`,
+  width: `${theme.custom.navButtons.height}px`,
+  height: `${theme.custom.navButtons.height}px`,
   display: `${navButtons ? "flex" : "none"}`,
   alignItems: "center",
   justifyContent: "center",
@@ -62,7 +62,7 @@ export const BackwardsButton = styled(IconButton, {
     ? "animateCarouselBackwardsButton 3000ms infinite ease-in-out"
     : "none",
   "& svg": {
-    fontSize: "70px !important",
+    fontSize: `${theme.custom.navButtons.height}px !important`,
   },
   "&:disabled": {
     color: colorChosen ? colorChosen : theme.palette.primary.contrastText,
@@ -71,14 +71,14 @@ export const BackwardsButton = styled(IconButton, {
 
 export const ForwardButton = styled(BackwardsButton, {
   shouldForwardProp: (prop) => !["animatedButtons"].includes(prop as string),
-})<{ animatedButtons?: boolean }>(({ animatedButtons }) => ({
+})<{ animatedButtons?: boolean }>(({ theme, animatedButtons }) => ({
   "@keyframes animateCarouselForwardButton": {
     "0%": { transform: "translateX(0px)" },
     "50%": { transform: "translateX(3px)" },
     "100%": { transform: "translateX(0px)" },
   },
   left: "unset",
-  right: "-70px",
+  right: `-${theme.custom.navButtons.height}px`,
   animation: animatedButtons
     ? "animateCarouselForwardButton 3000ms infinite ease-in-out"
     : "none",

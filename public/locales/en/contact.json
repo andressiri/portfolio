@@ -1,1 +1,8 @@
-{}
+{
+  "name": "Name *",
+  "email": "Your Email *",
+  "subject": "Subject *",
+  "message": "Message *",
+  "submit": "Contact by email",
+  "sending": "Sending email..."
+}

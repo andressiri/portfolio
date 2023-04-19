@@ -21,7 +21,7 @@ const AnimatedDownloadIcon: FC<Props> = ({ downloading }) => {
       <ArrowPath
         d="M29.9,6H18.1a2,2,0,0,0-2,2V20.4H6a2,2,0,0,0-1.4,3.5L22.5,43.4a2.2,2.2,0,0,0,3,0L43.4,23.9A2,2,0,0,0,42,20.4H31.9V8a2,2,0,0,0-2-2Z"
         downloading={downloading}
-      ></ArrowPath>
+      />
     </svg>
   );
 };

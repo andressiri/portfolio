@@ -2,13 +2,13 @@ import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import { ITitleSpecifics } from "typings/sections";
 
-export const Container = styled(Box)(() => ({
+export const Container = styled(Box)(({ theme }) => ({
   position: "relative",
   width: "100%",
   height: "100vh",
   minHeight: "800px",
   margin: "0px auto",
-  padding: "70px 0px",
+  padding: `${theme.custom.navButtons.height}px 0px`,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",

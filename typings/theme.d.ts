@@ -2,12 +2,20 @@ import { Theme, ThemeOptions } from "@mui/material/styles"; // eslint-disable-li
 
 interface custom {
   buttons: {
+    height: string;
+    disabledColor: string;
     fontSizeMd: string;
   };
   radius: {
     medium: string;
   };
   navbar: {
+    height: string;
+  };
+  navButtons: {
+    height: number;
+  };
+  footer: {
     height: string;
   };
 }

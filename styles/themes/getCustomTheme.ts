@@ -35,6 +35,8 @@ const getCustomTheme = ({ themeMode, themePalette }: Props) => {
     },
     custom: {
       buttons: {
+        height: "56px",
+        disabledColor: "rgba(130, 130, 130, 1)",
         fontSizeMd: "18px",
       },
       radius: {
@@ -42,6 +44,12 @@ const getCustomTheme = ({ themeMode, themePalette }: Props) => {
       },
       navbar: {
         height: "120px",
+      },
+      navButtons: {
+        height: 70,
+      },
+      footer: {
+        height: "100px",
       },
     },
   });

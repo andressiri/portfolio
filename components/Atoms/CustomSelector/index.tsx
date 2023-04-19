@@ -27,6 +27,7 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
   initialSelect,
   globalOptionSelected,
   width,
+  upwardsUnfold,
 }) => {
   const arrayToMap = useMemo(
     () => (options ? options : icons ? icons : images ? images : []),
@@ -56,7 +57,7 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
   });
 
   return (
-    <CustomSelectContainer width={width}>
+    <CustomSelectContainer width={width} upwardsUnfold={upwardsUnfold}>
       <SelectedContainer
         ref={selectRef}
         tabIndex={0}

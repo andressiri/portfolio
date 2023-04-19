@@ -21,7 +21,7 @@ const ProjectsCarousel: FC = () => {
           array: projectsLogosArray,
           container: {
             width: "100%",
-            height: "70px",
+            height: `${theme.custom.navButtons.height}px`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
