@@ -13,7 +13,7 @@ import {
 
 const NavigationDrawer: FC<SwipeableDrawerProps> = (props) => {
   return (
-    <StyledSwipeableDrawer {...props} anchor="right">
+    <StyledSwipeableDrawer {...props} disableRestoreFocus={true} anchor="right">
       <CloseContainer isDrawerOpen={props.open} appearingTime={700}>
         <StyledIconButton onClick={(e) => props.onClose(e)}>
           <CloseIcon />
@@ -31,7 +31,13 @@ const NavigationDrawer: FC<SwipeableDrawerProps> = (props) => {
         <Options isDrawer={true} isDrawerOpen={true} />
       </OptionsContainer>
       <StyledDivider isDrawerOpen={props.open} appearingTime={590} />
-      <NavLinks isDrawer={true} isDrawerOpen={props.open} />
+      <NavLinks
+        isDrawer={true}
+        isDrawerOpen={props.open}
+        drawerHandler={(e: React.SyntheticEvent<object, Event>) =>
+          props.onClose(e)
+        }
+      />
     </StyledSwipeableDrawer>
   );
 };
