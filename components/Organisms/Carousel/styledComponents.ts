@@ -35,22 +35,19 @@ export const ButtonsAndBandContainer = styled(Box, {
 
 export const BackwardsButton = styled(IconButton, {
   shouldForwardProp: (prop) =>
-    !["cardHeight", "colorChosen", "navButtons", "animatedButtons"].includes(
-      prop as string
-    ),
+    !["colorChosen", "navButtons", "animatedButtons"].includes(prop as string),
 })<{
-  cardHeight: number;
   colorChosen?: string;
   navButtons: boolean;
   animatedButtons?: boolean;
-}>(({ theme, cardHeight, colorChosen, navButtons, animatedButtons }) => ({
+}>(({ theme, colorChosen, navButtons, animatedButtons }) => ({
   "@keyframes animateCarouselBackwardsButton": {
     "0%": { transform: "translateX(0px)" },
     "50%": { transform: "translateX(-3px)" },
     "100%": { transform: "translateX(0px)" },
   },
   position: "absolute",
-  top: `${cardHeight / 2 - 30}px`,
+  top: `calc(50% - ${theme.custom.navButtons.height / 2}px)`,
   left: `-${theme.custom.navButtons.height}px`,
   width: `${theme.custom.navButtons.height}px`,
   height: `${theme.custom.navButtons.height}px`,
