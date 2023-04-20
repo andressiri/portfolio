@@ -24,12 +24,12 @@ export const Container = styled("nav")(({ theme }) => ({
 export const LogoContainer = styled(Box)(() => ({
   width: "300px",
   height: "100%",
-  marginTop: "14px",
+  paddingTop: "14px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
 }));
 
 export const SocialMediaContainer = styled(LogoContainer)(() => ({
-  marginTop: "0px",
+  paddingTop: "0px",
 }));
