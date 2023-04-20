@@ -62,6 +62,7 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
         ref={selectRef}
         tabIndex={0}
         onClick={selectOnClick}
+        onTouchEnd={selectOnClick}
         onFocus={selectOnFocus}
         onBlur={selectOnBlur}
         onKeyDown={(e) => selectOnKeyDown(e)}
@@ -90,6 +91,7 @@ const CustomSelector: FC<OptionsRequired | IconsRequired | ImagesRequired> = ({
                 key={`${optionsKey}${id}`}
                 onMouseEnter={() => handleSetHoverOption(id)}
                 onMouseLeave={handleRecoverFromHover}
+                onTouchStart={() => handleSetHoverOption(id)}
                 options={options}
                 icons={icons}
                 images={images}
