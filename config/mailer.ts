@@ -9,27 +9,46 @@ export const sendEmail = async (
   mailTemplate: string,
   replyTo?: string
 ) => {
-  const transporter = await nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-      user: process.env.NEXT_PUBLIC_MAILER_MAIL,
-      pass: process.env.MAIL_APP_PASSWORD,
-    },
-  });
-
-  const server = await new Promise((resolve, reject) => {
-    // verify connection configuration
-    transporter.verify(function (error, success) {
-      if (success) {
-        resolve(success);
-      }
-      reject(error);
+  try {
+    const transporter = await nodemailer.createTransport({
+      host: process.env.MAILER_HOST,
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.MAILER_MAIL,
+        pass: process.env.MAILER_APP_PASSWORD,
+      },
     });
-  });
 
-  if (!server) {
+    await new Promise((resolve, reject) => {
+      transporter.verify(function (error, success) {
+        if (success) {
+          resolve(success);
+        }
+        reject(error);
+      });
+    });
+
+    const mailSuccess = await new Promise((resolve, reject) => {
+      transporter
+        .sendMail({
+          from: "Andrés Siri - Full Stack Developer",
+          to: sendTo,
+          subject,
+          html: mailTemplate,
+          replyTo: replyTo || process.env.NEXT_PUBLIC_PERSONAL_MAIL,
+        })
+        .then((info) => {
+          if (info.response.includes("250")) {
+            resolve(true);
+          }
+          reject(info);
+        });
+    });
+
+    return mailSuccess;
+  } catch (err) {
+    if (process.env.NEXT_PUBLIC_ENV === "development") console.log(err);
     res.status(500);
     throw new Error(
       language === "es"
@@ -37,23 +56,4 @@ export const sendEmail = async (
         : "There was an error sending the email, please try again"
     );
   }
-
-  const mailSuccess = await new Promise(async (resolve, reject) => {
-    await transporter
-      .sendMail({
-        from: process.env.NEXT_PUBLIC_MAILER_MAIL,
-        to: sendTo,
-        subject,
-        html: mailTemplate,
-        replyTo: replyTo || process.env.NEXT_PUBLIC_PERSONAL_MAIL,
-      })
-      .then((info) => {
-        if (info.response.includes("250")) {
-          resolve(true);
-        }
-        reject(false);
-      });
-  });
-
-  return mailSuccess;
 };

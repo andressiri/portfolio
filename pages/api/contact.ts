@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { checkContactBody, errorHandler, sendEmails } from "utils/helpers";
 
-const contactHandler = (req: NextApiRequest, res: NextApiResponse) => {
+const contactHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method === "POST") {
       checkContactBody(req.body, res);
 
-      sendEmails(req.body, res);
+      await sendEmails(req.body, res);
 
       return res.status(201).json({
         message:
