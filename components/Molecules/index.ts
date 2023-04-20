@@ -2,6 +2,7 @@ export { default as Avatar } from "./Avatar";
 export { default as ContactFormField } from "./ContactFormField";
 export { default as CVButtons } from "./CVButtons";
 export { default as DesktopScreenDisplay } from "./DesktopScreenDisplay";
+export { default as HeroCallToAction } from "./HeroCallToAction";
 export { default as HeroSocialMedia } from "./HeroSocialMedia";
 export { default as LanguageSelector } from "./LanguageSelector";
 export { default as MobilePhoneDisplay } from "./MobilePhoneDisplay";

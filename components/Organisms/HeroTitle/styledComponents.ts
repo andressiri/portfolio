@@ -10,6 +10,9 @@ export const Container = styled(Box)(() => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+  "@media (max-width: 1080px)": {
+    width: "100%",
+  },
 }));
 
 export const InnerContainer = styled(Box)(() => ({
@@ -26,6 +29,10 @@ export const InnerContainer = styled(Box)(() => ({
   "@media (max-width: 1150px)": {
     margin: "auto 20px auto auto",
   },
+  "@media (max-width: 1080px)": {
+    margin: "auto auto 40px auto",
+    alignItems: "center",
+  },
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
@@ -36,6 +43,10 @@ export const Title = styled(Typography)(({ theme }) => ({
   letterSpacing: "-0.9px",
   fontWeight: 900,
   whiteSpace: "nowrap",
+  "@media (max-width: 550px)": {
+    fontSize: "calc(74px + (100vw - 550px) * 0.12)",
+    lineHeight: "calc(74px + (100vw - 550px) * 0.12)",
+  },
 }));
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
@@ -46,6 +57,11 @@ export const Subtitle = styled(Typography)(({ theme }) => ({
   lineHeight: "48px",
   letterSpacing: "-0.675px",
   whiteSpace: "nowrap",
+  "@media (max-width: 550px)": {
+    margin: "0px 0px calc(40px + (100vw - 550px) * 0.07) 0px",
+    fontSize: "calc(48px + (100vw - 550px) * 0.08)",
+    lineHeight: "calc(48px + (100vw - 550px) * 0.08)",
+  },
 }));
 
 export const Phrase = styled(Typography)(({ theme }) => ({
@@ -55,9 +71,8 @@ export const Phrase = styled(Typography)(({ theme }) => ({
   lineHeight: "26px",
   letterSpacing: "-0.45px",
   fontWeight: 600,
-}));
-
-export const ActionsContainer = styled(Box)(() => ({
-  display: "flex",
-  gap: "20px",
+  "@media (max-width: 550px)": {
+    fontSize: "calc(26px + (100vw - 550px) * 0.04)",
+    lineHeight: "calc(26px + (100vw - 550px) * 0.04)",
+  },
 }));

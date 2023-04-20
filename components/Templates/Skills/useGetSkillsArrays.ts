@@ -38,15 +38,15 @@ const useGetSkillsArrays = () => {
   const frontEndArray: ISkill[] = [
     { text: "HTML 5", logo: HTML5Logo },
     { text: "CSS 3", logo: CSS3Logo },
-    { text: "JavaScript", logo: JavaScriptLogo },
     { text: "TypeScript", logo: TypeScriptLogo },
+    { text: "JavaScript", logo: JavaScriptLogo },
     { text: "React", logo: ReactLogo },
-    { text: "Next", logo: NextLogo },
     { text: "Redux Toolkit", logo: ReduxToolkitLogo },
+    { text: "Next", logo: NextLogo },
     { text: "Material UI", logo: MaterialUILogo },
-    { text: "Styled Components", logo: StyledComponentsLogo },
-    { text: "Bootstrap", logo: BootstrapLogo },
     { text: "Tailwind", logo: TailwindLogo },
+    { text: "Bootstrap", logo: BootstrapLogo },
+    { text: "Styled Components", logo: StyledComponentsLogo },
   ];
 
   const backEndArray: ISkill[] = [

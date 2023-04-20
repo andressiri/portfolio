@@ -9,6 +9,15 @@ export const Container = styled(Box)(() => ({
   alignItems: "center",
   justifyContent: "center",
   overflow: "hidden",
+  "@media (max-width: 1149px)": {
+    width: "100%",
+    maxWidth: "100%",
+    maxHeight: "300px",
+    margin: "0px auto 20px auto",
+  },
+  "@media (max-width: 540px)": {
+    maxHeight: `calc(100vw * 0.5)`,
+  },
 }));
 
 export const DesktopContainer = styled(Box, {
@@ -20,6 +29,16 @@ export const DesktopContainer = styled(Box, {
   height: "350px",
   maxHeight: `calc((100vw - ${mobileSrc ? "520px" : "500px"}) * 0.5)`,
   margin: "auto 50px auto auto",
+  "@media (max-width: 1300px)": {
+    margin: "auto 10px auto auto",
+  },
+  "@media (max-width: 1149px)": {
+    margin: "auto",
+    maxHeight: "300px",
+  },
+  "@media (max-width: 540px)": {
+    maxHeight: `calc(100vw * 0.5)`,
+  },
 }));
 
 export const SmallMobileContainer = styled(Box)(() => ({
@@ -40,4 +59,20 @@ export const MobileContainer = styled(Box)(() => ({
   height: "80%",
   maxHeight: "80%",
   margin: "auto 100px auto auto",
+  "@media (max-width: 1300px)": {
+    margin: "auto 40px auto auto",
+  },
+  "@media (max-width: 1149px)": {
+    width: "150px",
+    height: "100%",
+    maxHeight: "300px",
+    margin: "auto",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  "@media (max-width: 540px)": {
+    maxWidth: `calc(100vw * 0.25)`,
+    maxHeight: `calc(100vw * 0.5)`,
+  },
 }));

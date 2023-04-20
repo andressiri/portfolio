@@ -14,4 +14,7 @@ export const Container = styled(Box)(() => ({
     width: "35px",
     height: "35px",
   },
+  "@media (max-width: 1149px)": {
+    justifyContent: "center",
+  },
 }));

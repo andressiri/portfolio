@@ -131,7 +131,6 @@ const Carousel: FC<Props> = ({
         <BackwardsButton
           onClick={handleBackwards}
           disabled={disableNavButtons}
-          cardHeight={cardHeight}
           colorChosen={color}
           navButtons={navButtons && !disableNav.current}
           animatedButtons={animatedButtons}
@@ -173,7 +172,6 @@ const Carousel: FC<Props> = ({
         <ForwardButton
           onClick={handleForward}
           disabled={disableNavButtons}
-          cardHeight={cardHeight}
           colorChosen={color}
           navButtons={navButtons && !disableNav.current}
           animatedButtons={animatedButtons}

@@ -9,6 +9,10 @@ export const Container = styled(Box)(() => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+  "@media (max-width: 1080px)": {
+    width: "100%",
+    marginTop: "20px",
+  },
 }));
 
 export const InnerContainer = styled(Box)(() => ({
@@ -25,5 +29,30 @@ export const InnerContainer = styled(Box)(() => ({
   },
   "@media (max-width: 1150px)": {
     margin: "auto auto auto 40px",
+  },
+  "@media (max-width: 1080px)": {
+    margin: "auto",
+  },
+  "@media (max-width: 440px)": {
+    gap: "20px",
+  },
+  "@media (max-width: 380px)": {
+    gap: "10px",
+  },
+  "@media (max-width: 340px)": {
+    gap: "0px",
+  },
+}));
+
+export const AvatarContainer = styled(Box)(() => ({
+  margin: "7px 0px",
+  "@media (max-width: 440px)": {
+    transform: "scale(0.9)",
+  },
+  "@media (max-width: 380px)": {
+    transform: "scale(0.8)",
+  },
+  "@media (max-width: 340px)": {
+    transform: "scale(0.7)",
   },
 }));

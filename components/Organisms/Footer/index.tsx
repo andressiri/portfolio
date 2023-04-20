@@ -3,6 +3,7 @@ import { HeroSocialMedia, NavLogo, Options } from "components/Molecules";
 import {
   Container,
   LogoContainer,
+  OptionsContainer,
   SocialMediaContainer,
 } from "./styledComponents";
 
@@ -12,7 +13,9 @@ const Footer: FC = () => {
       <LogoContainer>
         <NavLogo />
       </LogoContainer>
-      <Options upwardsUnfold={true} />
+      <OptionsContainer>
+        <Options upwardsUnfold={true} />
+      </OptionsContainer>
       <SocialMediaContainer>
         <HeroSocialMedia isFooter={true} />
       </SocialMediaContainer>

@@ -9,8 +9,8 @@ export const Container = styled("nav")(({ theme }) => ({
   width: "100%",
   maxWidth: "1600px",
   height: theme.custom.footer.height,
-  padding: "0px 20px",
   display: "flex",
+  flexWrap: "wrap",
   alignItems: "center",
   justifyContent: "space-between",
   background: theme.palette.primary.contrastText.replace("0.87)", "1)"),
@@ -18,6 +18,13 @@ export const Container = styled("nav")(({ theme }) => ({
   overflow: "visible",
   "@media (min-width: 1600px)": {
     left: "calc((100vw - 1600px) / 2)",
+  },
+  "@media (max-width: 930px)": {
+    paddingTop: "10px",
+    height: theme.custom.footer.transitionHeight,
+  },
+  "@media (max-width: 600px)": {
+    height: theme.custom.footer.mobileHeight,
   },
 }));
 
@@ -28,8 +35,27 @@ export const LogoContainer = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  "@media (max-width: 930px)": {
+    height: "70px",
+    width: "50%",
+  },
+  "@media (max-width: 600px)": {
+    height: "70px",
+    width: "100%",
+  },
+}));
+
+export const OptionsContainer = styled(LogoContainer)(() => ({
+  paddingTop: "0px",
+  "@media (max-width: 930px)": {
+    order: "3",
+    width: "100%",
+  },
 }));
 
 export const SocialMediaContainer = styled(LogoContainer)(() => ({
   paddingTop: "0px",
+  "@media (max-width: 930px)": {
+    order: "2",
+  },
 }));

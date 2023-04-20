@@ -8,4 +8,7 @@ export const InnerContainer = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  "@media (max-width: 1080px)": {
+    flexDirection: "column-reverse",
+  },
 }));
