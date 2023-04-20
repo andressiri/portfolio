@@ -1,18 +1,21 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { GeneralContext } from "contexts";
 import { useTranslation } from "next-i18next";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { ContactButton, StyledButton, WhatsAppAnchor } from "components/Atoms";
-import { HeroSocialMedia } from "components/Molecules";
+import {
+  CVButtons,
+  HeroCallToAction,
+  HeroSocialMedia,
+} from "components/Molecules";
 import {
   Container,
   InnerContainer,
   Title,
   Subtitle,
   Phrase,
-  ActionsContainer,
 } from "./styledComponents";
 
 const HeroTitle: FC = () => {
+  const { viewportWidth } = useContext(GeneralContext);
   const { t } = useTranslation("hero");
 
   return (
@@ -22,22 +25,7 @@ const HeroTitle: FC = () => {
         <Subtitle variant="h2">{t("subtitle")}</Subtitle>
         <Phrase variant="h3">{t("phrase")}</Phrase>
         <HeroSocialMedia />
-        <ActionsContainer>
-          <ContactButton
-            BGType="secondaryContrastOutlined"
-            transparent={true}
-            hover="primary"
-          />
-          <WhatsAppAnchor>
-            <StyledButton
-              endIcon={<WhatsAppIcon />}
-              tabIndex={-1}
-              hover="outlined"
-            >
-              WhatsApp
-            </StyledButton>
-          </WhatsAppAnchor>
-        </ActionsContainer>
+        {viewportWidth <= 1080 ? <CVButtons /> : <HeroCallToAction />}
       </InnerContainer>
     </Container>
   );
