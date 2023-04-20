@@ -4,6 +4,7 @@ import { Tooltip } from "components/Atoms";
 import { Container, StyledIconContainer } from "./styledComponents";
 import useDragControllers from "./useDragControllers";
 import { TooltipProps } from "typings/tooltip";
+import { CSSObject } from "@mui/material";
 
 interface Props {
   icon: JSX.Element;
@@ -11,6 +12,8 @@ interface Props {
   tooltipProps?: TooltipProps;
   href?: string;
   onClick?: () => void;
+  sx?: CSSObject;
+  initialPosition?: "topLeft" | "topRight" | "bottomRight" | "bottomLeft";
 }
 const FloatingButton: FC<Props> = ({
   icon,
@@ -18,6 +21,8 @@ const FloatingButton: FC<Props> = ({
   tooltipProps,
   href,
   onClick,
+  sx,
+  initialPosition = "bottomRight",
 }) => {
   const [displayTooltip, setDisplayTooltip] = useState(false);
   const dragControllers = useDragControllers();
@@ -44,6 +49,8 @@ const FloatingButton: FC<Props> = ({
       }}
       topPosition={top}
       leftPosition={left}
+      initialPosition={initialPosition}
+      sx={sx}
     >
       <a
         href={href}
@@ -54,7 +61,7 @@ const FloatingButton: FC<Props> = ({
         onClick={(e) => {
           if (isDragging.current || (!href && onClick)) e.preventDefault();
 
-          if (onClick) onClick();
+          if (onClick && !isDragging.current) onClick();
         }}
       >
         <StyledIconContainer>{icon}</StyledIconContainer>

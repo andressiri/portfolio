@@ -154,10 +154,8 @@ const useDragControllers = () => {
       window.addEventListener("touchmove", touchMove);
       window.addEventListener("mouseup", touchEnd);
       window.addEventListener("touchend", touchEnd);
-
-      lockScrolling();
     },
-    [getPosition, touchEnd, touchMove, lockScrolling]
+    [getPosition, touchEnd, touchMove]
   );
 
   const dragControllers = {

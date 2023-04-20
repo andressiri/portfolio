@@ -9,6 +9,12 @@ const WhatsAppFloating: FC = () => {
       icon={<WhatsAppIcon />}
       tooltipText="whatsAppContact"
       href={WHATSAPP_URL}
+      sx={{
+        "& svg": {
+          width: "130%",
+          height: "130%",
+        },
+      }}
     />
   );
 };
