@@ -22,7 +22,10 @@ const LanguageSelector: FC<ContainerProps> = ({
 
   const optionSelectAction = useCallback(
     (optionToChange: number) => {
-      push("/", undefined, { locale: languages[optionToChange] });
+      push("/", undefined, {
+        locale: languages[optionToChange],
+        scroll: false,
+      });
       setLanguageSelected(optionToChange);
     },
     [languages, push, setLanguageSelected]

@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import { GeneralContext } from "contexts";
 import { useTheme } from "@mui/material";
-import { getBrowser } from "utils/helpers";
 
 interface Props {
   cardWidth: number;
@@ -20,7 +19,7 @@ interface Props {
   autoTime: number;
   transitionTime: number; // miliseconds
   initialSlide: number;
-  considerScrollbarWidth: boolean;
+  scrollbarWidth: number;
 }
 
 const useCarouselControllers = ({
@@ -33,18 +32,10 @@ const useCarouselControllers = ({
   autoTime,
   transitionTime,
   initialSlide,
-  considerScrollbarWidth,
+  scrollbarWidth,
 }: Props) => {
   const { viewportWidth } = useContext(GeneralContext);
   const theme = useTheme();
-  const browser = useRef(getBrowser());
-  const scrollbarWidth = useRef(
-    !considerScrollbarWidth ||
-      !browser ||
-      ["Firefox", "Mobile", "unknown"].includes(browser.current as string)
-      ? 0
-      : 17
-  );
 
   // Handle options props and changes
   const sidesSpace = useMemo(() => {
@@ -52,8 +43,8 @@ const useCarouselControllers = ({
       ? theme.custom.navButtons.height * 2 +
         leftMargin +
         rightMargin +
-        scrollbarWidth.current
-      : leftMargin + rightMargin + scrollbarWidth.current;
+        scrollbarWidth
+      : leftMargin + rightMargin + scrollbarWidth;
 
     return space;
   }, [

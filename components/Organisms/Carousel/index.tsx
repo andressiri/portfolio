@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import { CSSObject } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { getBrowser } from "utils/helpers";
 import {
   Container,
   ButtonsAndBandContainer,
@@ -66,6 +67,7 @@ const Carousel: FC<Props> = ({
 }) => {
   const { t } = useTranslation("Carousel");
   const disableNav = useRef<boolean>(disableNavigation);
+  const [scrollbarWidth, setScrollbarWidth] = useState<number>(0);
   const [forceReload, setForceReload] = useState<number>(1); // required to avoid error because of differences between SSR and CSR
 
   const { childrenArray, bulletsArray } = useSetupChildrenArray({
@@ -96,12 +98,25 @@ const Carousel: FC<Props> = ({
     autoTime,
     transitionTime,
     initialSlide,
-    considerScrollbarWidth,
+    scrollbarWidth,
   });
 
   useEffect(() => {
     setForceReload((prev: number) => prev + 1);
   }, []);
+
+  useEffect(() => {
+    if (forceReload > 1) {
+      const browser = getBrowser();
+      setScrollbarWidth(
+        !considerScrollbarWidth ||
+          !browser ||
+          ["Firefox", "Mobile", "unknown"].includes(browser as string)
+          ? 0
+          : 17
+      );
+    }
+  }, [forceReload, considerScrollbarWidth]);
 
   return (
     <Container
