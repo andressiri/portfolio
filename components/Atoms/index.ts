@@ -3,6 +3,7 @@ export { default as AnimatedSendingEmailIcon } from "./AnimatedSendingEmailIcon"
 export { default as ContactButton } from "./ContactButton";
 export { default as CustomSelector } from "./CustomSelector";
 export { default as CVDownloadButton } from "./CVDownloadButton";
+export { default as FloatingButton } from "./FloatingButton";
 export { default as SectionNavigateButton } from "./SectionNavigateButton";
 export { default as IconWithTooltip } from "./IconWithTooltip";
 export { default as NavDrawerController } from "./NavDrawerController";
