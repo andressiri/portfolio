@@ -13,6 +13,10 @@ export const Container = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
+  "@media (max-width: 1149px)": {
+    height: "auto",
+    minHeight: "100vh",
+  },
 }));
 
 export const Title = styled(Typography, {

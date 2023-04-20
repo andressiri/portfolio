@@ -18,6 +18,8 @@ interface custom {
   };
   footer: {
     height: string;
+    transitionHeight: string;
+    mobileHeight: string;
   };
 }
 

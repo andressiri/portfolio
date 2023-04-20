@@ -12,6 +12,15 @@ export const Container = styled(Box)(({ theme }) => ({
     width: "40px",
     height: "40px",
   },
+  "@media (max-width: 1149px)": {
+    margin: "25px 0px",
+  },
+  "@media (max-width: 550px)": {
+    "& svg": {
+      width: "calc(40px + (100vw - 550px) * 0.012)",
+      height: "calc(40px + (100vw - 550px) * 0.012)",
+    },
+  },
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
@@ -22,6 +31,13 @@ export const Title = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   lineHeight: "32px",
   letterSpacing: "0.65px",
+  "@media (max-width: 1149px)": {
+    margin: "0px auto 30px auto",
+  },
+  "@media (max-width: 550px)": {
+    fontSize: "calc(32px + (100vw - 550px) * 0.04)",
+    lineHeight: "calc(32px + (100vw - 550px) * 0.04)",
+  },
 }));
 
 export const SkillsContainer = styled(Box)(() => ({
@@ -46,6 +62,10 @@ export const SkillContainer = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.dark,
   background: theme.palette.primary.contrastText.replace("0.87)", "1)"),
   border: `1px solid ${theme.palette.secondary.contrastText}`,
+  "@media (max-width: 550px)": {
+    padding:
+      "calc(10px + (100vw - 550px) * 0.014) calc(20px + (100vw - 550px) * 0.04)",
+  },
 }));
 
 export const SkillText = styled(Typography)(({ theme }) => ({
@@ -54,4 +74,8 @@ export const SkillText = styled(Typography)(({ theme }) => ({
   fontWeight: 500,
   fontSize: "18px",
   lineHeight: "18px",
+  "@media (max-width: 550px)": {
+    fontSize: "calc(18px + (100vw - 550px) * 0.012)",
+    lineHeight: "calc(18px + (100vw - 550px) * 0.012)",
+  },
 }));

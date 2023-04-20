@@ -2,8 +2,8 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import Image from "next/image";
 
-const width = 340;
-const borderWidth = 8;
+const width = 320;
+const borderWidth = 7;
 
 export const OuterCircleContainer = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -13,16 +13,16 @@ export const OuterCircleContainer = styled(Box)(({ theme }) => ({
   border: `${borderWidth}px solid ${theme.palette.primary.dark}`,
   borderRadius: "50%",
   overflow: "visible",
-  transform: "scale(1)",
+  transform: "scale(1.06)",
   transition: "800ms transform",
   "& img": {
     transition: "800ms transform",
-    transform: "scale(1) translateY(0px)",
+    transform: "scale(1.06) translateY(0px)",
   },
   "&:hover": {
-    transform: "scale(1.01)",
+    transform: "scale(1.07)",
     "& img": {
-      transform: `scale(1.2) translateY(-${borderWidth * 5}px)`,
+      transform: `scale(1.25) translateY(-${borderWidth * 5}px)`,
     },
   },
 }));

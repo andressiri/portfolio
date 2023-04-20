@@ -9,4 +9,7 @@ export const Container = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  "@media (max-width: 1149px)": {
+    flexDirection: "column",
+  },
 }));

@@ -12,5 +12,7 @@
   "goToHero": "Go to hero section",
   "goToSkills": "Go to skills section",
   "goToProjects": "Go to projects section",
-  "goToContact": "Go to contact section"
+  "goToContact": "Go to contact section",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu"
 }
