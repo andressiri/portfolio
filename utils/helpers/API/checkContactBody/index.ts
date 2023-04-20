@@ -20,12 +20,12 @@ const checkContactBody = (body: any, res: NextApiResponse) => {
       res.status(400);
       throw new Error(
         body.language === "es"
-          ? `Por favor completa el campo ${`${
-              field.es.charAt(0).toUpperCase
-            }${field.es.slice(1)}`}`
-          : `Please complete the ${`${
-              field.en.charAt(0).toUpperCase
-            }${field.en.slice(1)}`} field`
+          ? `Por favor completa el campo ${Array.from(
+              field.es
+            )[0].toUpperCase()}${field.es.slice(1)}`
+          : `Please complete the ${Array.from(
+              field.en
+            )[0].toUpperCase()}${field.en.slice(1)} field`
       );
     }
   };
