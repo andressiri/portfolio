@@ -51,6 +51,8 @@ const getCustomTheme = ({ themeMode, themePalette }: Props) => {
       },
       footer: {
         height: "100px",
+        transitionHeight: "160px",
+        mobileHeight: "250px",
       },
     },
   });
