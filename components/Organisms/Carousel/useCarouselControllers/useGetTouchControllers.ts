@@ -2,9 +2,11 @@ import { useCallback, useRef, useState } from "react";
 import { useScrollingLock, useScrollingUnlock } from "utils/hooks";
 
 interface Props {
+  cardsQuantity: number;
   autoTime: number;
   transitionTime: number; // miliseconds
   setBandTransition: React.Dispatch<React.SetStateAction<string>>;
+  carouselPosition: React.MutableRefObject<number>;
   disableNavigation: React.MutableRefObject<boolean>;
   handleInterval: () => void;
   handleBackwards: () => void;
@@ -17,8 +19,10 @@ interface IPosition {
 }
 
 const useGetTouchControllers = ({
+  cardsQuantity,
   autoTime,
   transitionTime,
+  carouselPosition,
   setBandTransition,
   disableNavigation,
   handleInterval,
@@ -59,27 +63,26 @@ const useGetTouchControllers = ({
     (positionXDif?: number) => {
       if (!isDragging.current) return;
 
-      // reset
-      startPosition.current = { x: 0, y: 0 };
       isDragging.current = false;
-      clearInterval(slideHold.current as NodeJS.Timeout);
-      slideHold.current = null;
-      scrollingUnlock();
-      setDragTranslate(0);
-      if (!disableNavigation.current)
-        setBandTransition(`${transitionTime}ms all`);
 
+      setBandTransition(`${transitionTime}ms all`);
       if (positionXDif) {
         if (positionXDif < -99) handleBackwards();
         if (positionXDif > 99) handleForward();
       }
+
+      // reset
+      startPosition.current = { x: 0, y: 0 };
+      clearInterval(slideHold.current as NodeJS.Timeout);
+      slideHold.current = null;
+      scrollingUnlock();
+      setDragTranslate(0);
     },
     [
       transitionTime,
       handleBackwards,
       handleForward,
       scrollingUnlock,
-      disableNavigation,
       setBandTransition,
     ]
   );
@@ -90,7 +93,12 @@ const useGetTouchControllers = ({
         | React.TouchEvent<HTMLDivElement>
         | React.MouseEvent<HTMLDivElement, MouseEvent>
     ) => {
-      if (disableNavigation.current) return;
+      if (
+        disableNavigation.current ||
+        carouselPosition.current <= 0 ||
+        carouselPosition.current >= cardsQuantity - 1
+      )
+        return;
 
       startPosition.current = getPosition(event);
       isDragging.current = true;
@@ -103,7 +111,9 @@ const useGetTouchControllers = ({
       }, autoTime / 2);
     },
     [
+      cardsQuantity,
       autoTime,
+      carouselPosition,
       getPosition,
       handleInterval,
       setBandTransition,
