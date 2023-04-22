@@ -1,5 +1,4 @@
-import { FC, useContext } from "react";
-import { GeneralContext } from "contexts";
+import { FC } from "react";
 import { useTranslation } from "next-i18next";
 import {
   CVButtons,
@@ -13,9 +12,9 @@ import {
   Subtitle,
   Phrase,
 } from "./styledComponents";
+import { useMediaQuery } from "utils/hooks";
 
 const HeroTitle: FC = () => {
-  const { viewportWidth } = useContext(GeneralContext);
   const { t } = useTranslation("hero");
 
   return (
@@ -25,7 +24,7 @@ const HeroTitle: FC = () => {
         <Subtitle variant="h2">{t("subtitle")}</Subtitle>
         <Phrase variant="h3">{t("phrase")}</Phrase>
         <HeroSocialMedia />
-        {viewportWidth <= 1080 ? <CVButtons /> : <HeroCallToAction />}
+        {useMediaQuery(1080) ? <CVButtons /> : <HeroCallToAction />}
       </InnerContainer>
     </Container>
   );
