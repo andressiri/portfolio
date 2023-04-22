@@ -52,12 +52,10 @@ const useCarouselControllers = ({
     setTranslateBand(cardsQuantity < 2 ? 0 : responsiveWidth() * initialSlide);
   }, [cardsQuantity, initialSlide, responsiveWidth]);
 
-  const { disableNavigation } = useInfiniteHandler({
-    cardWidth,
+  const { infiniteHandler, disableNavigation } = useInfiniteHandler({
     cardsQuantity,
     transitionTime,
     responsiveWidth,
-    translateBand,
     setTranslateBand,
     carouselPosition,
     setBandTransition,
@@ -71,6 +69,7 @@ const useCarouselControllers = ({
     responsiveWidth,
     setTranslateBand,
     carouselPosition,
+    infiniteHandler,
   });
 
   useHandleViewportResizing({
@@ -89,13 +88,16 @@ const useCarouselControllers = ({
       setTranslateBand,
       carouselPosition,
       disableNavigation,
+      infiniteHandler,
       handleInterval,
     });
 
   const { dragTranslate, touchEnd, touchStart, touchMove } =
     useGetTouchControllers({
+      cardsQuantity,
       autoTime,
       transitionTime,
+      carouselPosition,
       setBandTransition,
       disableNavigation,
       handleInterval,
