@@ -7,6 +7,7 @@ interface Props {
   setTranslateBand: React.Dispatch<React.SetStateAction<number>>;
   carouselPosition: React.MutableRefObject<number>;
   disableNavigation: React.MutableRefObject<boolean>;
+  infiniteHandler: () => void;
   handleInterval: () => void;
 }
 
@@ -17,6 +18,7 @@ const useGetNavigationControllers = ({
   setTranslateBand,
   carouselPosition,
   disableNavigation,
+  infiniteHandler,
   handleInterval,
 }: Props) => {
   const handleForward = useCallback(() => {
@@ -25,12 +27,14 @@ const useGetNavigationControllers = ({
     setTranslateBand((prev: number) => prev + responsiveWidth());
     handleInterval();
     carouselPosition.current++;
+    infiniteHandler();
   }, [
     carouselPosition,
     disableNavigation,
     handleInterval,
     responsiveWidth,
     setTranslateBand,
+    infiniteHandler,
   ]);
 
   const handleBackwards = useCallback(() => {
@@ -39,12 +43,14 @@ const useGetNavigationControllers = ({
     setTranslateBand((prev: number) => prev - responsiveWidth());
     handleInterval();
     carouselPosition.current--;
+    infiniteHandler();
   }, [
     carouselPosition,
     disableNavigation,
     handleInterval,
     responsiveWidth,
     setTranslateBand,
+    infiniteHandler,
   ]);
 
   const handleBullet = useCallback(

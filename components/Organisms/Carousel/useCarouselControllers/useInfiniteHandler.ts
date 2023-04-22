@@ -1,29 +1,25 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 
 interface Props {
-  cardWidth: number;
   cardsQuantity: number;
   transitionTime: number; // miliseconds
   responsiveWidth: () => number;
-  translateBand: number;
   setTranslateBand: React.Dispatch<React.SetStateAction<number>>;
   carouselPosition: React.MutableRefObject<number>;
   setBandTransition: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const useInfiniteHandler = ({
-  cardWidth,
   cardsQuantity,
   transitionTime,
   responsiveWidth,
-  translateBand,
   setTranslateBand,
   carouselPosition,
   setBandTransition,
 }: Props) => {
   const disableNavigation = useRef<boolean>(false);
 
-  useEffect(() => {
+  const infiniteHandler = useCallback(() => {
     const handleReposition = (newTranslate: number, newPosition: number) => {
       disableNavigation.current = true;
 
@@ -31,7 +27,7 @@ const useInfiniteHandler = ({
         setBandTransition("unset");
         setTranslateBand(newTranslate);
         carouselPosition.current = newPosition;
-      }, transitionTime);
+      }, transitionTime - 20);
 
       setTimeout(() => {
         setBandTransition(`${transitionTime}ms all`);
@@ -41,20 +37,18 @@ const useInfiniteHandler = ({
 
     if (cardsQuantity < 2) return;
 
-    if (translateBand === 0) {
+    if (carouselPosition.current === 0) {
       const newTranslate = responsiveWidth() * (cardsQuantity - 2);
       handleReposition(newTranslate, cardsQuantity - 2);
       return;
     }
 
-    if (translateBand >= responsiveWidth() * (cardsQuantity - 1)) {
+    if (carouselPosition.current > cardsQuantity - 2) {
       handleReposition(responsiveWidth(), 1);
       return;
     }
   }, [
-    translateBand,
     carouselPosition,
-    cardWidth,
     cardsQuantity,
     transitionTime,
     setTranslateBand,
@@ -62,7 +56,7 @@ const useInfiniteHandler = ({
     setBandTransition,
   ]);
 
-  return { disableNavigation };
+  return { infiniteHandler, disableNavigation };
 };
 
 export default useInfiniteHandler;
