@@ -7,6 +7,7 @@ import footstrapDesktop from "./footstrapDesktop.png";
 import footstrapMobile from "./footstrapMobile.png";
 import treehouseDesktop from "./treehouseDesktop.png";
 import portfolioDesktop from "./portfolioDesktop.png";
+import portfolioMobile from "./portfolioMobile.png";
 
 export {
   quotesMachineMobile,
@@ -18,4 +19,5 @@ export {
   footstrapMobile,
   treehouseDesktop,
   portfolioDesktop,
+  portfolioMobile,
 };
