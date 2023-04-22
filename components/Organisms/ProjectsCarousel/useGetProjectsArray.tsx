@@ -8,6 +8,7 @@ import {
   footstrapMobile,
   treehouseDesktop,
   portfolioDesktop,
+  portfolioMobile,
 } from "assets/projects";
 import {
   HTML5Logo,
@@ -137,7 +138,7 @@ const useGetProjectsArray = () => {
         { text: "Material UI", logo: <MaterialUILogo /> },
       ],
       desktopSrc: portfolioDesktop,
-      mobileSrc: undefined,
+      mobileSrc: portfolioMobile,
     },
   ];
 
