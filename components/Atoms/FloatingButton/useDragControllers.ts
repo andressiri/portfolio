@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { GeneralContext } from "contexts";
 import { TooltipProps } from "typings/tooltip";
+import { useScrollingUnlock } from "utils/hooks";
 
 type TooltipPosition = TooltipProps["tooltipPosition"];
 
@@ -14,37 +15,56 @@ const useDragControllers = () => {
   const [tooltipPosition, setTooltipPosition] =
     useState<TooltipPosition>("left");
   const [top, setTop] = useState<number | null>(null);
+  const topRef = useRef<number | null>(null);
   const [left, setLeft] = useState<number | null>(null);
+  const leftRef = useRef<number | null>(null);
   const startPosition = useRef<IPosition>({ x: 0, y: 0 });
   const isDragging = useRef<boolean>(false);
+  const scrollingUnlock = useScrollingUnlock();
+  const [updateTooltipPosition, setUpdateTooltipPosition] = useState<number>(0);
 
   useEffect(() => {
-    if (top === null || left === null) return;
+    if (topRef.current === null || leftRef.current === null) return;
 
-    if (top > 35 && left > 50 && viewportWidth - left > 125) {
+    if (
+      topRef.current > 35 &&
+      leftRef.current > 50 &&
+      viewportWidth - leftRef.current > 125
+    ) {
       setTooltipPosition("top");
       return;
     }
 
-    if (top <= 35 && left > 50 && viewportWidth - left > 125) {
+    if (
+      topRef.current <= 35 &&
+      leftRef.current > 50 &&
+      viewportWidth - leftRef.current > 125
+    ) {
       setTooltipPosition("bottom");
       return;
     }
 
-    if (left > viewportWidth / 2) {
+    if (leftRef.current > viewportWidth / 2) {
       setTooltipPosition("left");
       return;
     }
 
     setTooltipPosition("right");
-  }, [top, left, viewportWidth]);
+  }, [updateTooltipPosition, viewportWidth]);
 
   useEffect(() => {
-    if (top === null || left === null) return;
+    if (topRef.current === null || leftRef.current === null) return;
 
-    if (viewportWidth - left < 80) setLeft(viewportWidth - 80);
-    if (viewportHeight - top < 80) setTop(viewportHeight - 80);
-  }, [viewportWidth, viewportHeight, left, top]);
+    if (viewportWidth - leftRef.current < 80) {
+      setLeft(viewportWidth - 80);
+      leftRef.current = viewportWidth - 80;
+    }
+
+    if (viewportHeight - topRef.current < 80) {
+      setTop(viewportHeight - 80);
+      topRef.current = viewportHeight - 80;
+    }
+  }, [viewportWidth, viewportHeight, topRef, leftRef]);
 
   const getPosition = useCallback(
     (
@@ -96,49 +116,26 @@ const useDragControllers = () => {
           : viewportWidth - 80;
 
       setTop(topToSet);
+      topRef.current = topToSet;
       setLeft(leftToSet);
+      leftRef.current = leftToSet;
     },
-    [viewportWidth, viewportHeight, getPosition]
+    [viewportWidth, viewportHeight, getPosition, topRef, leftRef]
   );
-
-  const lockScrolling = useCallback(() => {
-    const alreadyExists = document.getElementById(
-      "temporary-lock-scrolling-stylesheet"
-    );
-    if (alreadyExists) return;
-
-    const temporaryStylesheet = document.createElement("style");
-    temporaryStylesheet.setAttribute(
-      "id",
-      "temporary-lock-scrolling-stylesheet"
-    );
-    temporaryStylesheet.innerHTML = `
-      * {
-        overflow: hidden;
-        overscroll-behavior: none;
-      }
-    `;
-    document.head.appendChild(temporaryStylesheet);
-  }, []);
-
-  const unlockScrolling = useCallback(() => {
-    const temporaryStylesheet = document.getElementById(
-      "temporary-lock-scrolling-stylesheet"
-    );
-    if (temporaryStylesheet) document.head.removeChild(temporaryStylesheet);
-  }, []);
 
   const touchEnd = useCallback(() => {
     setTimeout(() => (isDragging.current = false), 100);
     setTimeout(() => (isDragging.current = false), 350);
 
-    unlockScrolling();
+    scrollingUnlock();
+
+    setUpdateTooltipPosition((prev: number) => prev + 1);
 
     window.removeEventListener("mousemove", touchMove);
     window.removeEventListener("touchmove", touchMove);
     window.removeEventListener("mouseup", touchEnd);
     window.removeEventListener("touchend", touchEnd);
-  }, [touchMove, unlockScrolling]);
+  }, [touchMove, scrollingUnlock]);
 
   const touchStart = useCallback(
     (
@@ -162,8 +159,6 @@ const useDragControllers = () => {
     top,
     left,
     touchStart,
-    lockScrolling,
-    unlockScrolling,
     tooltipPosition,
     isDragging,
   };

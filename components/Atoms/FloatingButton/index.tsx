@@ -5,6 +5,7 @@ import { Container, StyledIconContainer } from "./styledComponents";
 import useDragControllers from "./useDragControllers";
 import { TooltipProps } from "typings/tooltip";
 import { CSSObject } from "@mui/material";
+import { useScrollingLock } from "utils/hooks";
 
 interface Props {
   icon: JSX.Element;
@@ -26,9 +27,10 @@ const FloatingButton: FC<Props> = ({
 }) => {
   const [displayTooltip, setDisplayTooltip] = useState(false);
   const dragControllers = useDragControllers();
-  const { top, left, touchStart, lockScrolling, isDragging, tooltipPosition } =
+  const { top, left, touchStart, isDragging, tooltipPosition } =
     dragControllers;
   const { t } = useTranslation("buttons");
+  const scrollingLock = useScrollingLock();
 
   return (
     <Container
@@ -38,7 +40,7 @@ const FloatingButton: FC<Props> = ({
       }}
       onMouseLeave={() => setDisplayTooltip(false)}
       onTouchStart={(e) => {
-        lockScrolling();
+        scrollingLock();
         setDisplayTooltip(false);
         touchStart(e);
       }}
