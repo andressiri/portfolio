@@ -78,7 +78,6 @@ const Carousel: FC<Props> = ({
   const {
     translateBand,
     bandTransition,
-    disableNavButtons,
     sidesSpace,
     dragTranslate,
     handleForward,
@@ -130,7 +129,6 @@ const Carousel: FC<Props> = ({
       >
         <BackwardsButton
           onClick={handleBackwards}
-          disabled={disableNavButtons}
           colorChosen={color}
           navButtons={navButtons && !disableNav.current}
           animatedButtons={animatedButtons}
@@ -171,7 +169,6 @@ const Carousel: FC<Props> = ({
         </BandContainer>
         <ForwardButton
           onClick={handleForward}
-          disabled={disableNavButtons}
           colorChosen={color}
           navButtons={navButtons && !disableNav.current}
           animatedButtons={animatedButtons}
