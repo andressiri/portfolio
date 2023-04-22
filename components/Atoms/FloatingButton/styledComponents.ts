@@ -65,7 +65,7 @@ export const Container = styled(Box, {
     right: positioning.right,
     border: `2px solid ${theme.palette.primary.main}`,
     borderRadius: "50%",
-    overflow: "visible !important",
+    overflow: "visible",
     touchAction: "none",
     "& svg": {
       width: "80%",
@@ -84,7 +84,7 @@ export const StyledIconContainer = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   borderRadius: "50%",
   background: theme.palette.primary.contrastText,
-  overflow: "visible !important",
+  overflow: "visible",
   "&:hover": {
     background: theme.palette.primary.contrastText,
     opacity: "1",
