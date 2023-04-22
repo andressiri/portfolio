@@ -1,13 +1,12 @@
-import { FC, useContext } from "react";
-import { GeneralContext } from "contexts";
+import { FC } from "react";
 import { useTheme } from "@mui/material";
+import { useMediaQuery } from "utils/hooks";
 import { projectsLogosArray } from "assets/projects";
 import { Carousel, ProjectsCarouselCard } from "components/Organisms";
 import { Container } from "./styledComponents";
 import useGetProjectsArray from "./useGetProjectsArray";
 
 const ProjectsCarousel: FC = () => {
-  const { viewportWidth } = useContext(GeneralContext);
   const { projectsArray } = useGetProjectsArray();
   const theme = useTheme();
 
@@ -15,13 +14,11 @@ const ProjectsCarousel: FC = () => {
     <Container>
       <Carousel
         cardWidth={1460}
-        cardHeight={
-          viewportWidth < 620 ? 900 : viewportWidth < 1150 ? 900 : 600
-        }
+        cardHeight={useMediaQuery(1149) ? 900 : 600}
         color={theme.palette.secondary.contrastText}
         background="transparent"
         boxShadow="none"
-        navButtons={viewportWidth < 720 ? false : true}
+        navButtons={useMediaQuery(720) ? false : true}
         customBullets={{
           array: projectsLogosArray,
           container: {
