@@ -1,3 +1,5 @@
+export { default as ConfluenceLogo } from "./ConfluenceLogo";
+export { default as DockerLogo } from "./DockerLogo";
 export { default as ESLintLogo } from "./ESLintLogo";
 export { default as GitBashLogo } from "./GitBashLogo";
 export { default as GitHubLogo } from "./GitHubLogo";
@@ -6,4 +8,5 @@ export { default as GoogleLighthouseLogo } from "./GoogleLighthouseLogo";
 export { default as JiraLogo } from "./JiraLogo";
 export { default as PostmanLogo } from "./PostmanLogo";
 export { default as PowershellLogo } from "./PowershellLogo";
+export { default as ThinkingLogo } from "./ThinkingLogo";
 export { default as VisualStudioCodeLogo } from "./VisualStudioCodeLogo";

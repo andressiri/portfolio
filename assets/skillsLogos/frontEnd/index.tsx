@@ -1,9 +1,13 @@
 export { default as BootstrapLogo } from "./BootstrapLogo";
 export { default as CSS3Logo } from "./CSS3Logo";
+export { default as CucumberLogo } from "./CucumberLogo";
+export { default as CypressLogo } from "./CypressLogo";
 export { default as HTML5Logo } from "./HTML5Logo";
 export { default as MaterialUILogo } from "./MaterialUILogo";
 export { default as NextLogo } from "./NextLogo";
 export { default as ReactLogo } from "./ReactLogo";
 export { default as ReduxToolkitLogo } from "./ReduxToolkitLogo";
+export { default as StorybookLogo } from "./StorybookLogo";
 export { default as StyledComponentsLogo } from "./StyledComponentsLogo";
+export { default as StylelintLogo } from "./StylelintLogo";
 export { default as TailwindLogo } from "./TailwindLogo";
