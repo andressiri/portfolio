@@ -36,7 +36,7 @@ export const InnerContainer = styled(Box)(() => ({
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
-  margin: "0px 0px 10px 0px",
+  margin: "10px 0px",
   color: theme.palette.primary.dark,
   fontSize: "74px",
   lineHeight: "74px",
@@ -50,9 +50,9 @@ export const Title = styled(Typography)(({ theme }) => ({
 }));
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
-  margin: "0px 0px 40px 0px",
+  margin: "0px 0px 30px 0px",
   color: theme.palette.secondary.contrastText,
-  fontSize: "48px",
+  fontSize: "36px",
   fontWeight: 800,
   lineHeight: "48px",
   letterSpacing: "-0.675px",

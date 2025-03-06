@@ -9,16 +9,16 @@ export const Container = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   color: theme.palette.secondary.contrastText,
   "& svg": {
-    width: "40px",
-    height: "40px",
+    width: "35px",
+    height: "35px",
   },
   "@media (max-width: 1149px)": {
     margin: "25px 0px",
   },
   "@media (max-width: 550px)": {
     "& svg": {
-      width: "calc(40px + (100vw - 550px) * 0.012)",
-      height: "calc(40px + (100vw - 550px) * 0.012)",
+      width: "calc(35px + (100vw - 550px) * 0.012)",
+      height: "calc(35px + (100vw - 550px) * 0.012)",
     },
   },
 }));
@@ -47,24 +47,28 @@ export const SkillsContainer = styled(Box)(() => ({
   flexWrap: "wrap",
   alignItems: "flexStart",
   justifyContent: "center",
-  gap: "20px",
+  gap: "15px",
 }));
 
-export const SkillContainer = styled(Box)(({ theme }) => ({
+export const SkillContainer = styled("a", {
+  shouldForwardProp: (prop) => !["isLightTheme"].includes(prop as string),
+})<{ isLightTheme: boolean }>(({ theme, isLightTheme }) => ({
   zIndex: 1,
-  height: theme.custom.buttons.height,
+  height: `calc(${theme.custom.buttons.height} - 8px)`,
   display: "flex",
   alignItems: "center",
-  padding: "10px 20px",
+  padding: "0px 10px",
   borderRadius: "15px",
   justifyContent: "center",
-  gap: "10px",
+  gap: "8px",
   color: theme.palette.primary.dark,
   background: theme.palette.primary.contrastText.replace("0.87)", "1)"),
-  border: `1px solid ${theme.palette.secondary.contrastText}`,
+  border: `2px solid ${
+    isLightTheme ? theme.palette.secondary.contrastText : "transparent"
+  }`,
   "@media (max-width: 550px)": {
     padding:
-      "calc(10px + (100vw - 550px) * 0.014) calc(20px + (100vw - 550px) * 0.04)",
+      "calc(8px + (100vw - 550px) * 0.014) calc(10px + (100vw - 550px) * 0.02)",
   },
 }));
 
@@ -72,10 +76,10 @@ export const SkillText = styled(Typography)(({ theme }) => ({
   marginTop: "5px",
   color: theme.palette.secondary.contrastText,
   fontWeight: 500,
-  fontSize: "18px",
+  fontSize: "16px",
   lineHeight: "18px",
   "@media (max-width: 550px)": {
-    fontSize: "calc(18px + (100vw - 550px) * 0.012)",
-    lineHeight: "calc(18px + (100vw - 550px) * 0.012)",
+    fontSize: "calc(16px + (100vw - 550px) * 0.012)",
+    lineHeight: "calc(16px + (100vw - 550px) * 0.012)",
   },
 }));

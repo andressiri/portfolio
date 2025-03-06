@@ -1,9 +1,14 @@
+export { default as ApolloLogo } from "./ApolloLogo";
 export { default as AWSLogo } from "./AWSLogo";
 export { default as ExpressLogo } from "./ExpressLogo";
 export { default as JWTLogo } from "./JWTLogo";
 export { default as MongoDBLogo } from "./MongoDBLogo";
 export { default as MongooseLogo } from "./MongooseLogo";
 export { default as MySQLLogo } from "./MySQLLogo";
+export { default as NestLogo } from "./NestLogo";
 export { default as NodeJSLogo } from "./NodeJSLogo";
+export { default as PHPLogo } from "./PHPLogo";
 export { default as PostgreSQLLogo } from "./PostgreSQLLogo";
+export { default as RabbitMQLogo } from "./RabbitMQLogo";
+export { default as RedisLogo } from "./RedisLogo";
 export { default as SequelizeLogo } from "./SequelizeLogo";
