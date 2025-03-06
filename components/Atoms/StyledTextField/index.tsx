@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { TextFieldStyled } from "./styledComponents";
+import { InputLabelProps } from "@mui/material";
 
 interface Props {
   error?: boolean;
@@ -10,10 +11,10 @@ interface Props {
   variant?: "standard" | "filled" | "outlined";
   multiline?: boolean;
   rows?: number;
-  onChange: (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
-  InputLabelProps?: object;
+  onChange:
+    | React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>
+    | ((e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void);
+  InputLabelProps?: Partial<InputLabelProps>;
   helperText?: string;
   conditionalHelperText?: boolean;
 }
