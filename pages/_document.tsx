@@ -14,6 +14,14 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
           />
+          <meta property="og:title" content="Andrés Siri Portfolio" />
+          <meta property="og:description" content="Andrés Siri Porfolio" />
+          <meta
+            property="og:image"
+            content="https://andressiri.vercel.app/portfolio-preview.png"
+          />
+          <meta property="og:url" content="https://andressiri.vercel.app" />
+          <meta property="og:type" content="portfolio" />
         </Head>
         <body>
           <Main />
