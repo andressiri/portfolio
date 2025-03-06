@@ -63,7 +63,7 @@ export const Container = styled(Box, {
     left: positioning.left,
     bottom: positioning.bottom,
     right: positioning.right,
-    border: `2px solid ${theme.palette.primary.main}`,
+    border: "none",
     borderRadius: "50%",
     overflow: "visible",
     touchAction: "none",

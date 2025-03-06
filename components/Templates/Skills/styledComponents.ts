@@ -9,7 +9,7 @@ export const InnerContainer = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-evenly",
-  gap: "30px",
+  gap: "20px",
 }));
 
 export const titleSpecifics: ITitleSpecifics = {

@@ -7,7 +7,6 @@ export const Container = styled("nav")(({ theme }) => ({
   bottom: "0px",
   left: "0px",
   width: "100%",
-  maxWidth: "1600px",
   height: theme.custom.footer.height,
   display: "flex",
   flexWrap: "wrap",
@@ -17,7 +16,7 @@ export const Container = styled("nav")(({ theme }) => ({
   borderTop: `2px solid ${theme.palette.secondary.contrastText}`,
   overflow: "visible",
   "@media (min-width: 1600px)": {
-    left: "calc((100vw - 1600px) / 2)",
+    padding: "0px calc((100vw - 1600px) / 2)",
   },
   "@media (max-width: 930px)": {
     paddingTop: "10px",

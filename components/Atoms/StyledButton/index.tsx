@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { ButtonStyled } from "./styledComponents";
 import { IStyledButton } from "typings/buttons";
 
-const ContactButton: FC<IStyledButton> = ({
+const StyledButton: FC<IStyledButton> = ({
   disabled,
   type,
   BGType = "primaryBG",
@@ -42,4 +42,4 @@ const ContactButton: FC<IStyledButton> = ({
   );
 };
 
-export default ContactButton;
+export default StyledButton;
