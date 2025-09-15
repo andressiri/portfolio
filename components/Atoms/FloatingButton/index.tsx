@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import { Tooltip } from "components/Atoms";
 import { Container, StyledIconContainer } from "./styledComponents";
 import useDragControllers from "./useDragControllers";
+import useGetButtonDiameter from "./useGetButtonDiameter";
 import { TooltipProps } from "typings/tooltip";
 import { CSSObject } from "@mui/material";
 import { useScrollingLock } from "utils/hooks";
@@ -26,7 +27,8 @@ const FloatingButton: FC<Props> = ({
   initialPosition = "bottomRight",
 }) => {
   const [displayTooltip, setDisplayTooltip] = useState(false);
-  const dragControllers = useDragControllers();
+  const { buttonRef, buttonDiameter } = useGetButtonDiameter();
+  const dragControllers = useDragControllers(buttonDiameter);
   const { top, left, touchStart, isDragging, tooltipPosition } =
     dragControllers;
   const { t } = useTranslation("buttons");
@@ -34,6 +36,7 @@ const FloatingButton: FC<Props> = ({
 
   return (
     <Container
+      ref={buttonRef}
       onMouseEnter={() => {
         if (isDragging.current) return;
         setDisplayTooltip(true);

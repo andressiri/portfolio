@@ -1,7 +1,16 @@
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { GeneralContext } from "contexts";
 import { TooltipProps } from "typings/tooltip";
 import { useScrollingUnlock } from "utils/hooks";
+const minDragDif = 15;
+const minMargin = 10;
 
 type TooltipPosition = TooltipProps["tooltipPosition"];
 
@@ -10,7 +19,7 @@ interface IPosition {
   y: number;
 }
 
-const useDragControllers = () => {
+const useDragControllers = (buttonDiameter: number) => {
   const { viewportWidth, viewportHeight } = useContext(GeneralContext);
   const [tooltipPosition, setTooltipPosition] =
     useState<TooltipPosition>("left");
@@ -22,6 +31,14 @@ const useDragControllers = () => {
   const isDragging = useRef<boolean>(false);
   const scrollingUnlock = useScrollingUnlock();
   const [updateTooltipPosition, setUpdateTooltipPosition] = useState<number>(0);
+  const bottomLimit = useMemo(
+    () => buttonDiameter + minMargin,
+    [buttonDiameter]
+  );
+  const rightLimit = useMemo(
+    () => buttonDiameter + minMargin,
+    [buttonDiameter]
+  );
 
   useEffect(() => {
     if (topRef.current === null || leftRef.current === null) return;
@@ -55,16 +72,16 @@ const useDragControllers = () => {
   useEffect(() => {
     if (topRef.current === null || leftRef.current === null) return;
 
-    if (viewportWidth - leftRef.current < 80) {
-      setLeft(viewportWidth - 80);
-      leftRef.current = viewportWidth - 80;
+    if (viewportWidth - leftRef.current < rightLimit) {
+      setLeft(viewportWidth - rightLimit);
+      leftRef.current = viewportWidth - rightLimit;
     }
 
-    if (viewportHeight - topRef.current < 80) {
-      setTop(viewportHeight - 80);
-      topRef.current = viewportHeight - 80;
+    if (viewportHeight - topRef.current < bottomLimit) {
+      setTop(viewportHeight - bottomLimit);
+      topRef.current = viewportHeight - bottomLimit;
     }
-  }, [viewportWidth, viewportHeight, topRef, leftRef]);
+  }, [viewportWidth, viewportHeight, topRef, leftRef, bottomLimit, rightLimit]);
 
   const getPosition = useCallback(
     (
@@ -93,34 +110,43 @@ const useDragControllers = () => {
 
       if (
         !isDragging.current &&
-        Math.abs(startPosition.current.x - actualPosition.x) < 15 &&
-        Math.abs(startPosition.current.y - actualPosition.y) < 15
+        Math.abs(startPosition.current.x - actualPosition.x) < minDragDif &&
+        Math.abs(startPosition.current.y - actualPosition.y) < minDragDif
       )
         return;
 
       if (!isDragging.current) isDragging.current = true;
 
       const topToSet =
-        actualPosition.y - 30 > 10 &&
-        actualPosition.y - 30 < viewportHeight - 80
-          ? actualPosition.y - 30
-          : actualPosition.y - 30 <= 10
-          ? 10
-          : viewportHeight - 80;
+        actualPosition.y - minDragDif > minMargin &&
+        actualPosition.y - minDragDif < viewportHeight - bottomLimit
+          ? actualPosition.y - minDragDif
+          : actualPosition.y - minDragDif <= minMargin
+          ? minMargin
+          : viewportHeight - bottomLimit;
 
       const leftToSet =
-        actualPosition.x - 30 > 10 && actualPosition.x - 30 < viewportWidth - 80
-          ? actualPosition.x - 30
-          : actualPosition.x - 30 <= 10
-          ? 10
-          : viewportWidth - 80;
+        actualPosition.x - minDragDif > minMargin &&
+        actualPosition.x - minDragDif < viewportWidth - rightLimit
+          ? actualPosition.x - minDragDif
+          : actualPosition.x - minDragDif <= minMargin
+          ? minMargin
+          : viewportWidth - rightLimit;
 
       setTop(topToSet);
       topRef.current = topToSet;
       setLeft(leftToSet);
       leftRef.current = leftToSet;
     },
-    [viewportWidth, viewportHeight, getPosition, topRef, leftRef]
+    [
+      viewportWidth,
+      viewportHeight,
+      getPosition,
+      topRef,
+      leftRef,
+      bottomLimit,
+      rightLimit,
+    ]
   );
 
   const touchEnd = useCallback(() => {
