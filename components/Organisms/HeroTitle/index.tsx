@@ -1,10 +1,6 @@
 import { FC } from "react";
 import { useTranslation } from "next-i18next";
-import {
-  CVButtons,
-  HeroCallToAction,
-  HeroSocialMedia,
-} from "components/Molecules";
+import { HeroCallToAction, HeroSocialMedia } from "components/Molecules";
 import {
   Container,
   InnerContainer,
@@ -12,7 +8,6 @@ import {
   Subtitle,
   Phrase,
 } from "./styledComponents";
-import { useMediaQuery } from "utils/hooks";
 
 const HeroTitle: FC = () => {
   const { t } = useTranslation("hero");
@@ -24,7 +19,7 @@ const HeroTitle: FC = () => {
         <Subtitle variant="h2">{t("subtitle")}</Subtitle>
         <Phrase variant="h3">{t("phrase")}</Phrase>
         <HeroSocialMedia />
-        {useMediaQuery(1080) ? <CVButtons /> : <HeroCallToAction />}
+        <HeroCallToAction />
       </InnerContainer>
     </Container>
   );

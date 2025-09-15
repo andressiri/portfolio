@@ -7,11 +7,16 @@ import FloatingButton from "../FloatingButton";
 interface Props {
   isDrawerOpen: boolean;
   handleDrawer: () => void;
+  isNavbarVisible: boolean;
 }
 
-const NavDrawerController: FC<Props> = ({ isDrawerOpen, handleDrawer }) => {
+const NavDrawerController: FC<Props> = ({
+  isDrawerOpen,
+  handleDrawer,
+  isNavbarVisible,
+}) => {
   return (
-    <Container>
+    <Container isNavbarVisible={isNavbarVisible}>
       <FloatingButton
         icon={isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
         tooltipText={isDrawerOpen ? "closeMenu" : "openMenu"}

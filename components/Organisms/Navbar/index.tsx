@@ -1,10 +1,17 @@
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { NavLogo, NavLinks, Options } from "components/Molecules";
 import { NavbarContainer, RightContainer } from "./styledComponents";
+import useNavbarVisibility from "./useNavbarVisibility";
 
-const Navbar: FC = () => {
+interface Props {
+  visibilitySetter: Dispatch<SetStateAction<boolean>>;
+}
+
+const Navbar: FC<Props> = ({ visibilitySetter }) => {
+  const { navbarRef } = useNavbarVisibility(visibilitySetter);
+
   return (
-    <NavbarContainer>
+    <NavbarContainer ref={navbarRef}>
       <NavLogo />
       <RightContainer>
         <NavLinks />

@@ -4,18 +4,19 @@ import { WhatsAppFloating } from "components/Molecules";
 import { Footer, Navbar, NavigationDrawer } from "components/Organisms";
 import { LayoutContainer } from "./styledComponents";
 
-interface IProps {
+interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-const Layout: FC<IProps> = ({ children }) => {
+const Layout: FC<Props> = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
   const handleDrawer = () => setIsDrawerOpen((prev: boolean) => !prev);
 
   return (
     <LayoutContainer>
-      <Navbar />
+      <Navbar visibilitySetter={setIsNavbarVisible} />
       <NavigationDrawer
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
@@ -24,6 +25,7 @@ const Layout: FC<IProps> = ({ children }) => {
       <NavDrawerController
         isDrawerOpen={isDrawerOpen}
         handleDrawer={handleDrawer}
+        isNavbarVisible={isNavbarVisible}
       />
       {children}
       <Footer />
