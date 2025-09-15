@@ -58,9 +58,9 @@ export const Subtitle = styled(Typography)(({ theme }) => ({
   letterSpacing: "-0.675px",
   whiteSpace: "nowrap",
   "@media (max-width: 550px)": {
-    margin: "0px 0px calc(40px + (100vw - 550px) * 0.07) 0px",
-    fontSize: "calc(48px + (100vw - 550px) * 0.08)",
-    lineHeight: "calc(48px + (100vw - 550px) * 0.08)",
+    margin: "0px 0px calc(40px + (100vw - 550px) * 0.08) 0px",
+    fontSize: "calc(48px + (100vw - 650px) * 0.08)",
+    lineHeight: "calc(48px + (100vw - 650px) * 0.08)",
   },
 }));
 

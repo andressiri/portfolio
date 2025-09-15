@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Container, InnerContainer, AvatarContainer } from "./styledComponents";
-import { Avatar, CVButtons, HeroCallToAction } from "components/Molecules";
-import { useMediaQuery } from "utils/hooks";
+import { Avatar, CVButtons } from "components/Molecules";
 
 const HeroAvatar: FC = () => {
   return (
@@ -10,7 +9,7 @@ const HeroAvatar: FC = () => {
         <AvatarContainer>
           <Avatar />
         </AvatarContainer>
-        {useMediaQuery(1080) ? <HeroCallToAction /> : <CVButtons />}
+        <CVButtons />
       </InnerContainer>
     </Container>
   );
